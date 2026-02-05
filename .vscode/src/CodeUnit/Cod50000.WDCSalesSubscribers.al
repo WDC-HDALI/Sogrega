@@ -2,7 +2,7 @@
 codeunit 50000 "WDC Sales Subscribers"
 //*************Documentation***************************
 //WDC01  CHG  22/08/2024  Create this current object
-//WDC02  HG   30/10/2024  Change the description in Invoice Line
+//WDC02  HG   30/10/2024  Change the description in Invoice Lines
 
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", OnBeforeReleaseSalesDoc, '', false, false)]
