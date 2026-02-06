@@ -12,7 +12,8 @@ report 50087 "Journal BR"
     {
         dataitem("G/L Account"; "G/L Account")
         {
-            DataItemTableView = SORTING("No.");
+            //DataItemTableView = SORTING("No.");
+            RequestFilterFields = "No.";
             column(GLAccountNo; "G/L Account"."No.")
             {
 
@@ -78,7 +79,7 @@ report 50087 "Journal BR"
                 column(Ext_Document_No; "External Document No.")
                 {
                 }
-                column(Journal_Batch_Name; "Journal Batch Name")
+                column(JournalCode; JournalCode)
                 {
                 }
                 column(DebitAmount; "Debit Amount")
@@ -96,18 +97,36 @@ report 50087 "Journal BR"
                     lCustomer: Record Customer;
                     lBankAccount: Record "Bank Account";
                 begin
+                    JournalCode := '';
                     SourceName := '';
-                    if "Source Type" = "Source Type"::Vendor then begin
+                    if "Source Type" = "Source Type"::"Fixed Asset" then
+                        JournalCode := GLEntry."Gen. Bus. Posting Group"
+                    else if "Source Type" = "Source Type"::Vendor then begin
                         if lVendor.Get("Source No.") then
                             SourceName := lVendor.Name;
+                        if GLEntry."Gen. Bus. Posting Group" <> '' then
+                            JournalCode := GLEntry."Gen. Bus. Posting Group"
+                        else
+                            JournalCode := lVendor."Gen. Bus. Posting Group"
                     end else
                         if "Source Type" = "Source Type"::Customer then begin
                             if lCustomer.Get("Source No.") then
                                 SourceName := lCustomer.Name;
+                            JournalCode := 'VTE';
                         end else
                             if "Source Type" = "Source Type"::"Bank Account" then begin
                                 if lBankAccount.Get("Source No.") then
                                     SourceName := lBankAccount.Name;
+                                JournalCode := GLEntry."Source No.";
+                            end Else begin
+                                if GLEntry."Journal Batch Name" <> 'DEFAUT' then
+                                    JournalCode := GLEntry."Journal Batch Name";
+                                if CopyStr(GLEntry."G/L Account No.", 1, 3) = '432' then
+                                    JournalCode := 'R/S FRS';
+                                if GLEntry."No. Series" = 'SAL' then
+                                    JournalCode := 'SAL';
+                                if GLEntry."No. Series" = 'OD' then
+                                    JournalCode := 'OD';
                             end;
 
                 end;
@@ -119,7 +138,7 @@ report 50087 "Journal BR"
                         SetRange("Posting Date", StartDatefilter, EndDatefilter);
 
                     if GlAccountNofilter <> '' then
-                        SetRange("G/L Account No.", GlAccountNofilter);
+                        SetFilter("G/L Account No.", GlAccountNofilter);
 
                     FilterText := PostingText + Format(StartDatefilter) + ' | ' + GlentryText + GlaccountNofilter;
                 end;
@@ -152,12 +171,12 @@ report 50087 "Journal BR"
                         ApplicationArea = all;
                         CaptionML = ENU = 'End date', FRA = 'Date fin';
                     }
-                    field(GlaccountNofilter; GlaccountNofilter)
-                    {
-                        ApplicationArea = all;
-                        Captionml = ENU = 'G/L Account No.', FRA = 'N° compte général';
-                        TableRelation = "G/L Account"."No.";
-                    }
+                    // field(GlaccountNofilter; GlaccountNofilter)
+                    // {
+                    //     ApplicationArea = all;
+                    //     Captionml = ENU = 'G/L Account No.', FRA = 'N° compte général';
+                    //     TableRelation = "G/L Account";
+                    // }
 
                 }
             }
@@ -173,7 +192,7 @@ report 50087 "Journal BR"
     var
         SourceName: Text[100];
         CompanyInfo: Record "Company Information";
-
+        JournalCode: Text;
         filtertext: Text[200];
         Totalamount: Decimal;
         StartDatefilter: date;
