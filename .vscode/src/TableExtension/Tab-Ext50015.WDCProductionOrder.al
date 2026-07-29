@@ -7,6 +7,7 @@ using Microsoft.Sales.Document;
  //WDC01     WDC.HG     03/12/2024      add field "Reference No."
 //WDC02    WDC.HG     08/09/2025        add New fields
 //WDC03    WDC.HG     18/12/2025        add New field 
+//WDC04    WDC.HG     18/06/2026        add Customer Name
  *********************************************************************/
 
 tableextension 50015 WDCProductionOrder extends "Production Order"
@@ -77,6 +78,16 @@ tableextension 50015 WDCProductionOrder extends "Production Order"
             Editable = false;
         }
         //<<WDC03
+        //<<WDC04
+        field(50006; "Customer Name"; text[100])
+        {
+            CaptionML = ENU = 'Customer Name', FRA = 'Nom client';
+            FieldClass = FlowField;
+            calcFormula = lookup("Sales Header"."Sell-to Customer Name" where("Document Type" = filter(order), "No." = field("Sales Order No.")));
+            Editable = false;
+        }
+        //>>WDC04
+
     }
 
 

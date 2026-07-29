@@ -678,7 +678,7 @@ report 50000 "WDC Posted Sales Invoice"
         DescriptionText: Text[512];
         Item: record item;
         DescriptionTextlength: Integer;
-        PieceNumber: Integer;
+        PieceNumber: Decimal;
         PhoneNo: Text[30];
         FaxNo: Text[30];
         SalesInvLineTemp: record "Sales Invoice Line" temporary;

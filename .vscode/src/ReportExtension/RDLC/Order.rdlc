@@ -11,640 +11,6 @@
       <rd:DataSourceID>d3c37077-f9e7-4ce9-811b-06b569b0bbc1</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="DocType_PurchHeader">
-          <DataField>DocType_PurchHeader</DataField>
-        </Field>
-        <Field Name="No_PurchHeader">
-          <DataField>No_PurchHeader</DataField>
-        </Field>
-        <Field Name="AmountCaption">
-          <DataField>AmountCaption</DataField>
-        </Field>
-        <Field Name="PurchLineInvDiscAmtCaption">
-          <DataField>PurchLineInvDiscAmtCaption</DataField>
-        </Field>
-        <Field Name="SubtotalCaption">
-          <DataField>SubtotalCaption</DataField>
-        </Field>
-        <Field Name="VATAmtLineVATCaption">
-          <DataField>VATAmtLineVATCaption</DataField>
-        </Field>
-        <Field Name="VATAmtLineVATAmtCaption">
-          <DataField>VATAmtLineVATAmtCaption</DataField>
-        </Field>
-        <Field Name="VATAmtSpecCaption">
-          <DataField>VATAmtSpecCaption</DataField>
-        </Field>
-        <Field Name="VATIdentifierCaption">
-          <DataField>VATIdentifierCaption</DataField>
-        </Field>
-        <Field Name="VATAmtLineInvDiscBaseAmtCaption">
-          <DataField>VATAmtLineInvDiscBaseAmtCaption</DataField>
-        </Field>
-        <Field Name="VATAmtLineLineAmtCaption">
-          <DataField>VATAmtLineLineAmtCaption</DataField>
-        </Field>
-        <Field Name="VALVATBaseLCYCaption">
-          <DataField>VALVATBaseLCYCaption</DataField>
-        </Field>
-        <Field Name="TotalCaption">
-          <DataField>TotalCaption</DataField>
-        </Field>
-        <Field Name="PaymentTermsDescCaption">
-          <DataField>PaymentTermsDescCaption</DataField>
-        </Field>
-        <Field Name="ShipmentMethodDescCaption">
-          <DataField>ShipmentMethodDescCaption</DataField>
-        </Field>
-        <Field Name="PrepymtTermsDescCaption">
-          <DataField>PrepymtTermsDescCaption</DataField>
-        </Field>
-        <Field Name="HomePageCaption">
-          <DataField>HomePageCaption</DataField>
-        </Field>
-        <Field Name="EmailIDCaption">
-          <DataField>EmailIDCaption</DataField>
-        </Field>
-        <Field Name="AllowInvoiceDiscCaption">
-          <DataField>AllowInvoiceDiscCaption</DataField>
-        </Field>
-        <Field Name="BuyFromContactPhoneNoLbl">
-          <DataField>BuyFromContactPhoneNoLbl</DataField>
-        </Field>
-        <Field Name="BuyFromContactMobilePhoneNoLbl">
-          <DataField>BuyFromContactMobilePhoneNoLbl</DataField>
-        </Field>
-        <Field Name="BuyFromContactEmailLbl">
-          <DataField>BuyFromContactEmailLbl</DataField>
-        </Field>
-        <Field Name="PayToContactPhoneNoLbl">
-          <DataField>PayToContactPhoneNoLbl</DataField>
-        </Field>
-        <Field Name="PayToContactMobilePhoneNoLbl">
-          <DataField>PayToContactMobilePhoneNoLbl</DataField>
-        </Field>
-        <Field Name="PayToContactEmailLbl">
-          <DataField>PayToContactEmailLbl</DataField>
-        </Field>
-        <Field Name="BuyFromContactPhoneNo">
-          <DataField>BuyFromContactPhoneNo</DataField>
-        </Field>
-        <Field Name="BuyFromContactMobilePhoneNo">
-          <DataField>BuyFromContactMobilePhoneNo</DataField>
-        </Field>
-        <Field Name="BuyFromContactEmail">
-          <DataField>BuyFromContactEmail</DataField>
-        </Field>
-        <Field Name="PayToContactPhoneNo">
-          <DataField>PayToContactPhoneNo</DataField>
-        </Field>
-        <Field Name="PayToContactMobilePhoneNo">
-          <DataField>PayToContactMobilePhoneNo</DataField>
-        </Field>
-        <Field Name="PayToContactEmail">
-          <DataField>PayToContactEmail</DataField>
-        </Field>
-        <Field Name="ReportTitleCopyText">
-          <DataField>ReportTitleCopyText</DataField>
-        </Field>
-        <Field Name="CompanyAddr1">
-          <DataField>CompanyAddr1</DataField>
-        </Field>
-        <Field Name="CompanyAddr2">
-          <DataField>CompanyAddr2</DataField>
-        </Field>
-        <Field Name="CompanyAddr3">
-          <DataField>CompanyAddr3</DataField>
-        </Field>
-        <Field Name="CompanyAddr4">
-          <DataField>CompanyAddr4</DataField>
-        </Field>
-        <Field Name="CompanyInfoPhoneNo">
-          <DataField>CompanyInfoPhoneNo</DataField>
-        </Field>
-        <Field Name="CompanyInfoFaxNo">
-          <DataField>CompanyInfoFaxNo</DataField>
-        </Field>
-        <Field Name="CompanyInfoVATRegNo">
-          <DataField>CompanyInfoVATRegNo</DataField>
-        </Field>
-        <Field Name="CompanyInfoGiroNo">
-          <DataField>CompanyInfoGiroNo</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankName">
-          <DataField>CompanyInfoBankName</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankAccNo">
-          <DataField>CompanyInfoBankAccNo</DataField>
-        </Field>
-        <Field Name="DocDate_PurchHeader">
-          <DataField>DocDate_PurchHeader</DataField>
-        </Field>
-        <Field Name="VATNoText">
-          <DataField>VATNoText</DataField>
-        </Field>
-        <Field Name="VATRegNo_PurchHeader">
-          <DataField>VATRegNo_PurchHeader</DataField>
-        </Field>
-        <Field Name="PurchaserText">
-          <DataField>PurchaserText</DataField>
-        </Field>
-        <Field Name="SalesPurchPersonName">
-          <DataField>SalesPurchPersonName</DataField>
-        </Field>
-        <Field Name="ReferenceText">
-          <DataField>ReferenceText</DataField>
-        </Field>
-        <Field Name="YourRef_PurchHeader">
-          <DataField>YourRef_PurchHeader</DataField>
-        </Field>
-        <Field Name="CompanyAddr5">
-          <DataField>CompanyAddr5</DataField>
-        </Field>
-        <Field Name="CompanyAddr6">
-          <DataField>CompanyAddr6</DataField>
-        </Field>
-        <Field Name="CompanyAddr7">
-          <DataField>CompanyAddr7</DataField>
-        </Field>
-        <Field Name="CompanyAddr8">
-          <DataField>CompanyAddr8</DataField>
-        </Field>
-        <Field Name="BuyFrmVendNo_PurchHeader">
-          <DataField>BuyFrmVendNo_PurchHeader</DataField>
-        </Field>
-        <Field Name="BuyFromAddr1">
-          <DataField>BuyFromAddr1</DataField>
-        </Field>
-        <Field Name="BuyFromAddr2">
-          <DataField>BuyFromAddr2</DataField>
-        </Field>
-        <Field Name="BuyFromAddr3">
-          <DataField>BuyFromAddr3</DataField>
-        </Field>
-        <Field Name="BuyFromAddr4">
-          <DataField>BuyFromAddr4</DataField>
-        </Field>
-        <Field Name="BuyFromAddr5">
-          <DataField>BuyFromAddr5</DataField>
-        </Field>
-        <Field Name="BuyFromAddr6">
-          <DataField>BuyFromAddr6</DataField>
-        </Field>
-        <Field Name="BuyFromAddr7">
-          <DataField>BuyFromAddr7</DataField>
-        </Field>
-        <Field Name="BuyFromAddr8">
-          <DataField>BuyFromAddr8</DataField>
-        </Field>
-        <Field Name="PricesInclVAT_PurchHeader">
-          <DataField>PricesInclVAT_PurchHeader</DataField>
-        </Field>
-        <Field Name="OutputNo">
-          <DataField>OutputNo</DataField>
-        </Field>
-        <Field Name="VATBaseDisc_PurchHeader">
-          <DataField>VATBaseDisc_PurchHeader</DataField>
-        </Field>
-        <Field Name="VATBaseDisc_PurchHeaderFormat">
-          <DataField>VATBaseDisc_PurchHeaderFormat</DataField>
-        </Field>
-        <Field Name="PricesInclVATtxt">
-          <DataField>PricesInclVATtxt</DataField>
-        </Field>
-        <Field Name="PaymentTermsDesc">
-          <DataField>PaymentTermsDesc</DataField>
-        </Field>
-        <Field Name="ShipmentMethodDesc">
-          <DataField>ShipmentMethodDesc</DataField>
-        </Field>
-        <Field Name="PrepmtPaymentTermsDesc">
-          <DataField>PrepmtPaymentTermsDesc</DataField>
-        </Field>
-        <Field Name="ShowInternalInfo">
-          <DataField>ShowInternalInfo</DataField>
-        </Field>
-        <Field Name="TotalText">
-          <DataField>TotalText</DataField>
-        </Field>
-        <Field Name="DimText">
-          <DataField>DimText</DataField>
-        </Field>
-        <Field Name="CompanyInfoPhoneNoCaption">
-          <DataField>CompanyInfoPhoneNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoVATRegNoCaption">
-          <DataField>CompanyInfoVATRegNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoGiroNoCaption">
-          <DataField>CompanyInfoGiroNoCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankNameCaption">
-          <DataField>CompanyInfoBankNameCaption</DataField>
-        </Field>
-        <Field Name="CompanyInfoBankAccNoCaption">
-          <DataField>CompanyInfoBankAccNoCaption</DataField>
-        </Field>
-        <Field Name="OrderNoCaption">
-          <DataField>OrderNoCaption</DataField>
-        </Field>
-        <Field Name="PageCaption">
-          <DataField>PageCaption</DataField>
-        </Field>
-        <Field Name="DocumentDateCaption">
-          <DataField>DocumentDateCaption</DataField>
-        </Field>
-        <Field Name="BuyFrmVendNo_PurchHeaderCaption">
-          <DataField>BuyFrmVendNo_PurchHeaderCaption</DataField>
-        </Field>
-        <Field Name="PricesInclVAT_PurchHeaderCaption">
-          <DataField>PricesInclVAT_PurchHeaderCaption</DataField>
-        </Field>
-        <Field Name="HdrDimCaption">
-          <DataField>HdrDimCaption</DataField>
-        </Field>
-        <Field Name="LineAmt_PurchLine">
-          <DataField>LineAmt_PurchLine</DataField>
-        </Field>
-        <Field Name="LineAmt_PurchLineFormat">
-          <DataField>LineAmt_PurchLineFormat</DataField>
-        </Field>
-        <Field Name="LineNo_PurchLine">
-          <DataField>LineNo_PurchLine</DataField>
-        </Field>
-        <Field Name="AllowInvDisctxt">
-          <DataField>AllowInvDisctxt</DataField>
-        </Field>
-        <Field Name="Type_PurchLine">
-          <DataField>Type_PurchLine</DataField>
-        </Field>
-        <Field Name="No_PurchLine">
-          <DataField>No_PurchLine</DataField>
-        </Field>
-        <Field Name="Desc_PurchLine">
-          <DataField>Desc_PurchLine</DataField>
-        </Field>
-        <Field Name="Qty_PurchLine">
-          <DataField>Qty_PurchLine</DataField>
-        </Field>
-        <Field Name="Qty_PurchLineFormat">
-          <DataField>Qty_PurchLineFormat</DataField>
-        </Field>
-        <Field Name="UOM_PurchLine">
-          <DataField>UOM_PurchLine</DataField>
-        </Field>
-        <Field Name="DirUnitCost_PurchLine">
-          <DataField>DirUnitCost_PurchLine</DataField>
-        </Field>
-        <Field Name="DirUnitCost_PurchLineFormat">
-          <DataField>DirUnitCost_PurchLineFormat</DataField>
-        </Field>
-        <Field Name="LineDisc_PurchLine">
-          <DataField>LineDisc_PurchLine</DataField>
-        </Field>
-        <Field Name="LineDisc_PurchLineFormat">
-          <DataField>LineDisc_PurchLineFormat</DataField>
-        </Field>
-        <Field Name="LineAmt2_PurchLine">
-          <DataField>LineAmt2_PurchLine</DataField>
-        </Field>
-        <Field Name="LineAmt2_PurchLineFormat">
-          <DataField>LineAmt2_PurchLineFormat</DataField>
-        </Field>
-        <Field Name="AllowInvDisc_PurchLine">
-          <DataField>AllowInvDisc_PurchLine</DataField>
-        </Field>
-        <Field Name="HomePage">
-          <DataField>HomePage</DataField>
-        </Field>
-        <Field Name="EMail">
-          <DataField>EMail</DataField>
-        </Field>
-        <Field Name="VATIdentifier_PurchLine">
-          <DataField>VATIdentifier_PurchLine</DataField>
-        </Field>
-        <Field Name="InvDiscAmt_PurchLine">
-          <DataField>InvDiscAmt_PurchLine</DataField>
-        </Field>
-        <Field Name="InvDiscAmt_PurchLineFormat">
-          <DataField>InvDiscAmt_PurchLineFormat</DataField>
-        </Field>
-        <Field Name="TotalInclVAT">
-          <DataField>TotalInclVAT</DataField>
-        </Field>
-        <Field Name="TotalInclVATFormat">
-          <DataField>TotalInclVATFormat</DataField>
-        </Field>
-        <Field Name="TotalInclVATText">
-          <DataField>TotalInclVATText</DataField>
-        </Field>
-        <Field Name="VATAmountText">
-          <DataField>VATAmountText</DataField>
-        </Field>
-        <Field Name="VATAmount">
-          <DataField>VATAmount</DataField>
-        </Field>
-        <Field Name="VATAmountFormat">
-          <DataField>VATAmountFormat</DataField>
-        </Field>
-        <Field Name="TotalExclVATText">
-          <DataField>TotalExclVATText</DataField>
-        </Field>
-        <Field Name="VATDiscountAmount">
-          <DataField>VATDiscountAmount</DataField>
-        </Field>
-        <Field Name="VATDiscountAmountFormat">
-          <DataField>VATDiscountAmountFormat</DataField>
-        </Field>
-        <Field Name="VATBaseAmount">
-          <DataField>VATBaseAmount</DataField>
-        </Field>
-        <Field Name="VATBaseAmountFormat">
-          <DataField>VATBaseAmountFormat</DataField>
-        </Field>
-        <Field Name="TotalAmountInclVAT">
-          <DataField>TotalAmountInclVAT</DataField>
-        </Field>
-        <Field Name="TotalAmountInclVATFormat">
-          <DataField>TotalAmountInclVATFormat</DataField>
-        </Field>
-        <Field Name="TotalSubTotal">
-          <DataField>TotalSubTotal</DataField>
-        </Field>
-        <Field Name="TotalSubTotalFormat">
-          <DataField>TotalSubTotalFormat</DataField>
-        </Field>
-        <Field Name="TotalInvoiceDiscountAmount">
-          <DataField>TotalInvoiceDiscountAmount</DataField>
-        </Field>
-        <Field Name="TotalInvoiceDiscountAmountFormat">
-          <DataField>TotalInvoiceDiscountAmountFormat</DataField>
-        </Field>
-        <Field Name="TotalAmount">
-          <DataField>TotalAmount</DataField>
-        </Field>
-        <Field Name="TotalAmountFormat">
-          <DataField>TotalAmountFormat</DataField>
-        </Field>
-        <Field Name="DirectUniCostCaption">
-          <DataField>DirectUniCostCaption</DataField>
-        </Field>
-        <Field Name="PurchLineLineDiscCaption">
-          <DataField>PurchLineLineDiscCaption</DataField>
-        </Field>
-        <Field Name="VATDiscountAmountCaption">
-          <DataField>VATDiscountAmountCaption</DataField>
-        </Field>
-        <Field Name="No_PurchLineCaption">
-          <DataField>No_PurchLineCaption</DataField>
-        </Field>
-        <Field Name="Desc_PurchLineCaption">
-          <DataField>Desc_PurchLineCaption</DataField>
-        </Field>
-        <Field Name="Qty_PurchLineCaption">
-          <DataField>Qty_PurchLineCaption</DataField>
-        </Field>
-        <Field Name="UOM_PurchLineCaption">
-          <DataField>UOM_PurchLineCaption</DataField>
-        </Field>
-        <Field Name="VATIdentifier_PurchLineCaption">
-          <DataField>VATIdentifier_PurchLineCaption</DataField>
-        </Field>
-        <Field Name="LineDimCaption">
-          <DataField>LineDimCaption</DataField>
-        </Field>
-        <Field Name="VATAmtLineVATBase">
-          <DataField>VATAmtLineVATBase</DataField>
-        </Field>
-        <Field Name="VATAmtLineVATBaseFormat">
-          <DataField>VATAmtLineVATBaseFormat</DataField>
-        </Field>
-        <Field Name="VATAmtLineVATAmt">
-          <DataField>VATAmtLineVATAmt</DataField>
-        </Field>
-        <Field Name="VATAmtLineVATAmtFormat">
-          <DataField>VATAmtLineVATAmtFormat</DataField>
-        </Field>
-        <Field Name="VATAmtLineLineAmt">
-          <DataField>VATAmtLineLineAmt</DataField>
-        </Field>
-        <Field Name="VATAmtLineLineAmtFormat">
-          <DataField>VATAmtLineLineAmtFormat</DataField>
-        </Field>
-        <Field Name="VATAmtLineInvDiscBaseAmt">
-          <DataField>VATAmtLineInvDiscBaseAmt</DataField>
-        </Field>
-        <Field Name="VATAmtLineInvDiscBaseAmtFormat">
-          <DataField>VATAmtLineInvDiscBaseAmtFormat</DataField>
-        </Field>
-        <Field Name="VATAmtLineInvDiscAmt">
-          <DataField>VATAmtLineInvDiscAmt</DataField>
-        </Field>
-        <Field Name="VATAmtLineInvDiscAmtFormat">
-          <DataField>VATAmtLineInvDiscAmtFormat</DataField>
-        </Field>
-        <Field Name="VATAmtLineVAT">
-          <DataField>VATAmtLineVAT</DataField>
-        </Field>
-        <Field Name="VATAmtLineVATFormat">
-          <DataField>VATAmtLineVATFormat</DataField>
-        </Field>
-        <Field Name="VATAmtLineVATIdentifier">
-          <DataField>VATAmtLineVATIdentifier</DataField>
-        </Field>
-        <Field Name="VALExchRate">
-          <DataField>VALExchRate</DataField>
-        </Field>
-        <Field Name="VALSpecLCYHeader">
-          <DataField>VALSpecLCYHeader</DataField>
-        </Field>
-        <Field Name="VALVATAmountLCY">
-          <DataField>VALVATAmountLCY</DataField>
-        </Field>
-        <Field Name="VALVATAmountLCYFormat">
-          <DataField>VALVATAmountLCYFormat</DataField>
-        </Field>
-        <Field Name="VALVATBaseLCY">
-          <DataField>VALVATBaseLCY</DataField>
-        </Field>
-        <Field Name="VALVATBaseLCYFormat">
-          <DataField>VALVATBaseLCYFormat</DataField>
-        </Field>
-        <Field Name="PayToVendNo_PurchHeader">
-          <DataField>PayToVendNo_PurchHeader</DataField>
-        </Field>
-        <Field Name="VendAddr8">
-          <DataField>VendAddr8</DataField>
-        </Field>
-        <Field Name="VendAddr7">
-          <DataField>VendAddr7</DataField>
-        </Field>
-        <Field Name="VendAddr6">
-          <DataField>VendAddr6</DataField>
-        </Field>
-        <Field Name="VendAddr5">
-          <DataField>VendAddr5</DataField>
-        </Field>
-        <Field Name="VendAddr4">
-          <DataField>VendAddr4</DataField>
-        </Field>
-        <Field Name="VendAddr3">
-          <DataField>VendAddr3</DataField>
-        </Field>
-        <Field Name="VendAddr2">
-          <DataField>VendAddr2</DataField>
-        </Field>
-        <Field Name="VendAddr1">
-          <DataField>VendAddr1</DataField>
-        </Field>
-        <Field Name="PaymentDetailsCaption">
-          <DataField>PaymentDetailsCaption</DataField>
-        </Field>
-        <Field Name="VendNoCaption">
-          <DataField>VendNoCaption</DataField>
-        </Field>
-        <Field Name="SellToCustNo_PurchHeader">
-          <DataField>SellToCustNo_PurchHeader</DataField>
-        </Field>
-        <Field Name="ShipToAddr1">
-          <DataField>ShipToAddr1</DataField>
-        </Field>
-        <Field Name="ShipToAddr2">
-          <DataField>ShipToAddr2</DataField>
-        </Field>
-        <Field Name="ShipToAddr3">
-          <DataField>ShipToAddr3</DataField>
-        </Field>
-        <Field Name="ShipToAddr4">
-          <DataField>ShipToAddr4</DataField>
-        </Field>
-        <Field Name="ShipToAddr5">
-          <DataField>ShipToAddr5</DataField>
-        </Field>
-        <Field Name="ShipToAddr6">
-          <DataField>ShipToAddr6</DataField>
-        </Field>
-        <Field Name="ShipToAddr7">
-          <DataField>ShipToAddr7</DataField>
-        </Field>
-        <Field Name="ShipToAddr8">
-          <DataField>ShipToAddr8</DataField>
-        </Field>
-        <Field Name="ShiptoAddressCaption">
-          <DataField>ShiptoAddressCaption</DataField>
-        </Field>
-        <Field Name="ShipToPhoneNo">
-          <DataField>ShipToPhoneNo</DataField>
-        </Field>
-        <Field Name="SellToCustNo_PurchHeaderCaption">
-          <DataField>SellToCustNo_PurchHeaderCaption</DataField>
-        </Field>
-        <Field Name="PrepmtLineAmount">
-          <DataField>PrepmtLineAmount</DataField>
-        </Field>
-        <Field Name="PrepmtLineAmountFormat">
-          <DataField>PrepmtLineAmountFormat</DataField>
-        </Field>
-        <Field Name="TotalPrepmtLineAmount">
-          <DataField>TotalPrepmtLineAmount</DataField>
-        </Field>
-        <Field Name="TotalPrepmtLineAmountFormat">
-          <DataField>TotalPrepmtLineAmountFormat</DataField>
-        </Field>
-        <Field Name="PrepmtInvBufGLAccNo">
-          <DataField>PrepmtInvBufGLAccNo</DataField>
-        </Field>
-        <Field Name="PrepmtInvBufDesc">
-          <DataField>PrepmtInvBufDesc</DataField>
-        </Field>
-        <Field Name="TotalInclVATText2">
-          <DataField>TotalInclVATText2</DataField>
-        </Field>
-        <Field Name="TotalExclVATText2">
-          <DataField>TotalExclVATText2</DataField>
-        </Field>
-        <Field Name="PrepmtInvBufAmt">
-          <DataField>PrepmtInvBufAmt</DataField>
-        </Field>
-        <Field Name="PrepmtInvBufAmtFormat">
-          <DataField>PrepmtInvBufAmtFormat</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmountText">
-          <DataField>PrepmtVATAmountText</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmount">
-          <DataField>PrepmtVATAmount</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmountFormat">
-          <DataField>PrepmtVATAmountFormat</DataField>
-        </Field>
-        <Field Name="PrepmtTotalAmountInclVAT">
-          <DataField>PrepmtTotalAmountInclVAT</DataField>
-        </Field>
-        <Field Name="PrepmtTotalAmountInclVATFormat">
-          <DataField>PrepmtTotalAmountInclVATFormat</DataField>
-        </Field>
-        <Field Name="PrepmtVATBaseAmount">
-          <DataField>PrepmtVATBaseAmount</DataField>
-        </Field>
-        <Field Name="PrepmtVATBaseAmountFormat">
-          <DataField>PrepmtVATBaseAmountFormat</DataField>
-        </Field>
-        <Field Name="PrepmtInvBuDescCaption">
-          <DataField>PrepmtInvBuDescCaption</DataField>
-        </Field>
-        <Field Name="PrepmtInvBufGLAccNoCaption">
-          <DataField>PrepmtInvBufGLAccNoCaption</DataField>
-        </Field>
-        <Field Name="PrepaymentSpecCaption">
-          <DataField>PrepaymentSpecCaption</DataField>
-        </Field>
-        <Field Name="PrepmtLoopLineNo">
-          <DataField>PrepmtLoopLineNo</DataField>
-        </Field>
-        <Field Name="DummyColumn">
-          <DataField>DummyColumn</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineVATAmt">
-          <DataField>PrepmtVATAmtLineVATAmt</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineVATAmtFormat">
-          <DataField>PrepmtVATAmtLineVATAmtFormat</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineVATBase">
-          <DataField>PrepmtVATAmtLineVATBase</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineVATBaseFormat">
-          <DataField>PrepmtVATAmtLineVATBaseFormat</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineLineAmt">
-          <DataField>PrepmtVATAmtLineLineAmt</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineLineAmtFormat">
-          <DataField>PrepmtVATAmtLineLineAmtFormat</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineVAT">
-          <DataField>PrepmtVATAmtLineVAT</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineVATFormat">
-          <DataField>PrepmtVATAmtLineVATFormat</DataField>
-        </Field>
-        <Field Name="PrepmtVATAmtLineVATId">
-          <DataField>PrepmtVATAmtLineVATId</DataField>
-        </Field>
-        <Field Name="PrepymtVATAmtSpecCaption">
-          <DataField>PrepymtVATAmtSpecCaption</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -653,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>19.06309cm</Width>
+                  <Width>18.05737cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -747,9 +113,13 @@ Cstr(Fields!PaymentTermsDescCaption.Value) + Chr(177) +
 Cstr(Fields!ShipmentMethodDescCaption.Value) + Chr(177) + 
 Cstr(Fields!DocumentDateCaption.Value) + Chr(177) + 
 Cstr(Fields!DocDate_PurchHeader.Value)
-, 1)</Hidden>
++ Chr(177) + 
+Cstr(Fields!EncodedNo.Value), 1)</Hidden>
                                             </Visibility>
                                             <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -828,31 +198,28 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>0.88484in</Width>
+                                    <Width>0.96806in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>1.49253in</Width>
+                                    <Width>2.31293in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.63316in</Width>
+                                    <Width>0.38316in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.64993in</Width>
+                                    <Width>0.76168in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.91672in</Width>
+                                    <Width>0.61464in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.75859in</Width>
+                                    <Width>0.52433in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.7415in</Width>
+                                    <Width>0.66858in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.64048in</Width>
-                                  </TablixColumn>
-                                  <TablixColumn>
-                                    <Width>0.7874in</Width>
+                                    <Width>0.8499in</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -991,7 +358,7 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value EvaluationMode="Constant">Prix d'achat</Value>
+                                                    <Value EvaluationMode="Constant">Prix</Value>
                                                     <Style>
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>8pt</FontSize>
@@ -1038,36 +405,6 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                             </Paragraphs>
                                             <rd:DefaultName>textbox31</rd:DefaultName>
                                             <ZIndex>139</ZIndex>
-                                            <Style>
-                                              <VerticalAlign>Bottom</VerticalAlign>
-                                              <PaddingLeft>5pt</PaddingLeft>
-                                              <PaddingRight>5pt</PaddingRight>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixCell>
-                                      <TablixCell>
-                                        <CellContents>
-                                          <Textbox Name="textbox37">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>=Fields!VATIdentifier_PurchLineCaption.Value</Value>
-                                                    <Style>
-                                                      <FontFamily>Segoe UI</FontFamily>
-                                                      <FontSize>8pt</FontSize>
-                                                      <FontWeight>Bold</FontWeight>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style />
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>textbox37</rd:DefaultName>
-                                            <ZIndex>137</ZIndex>
                                             <Style>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingLeft>5pt</PaddingLeft>
@@ -1138,10 +475,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>9</ColSpan>
+                                          <ColSpan>8</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -1179,7 +515,7 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>9</ColSpan>
+                                          <ColSpan>8</ColSpan>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell />
@@ -1189,7 +525,220 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.65292cm</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox171">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!EncodedLineNo.Value</Value>
+                                                    <Style>
+                                                      <FontFamily>IDAutomationC128M</FontFamily>
+                                                      <FontSize>14pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <NumeralVariant>2</NumeralVariant>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox171</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                          <ColSpan>2</ColSpan>
+                                        </CellContents>
+                                      </TablixCell>
                                       <TablixCell />
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox173">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                      <NumeralVariant>2</NumeralVariant>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox173</rd:DefaultName>
+                                            <Style>
+                                              <Border />
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox174">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                      <NumeralVariant>2</NumeralVariant>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox174</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox176">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                      <NumeralVariant>2</NumeralVariant>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox176</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox177">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                      <NumeralVariant>2</NumeralVariant>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox177</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox178">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                      <NumeralVariant>2</NumeralVariant>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Right</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox178</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox180">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                      <NumeralVariant>2</NumeralVariant>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox180</rd:DefaultName>
+                                            <Style>
+                                              <VerticalAlign>Top</VerticalAlign>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
@@ -1387,35 +936,6 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="textbox59">
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>=UCase(Fields!VATIdentifier_PurchLine.Value)</Value>
-                                                    <Style>
-                                                      <FontFamily>Segoe UI</FontFamily>
-                                                      <FontSize>8pt</FontSize>
-                                                      <NumeralVariant>2</NumeralVariant>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style />
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>textbox38</rd:DefaultName>
-                                            <ZIndex>108</ZIndex>
-                                            <Style>
-                                              <VerticalAlign>Top</VerticalAlign>
-                                              <PaddingLeft>5pt</PaddingLeft>
-                                              <PaddingRight>5pt</PaddingRight>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixCell>
-                                      <TablixCell>
-                                        <CellContents>
                                           <Textbox Name="textbox67">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
@@ -1537,10 +1057,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>6</ColSpan>
+                                          <ColSpan>5</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -1605,10 +1124,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>7</ColSpan>
+                                          <ColSpan>6</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -1645,10 +1163,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -1759,10 +1276,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox207">
@@ -1858,10 +1373,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox94">
@@ -1920,10 +1433,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -1990,10 +1502,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -2105,10 +1616,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox32">
@@ -2168,10 +1677,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -2238,10 +1746,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -2356,10 +1863,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox116">
@@ -2454,10 +1959,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox256">
@@ -2518,10 +2021,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -2588,10 +2090,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -2706,10 +2207,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox162">
@@ -2811,10 +2310,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox277">
@@ -2875,10 +2372,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -2945,10 +2441,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingBottom>2pt</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>8</ColSpan>
+                                          <ColSpan>7</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
                                       <TablixCell />
@@ -3062,10 +2557,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox438">
@@ -3165,10 +2658,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox303">
@@ -3262,10 +2753,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                               <PaddingRight>5pt</PaddingRight>
                                             </Style>
                                           </Textbox>
-                                          <ColSpan>2</ColSpan>
                                         </CellContents>
                                       </TablixCell>
-                                      <TablixCell />
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="textbox358">
@@ -3309,7 +2798,6 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                   <TablixMember />
                                   <TablixMember />
                                   <TablixMember />
-                                  <TablixMember />
                                 </TablixMembers>
                               </TablixColumnHierarchy>
                               <TablixRowHierarchy>
@@ -3344,6 +2832,9 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                       </SortExpression>
                                     </SortExpressions>
                                     <TablixMembers>
+                                      <TablixMember>
+                                        <KeepWithGroup>After</KeepWithGroup>
+                                      </TablixMember>
                                       <TablixMember>
                                         <Visibility>
                                           <Hidden>=Iif(Fields!Type_PurchLine.Value="0",TRUE,FALSE)</Hidden>
@@ -3497,9 +2988,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                                   <Value>=Fields!DocType_PurchHeader.Value</Value>
                                 </SortExpression>
                               </SortExpressions>
-                              <Top>0.03167cm</Top>
-                              <Height>6.84384cm</Height>
-                              <Width>7.50515in</Width>
+                              <Height>7.49676cm</Height>
+                              <Width>7.08328in</Width>
                               <ZIndex>1</ZIndex>
                               <Style />
                             </Tablix>
@@ -10157,14 +9647,14 @@ Cstr(Fields!DocDate_PurchHeader.Value)
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Height>31.3cm</Height>
-            <Width>19.06309cm</Width>
+            <Width>18.05737cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
         <Height>31.3cm</Height>
         <Style />
       </Body>
-      <Width>19.06309cm</Width>
+      <Width>18.08194cm</Width>
       <Page>
         <PageHeader>
           <Height>7.4cm</Height>
@@ -10187,7 +9677,7 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>3.8505cm</Top>
+              <Top>4.58075cm</Top>
               <Height>11pt</Height>
               <Width>3.99999cm</Width>
               <Style>
@@ -10212,112 +9702,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.8505cm</Top>
+              <Top>4.58075cm</Top>
               <Left>4.0226cm</Left>
               <Height>11pt</Height>
               <Width>8.72211cm</Width>
               <ZIndex>1</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="PurchHdrYourRefer1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(12,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>4.61602cm</Top>
-              <Left>4.0226cm</Left>
-              <Height>11pt</Height>
-              <Width>8.72211cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="ReferenceText1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(20,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>4.63366cm</Top>
-              <Height>11pt</Height>
-              <Width>3.99999cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="SalesPurchPersonName1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(11,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>6.12767cm</Top>
-              <Left>16.34734cm</Left>
-              <Height>11pt</Height>
-              <Width>2.60388cm</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="PurchaserText1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(21,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>6.11273cm</Top>
-              <Left>13.73249cm</Left>
-              <Height>11pt</Height>
-              <Width>2.58697cm</Width>
-              <ZIndex>5</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10338,11 +9727,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>4.2027cm</Top>
+              <Top>4.93295cm</Top>
               <Left>4.0226cm</Left>
               <Height>11pt</Height>
               <Width>8.72211cm</Width>
-              <ZIndex>6</ZIndex>
+              <ZIndex>2</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10363,34 +9752,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>4.2456cm</Top>
+              <Top>4.97585cm</Top>
+              <Left>0.02261cm</Left>
               <Height>11pt</Height>
               <Width>3.99999cm</Width>
-              <ZIndex>7</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="SalesHdrNoCaption">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(23,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>2.57187in</Top>
-              <Height>11pt</Height>
-              <Width>3.99999cm</Width>
-              <ZIndex>8</ZIndex>
+              <ZIndex>3</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10411,86 +9777,17 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>5.03676cm</Top>
+              <Top>5.44951cm</Top>
               <Height>11pt</Height>
               <Width>3.99999cm</Width>
-              <ZIndex>9</ZIndex>
+              <ZIndex>4</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CmpnyBankAccCaption">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(25,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>5.75995cm</Top>
-              <Left>13.71292cm</Left>
-              <Height>11pt</Height>
-              <Width>2.63089cm</Width>
-              <ZIndex>10</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CmpnyBankNameCaption">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(26,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>5.40718cm</Top>
-              <Left>13.71292cm</Left>
-              <Height>11pt</Height>
-              <Width>2.64534cm</Width>
-              <ZIndex>11</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CmpnyGirNoCaption">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(27,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>5.00584cm</Top>
-              <Left>13.71292cm</Left>
-              <Height>11pt</Height>
-              <Width>2.64181cm</Width>
-              <ZIndex>12</ZIndex>
-              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
@@ -10510,36 +9807,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>4.65306cm</Top>
-              <Left>13.71292cm</Left>
+              <Top>6.33581cm</Top>
+              <Left>12.85054cm</Left>
               <Height>11pt</Height>
               <Width>2.64534cm</Width>
-              <ZIndex>13</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CmpnyEmailCaption">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(29,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>4.265cm</Top>
-              <Left>13.71292cm</Left>
-              <Height>11pt</Height>
-              <Width>2.64534cm</Width>
-              <ZIndex>14</ZIndex>
+              <ZIndex>5</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10560,11 +9832,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>3.52417cm</Top>
-              <Left>13.71292cm</Left>
+              <Top>5.84192cm</Top>
+              <Left>12.76042cm</Left>
               <Height>11pt</Height>
               <Width>2.64534cm</Width>
-              <ZIndex>15</ZIndex>
+              <ZIndex>6</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10587,11 +9859,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.69674cm</Top>
-              <Left>13.71453cm</Left>
+              <Top>2.09374cm</Top>
+              <Left>12.76203cm</Left>
               <Height>11pt</Height>
               <Width>5.2399cm</Width>
-              <ZIndex>16</ZIndex>
+              <ZIndex>7</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10614,11 +9886,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.17139cm</Top>
-              <Left>13.71292cm</Left>
+              <Top>4.85414cm</Top>
+              <Left>12.76042cm</Left>
               <Height>11pt</Height>
               <Width>5.24148cm</Width>
-              <ZIndex>17</ZIndex>
+              <ZIndex>8</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10641,38 +9913,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.81861cm</Top>
-              <Left>13.71292cm</Left>
+              <Top>4.50136cm</Top>
+              <Left>12.76042cm</Left>
               <Height>11pt</Height>
               <Width>5.24148cm</Width>
-              <ZIndex>18</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="SalesHdrNo">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(17,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>2.57187in</Top>
-              <Left>4.05788cm</Left>
-              <Height>11pt</Height>
-              <Width>13.94084cm</Width>
-              <ZIndex>19</ZIndex>
+              <ZIndex>9</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10695,94 +9940,18 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>5.03676cm</Top>
+              <Top>5.44951cm</Top>
               <Left>4.0226cm</Left>
               <Height>11pt</Height>
               <Width>8.72211cm</Width>
-              <ZIndex>20</ZIndex>
+              <ZIndex>10</ZIndex>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
               <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CmpnyBankAcc">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(34,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>5.71139cm</Top>
-              <Left>16.34381cm</Left>
-              <Height>11pt</Height>
-              <Width>2.6106cm</Width>
-              <ZIndex>21</ZIndex>
-              <Style>
-                <Border />
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CmpnyBankName">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(35,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>5.35861cm</Top>
-              <Left>16.34734cm</Left>
-              <Height>11pt</Height>
-              <Width>2.60707cm</Width>
-              <ZIndex>22</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CmpnyGirNo">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(36,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>5.00584cm</Top>
-              <Left>16.34381cm</Left>
-              <Height>11pt</Height>
-              <Width>2.6106cm</Width>
-              <ZIndex>23</ZIndex>
-              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
@@ -10804,38 +9973,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>4.65306cm</Top>
-              <Left>16.34734cm</Left>
+              <Top>6.33581cm</Top>
+              <Left>15.39484cm</Left>
               <Height>11pt</Height>
               <Width>2.60707cm</Width>
-              <ZIndex>24</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CmpnyEmail">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(38,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>4.265cm</Top>
-              <Left>16.34734cm</Left>
-              <Height>11pt</Height>
-              <Width>2.60707cm</Width>
-              <ZIndex>25</ZIndex>
+              <ZIndex>11</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10858,11 +10000,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.52417cm</Top>
-              <Left>16.34734cm</Left>
+              <Top>5.84192cm</Top>
+              <Left>15.39484cm</Left>
               <Height>11pt</Height>
               <Width>2.60707cm</Width>
-              <ZIndex>26</ZIndex>
+              <ZIndex>12</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10885,11 +10027,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.46584cm</Top>
-              <Left>13.71292cm</Left>
+              <Top>4.14859cm</Top>
+              <Left>12.76042cm</Left>
               <Height>11pt</Height>
               <Width>5.24148cm</Width>
-              <ZIndex>27</ZIndex>
+              <ZIndex>13</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10912,11 +10054,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.11306cm</Top>
-              <Left>13.71292cm</Left>
+              <Top>3.79581cm</Top>
+              <Left>12.76042cm</Left>
               <Height>11pt</Height>
               <Width>5.24148cm</Width>
-              <ZIndex>28</ZIndex>
+              <ZIndex>14</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10939,11 +10081,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.76028cm</Top>
-              <Left>13.71292cm</Left>
+              <Top>3.44303cm</Top>
+              <Left>12.76042cm</Left>
               <Height>11pt</Height>
               <Width>5.24148cm</Width>
-              <ZIndex>29</ZIndex>
+              <ZIndex>15</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10966,11 +10108,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.4075cm</Top>
-              <Left>13.71292cm</Left>
+              <Top>3.09025cm</Top>
+              <Left>12.77999cm</Left>
               <Height>11pt</Height>
               <Width>5.24148cm</Width>
-              <ZIndex>30</ZIndex>
+              <ZIndex>16</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -10981,23 +10123,24 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(18,1)</Value>
+                      <Value>=Code.GetData(50,1)</Value>
                       <Style>
-                        <FontFamily>Segoe UI</FontFamily>
+                        <FontFamily>IDAutomationC128M</FontFamily>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Left>2.52532cm</Left>
-              <Height>20pt</Height>
-              <Width>16.4291cm</Width>
-              <ZIndex>31</ZIndex>
+              <Top>0.07056cm</Top>
+              <Left>0.74417cm</Left>
+              <Height>17.75011pt</Height>
+              <Width>12.5902cm</Width>
+              <ZIndex>17</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11018,10 +10161,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>3.20138cm</Top>
+              <Top>3.61413cm</Top>
               <Height>11pt</Height>
               <Width>12.72515cm</Width>
-              <ZIndex>32</ZIndex>
+              <ZIndex>18</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11042,10 +10185,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>2.8486cm</Top>
+              <Top>3.26135cm</Top>
               <Height>11pt</Height>
               <Width>12.72515cm</Width>
-              <ZIndex>33</ZIndex>
+              <ZIndex>19</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11066,10 +10209,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>2.49582cm</Top>
+              <Top>2.90857cm</Top>
               <Height>11pt</Height>
               <Width>12.72515cm</Width>
-              <ZIndex>34</ZIndex>
+              <ZIndex>20</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11090,10 +10233,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>2.14665cm</Top>
+              <Top>2.5594cm</Top>
               <Height>11pt</Height>
               <Width>12.72515cm</Width>
-              <ZIndex>35</ZIndex>
+              <ZIndex>21</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11114,10 +10257,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>1.79387cm</Top>
+              <Top>2.20662cm</Top>
               <Height>11pt</Height>
               <Width>12.72515cm</Width>
-              <ZIndex>36</ZIndex>
+              <ZIndex>22</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11138,10 +10281,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>1.40583cm</Top>
+              <Top>1.81858cm</Top>
               <Height>11pt</Height>
               <Width>12.72515cm</Width>
-              <ZIndex>37</ZIndex>
+              <ZIndex>23</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11162,10 +10305,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>1.05305cm</Top>
+              <Top>1.4658cm</Top>
               <Height>11pt</Height>
               <Width>12.72515cm</Width>
-              <ZIndex>38</ZIndex>
+              <ZIndex>24</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11186,71 +10329,13 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>0.27431in</Top>
+              <Top>0.43681in</Top>
               <Height>11pt</Height>
               <Width>12.72515cm</Width>
-              <ZIndex>39</ZIndex>
+              <ZIndex>25</ZIndex>
               <Style>
                 <Border />
                 <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="HomePageCaption">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(44,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>3.91223cm</Top>
-              <Left>13.71292cm</Left>
-              <Height>11pt</Height>
-              <Width>2.64534cm</Width>
-              <ZIndex>40</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Textbox>
-            <Textbox Name="HomePage">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Code.GetData(45,1)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>3.91223cm</Top>
-              <Left>16.34734cm</Left>
-              <Height>11pt</Height>
-              <Width>2.60707cm</Width>
-              <ZIndex>41</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
               </Style>
             </Textbox>
             <Textbox Name="pymtTermsCaption">
@@ -11269,10 +10354,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>5.82365cm</Top>
+              <Top>6.2364cm</Top>
               <Height>11pt</Height>
               <Width>3.99999cm</Width>
-              <ZIndex>42</ZIndex>
+              <ZIndex>26</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11293,11 +10378,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>5.82365cm</Top>
+              <Top>6.2364cm</Top>
               <Left>4.0226cm</Left>
               <Height>11pt</Height>
               <Width>8.72211cm</Width>
-              <ZIndex>43</ZIndex>
+              <ZIndex>27</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11318,10 +10403,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.17642cm</Top>
+              <Top>6.58917cm</Top>
               <Height>11pt</Height>
               <Width>3.99999cm</Width>
-              <ZIndex>44</ZIndex>
+              <ZIndex>28</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11342,11 +10427,11 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.17642cm</Top>
+              <Top>6.58917cm</Top>
               <Left>4.0226cm</Left>
               <Height>11pt</Height>
               <Width>8.72211cm</Width>
-              <ZIndex>45</ZIndex>
+              <ZIndex>29</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11367,10 +10452,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>5.41514cm</Top>
+              <Top>5.82789cm</Top>
               <Height>11pt</Height>
               <Width>3.99999cm</Width>
-              <ZIndex>46</ZIndex>
+              <ZIndex>30</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -11394,13 +10479,61 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>5.42834cm</Top>
+              <Top>5.84109cm</Top>
               <Left>4.0226cm</Left>
               <Height>11pt</Height>
               <Width>8.72211cm</Width>
-              <ZIndex>47</ZIndex>
+              <ZIndex>31</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Image Name="Image2">
+              <Source>Database</Source>
+              <Value>=Fields!CompanyPicture.Value</Value>
+              <MIMEType>image/png</MIMEType>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.0046cm</Top>
+              <Left>13.47548cm</Left>
+              <Height>1.5cm</Height>
+              <Width>4.51603cm</Width>
+              <ZIndex>32</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+            <Textbox Name="Textbox37">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!No_PurchHeader.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox37</rd:DefaultName>
+              <Top>0.69675cm</Top>
+              <Left>0.74417cm</Left>
+              <Height>0.30692cm</Height>
+              <Width>12.55492cm</Width>
+              <ZIndex>33</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
           </ReportItems>
@@ -11418,31 +10551,10 @@ Cstr(Fields!DocDate_PurchHeader.Value)
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>NB:</Value>
+                      <Value />
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value> Merci de vérifier et valider ce bon de commande sous 72h, sans réponse, il sera automatiquement confirmé.</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>NB: </Value>
-                      <Style>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>Please reciew and approve this purchase order within 72h, if no reply, it will be automatically confirmed.</Value>
-                      <Style />
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -11476,7 +10588,8 @@ Cstr(Fields!DocDate_PurchHeader.Value)
         <PageWidth>21cm</PageWidth>
         <InteractiveHeight>11in</InteractiveHeight>
         <InteractiveWidth>8.5in</InteractiveWidth>
-        <LeftMargin>0.5cm</LeftMargin>
+        <LeftMargin>1.76388cm</LeftMargin>
+        <RightMargin>1.05834cm</RightMargin>
         <TopMargin>1.05834cm</TopMargin>
         <BottomMargin>1.48166cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
@@ -11484,12 +10597,6 @@ Cstr(Fields!DocDate_PurchHeader.Value)
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -11594,4 +10701,647 @@ End Function</Code>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>8ddb97f5-9975-4099-a7e3-746e9cb53ba2</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="DocType_PurchHeader">
+          <DataField>DocType_PurchHeader</DataField>
+        </Field>
+        <Field Name="No_PurchHeader">
+          <DataField>No_PurchHeader</DataField>
+        </Field>
+        <Field Name="AmountCaption">
+          <DataField>AmountCaption</DataField>
+        </Field>
+        <Field Name="PurchLineInvDiscAmtCaption">
+          <DataField>PurchLineInvDiscAmtCaption</DataField>
+        </Field>
+        <Field Name="SubtotalCaption">
+          <DataField>SubtotalCaption</DataField>
+        </Field>
+        <Field Name="VATAmtLineVATCaption">
+          <DataField>VATAmtLineVATCaption</DataField>
+        </Field>
+        <Field Name="VATAmtLineVATAmtCaption">
+          <DataField>VATAmtLineVATAmtCaption</DataField>
+        </Field>
+        <Field Name="VATAmtSpecCaption">
+          <DataField>VATAmtSpecCaption</DataField>
+        </Field>
+        <Field Name="VATIdentifierCaption">
+          <DataField>VATIdentifierCaption</DataField>
+        </Field>
+        <Field Name="VATAmtLineInvDiscBaseAmtCaption">
+          <DataField>VATAmtLineInvDiscBaseAmtCaption</DataField>
+        </Field>
+        <Field Name="VATAmtLineLineAmtCaption">
+          <DataField>VATAmtLineLineAmtCaption</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCYCaption">
+          <DataField>VALVATBaseLCYCaption</DataField>
+        </Field>
+        <Field Name="TotalCaption">
+          <DataField>TotalCaption</DataField>
+        </Field>
+        <Field Name="PaymentTermsDescCaption">
+          <DataField>PaymentTermsDescCaption</DataField>
+        </Field>
+        <Field Name="ShipmentMethodDescCaption">
+          <DataField>ShipmentMethodDescCaption</DataField>
+        </Field>
+        <Field Name="PrepymtTermsDescCaption">
+          <DataField>PrepymtTermsDescCaption</DataField>
+        </Field>
+        <Field Name="HomePageCaption">
+          <DataField>HomePageCaption</DataField>
+        </Field>
+        <Field Name="EmailIDCaption">
+          <DataField>EmailIDCaption</DataField>
+        </Field>
+        <Field Name="AllowInvoiceDiscCaption">
+          <DataField>AllowInvoiceDiscCaption</DataField>
+        </Field>
+        <Field Name="BuyFromContactPhoneNoLbl">
+          <DataField>BuyFromContactPhoneNoLbl</DataField>
+        </Field>
+        <Field Name="BuyFromContactMobilePhoneNoLbl">
+          <DataField>BuyFromContactMobilePhoneNoLbl</DataField>
+        </Field>
+        <Field Name="BuyFromContactEmailLbl">
+          <DataField>BuyFromContactEmailLbl</DataField>
+        </Field>
+        <Field Name="PayToContactPhoneNoLbl">
+          <DataField>PayToContactPhoneNoLbl</DataField>
+        </Field>
+        <Field Name="PayToContactMobilePhoneNoLbl">
+          <DataField>PayToContactMobilePhoneNoLbl</DataField>
+        </Field>
+        <Field Name="PayToContactEmailLbl">
+          <DataField>PayToContactEmailLbl</DataField>
+        </Field>
+        <Field Name="BuyFromContactPhoneNo">
+          <DataField>BuyFromContactPhoneNo</DataField>
+        </Field>
+        <Field Name="BuyFromContactMobilePhoneNo">
+          <DataField>BuyFromContactMobilePhoneNo</DataField>
+        </Field>
+        <Field Name="BuyFromContactEmail">
+          <DataField>BuyFromContactEmail</DataField>
+        </Field>
+        <Field Name="PayToContactPhoneNo">
+          <DataField>PayToContactPhoneNo</DataField>
+        </Field>
+        <Field Name="PayToContactMobilePhoneNo">
+          <DataField>PayToContactMobilePhoneNo</DataField>
+        </Field>
+        <Field Name="PayToContactEmail">
+          <DataField>PayToContactEmail</DataField>
+        </Field>
+        <Field Name="ReportTitleCopyText">
+          <DataField>ReportTitleCopyText</DataField>
+        </Field>
+        <Field Name="CompanyAddr1">
+          <DataField>CompanyAddr1</DataField>
+        </Field>
+        <Field Name="CompanyAddr2">
+          <DataField>CompanyAddr2</DataField>
+        </Field>
+        <Field Name="CompanyAddr3">
+          <DataField>CompanyAddr3</DataField>
+        </Field>
+        <Field Name="CompanyAddr4">
+          <DataField>CompanyAddr4</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNo">
+          <DataField>CompanyInfoPhoneNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoFaxNo">
+          <DataField>CompanyInfoFaxNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoVATRegNo">
+          <DataField>CompanyInfoVATRegNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoGiroNo">
+          <DataField>CompanyInfoGiroNo</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankName">
+          <DataField>CompanyInfoBankName</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankAccNo">
+          <DataField>CompanyInfoBankAccNo</DataField>
+        </Field>
+        <Field Name="DocDate_PurchHeader">
+          <DataField>DocDate_PurchHeader</DataField>
+        </Field>
+        <Field Name="VATNoText">
+          <DataField>VATNoText</DataField>
+        </Field>
+        <Field Name="VATRegNo_PurchHeader">
+          <DataField>VATRegNo_PurchHeader</DataField>
+        </Field>
+        <Field Name="PurchaserText">
+          <DataField>PurchaserText</DataField>
+        </Field>
+        <Field Name="SalesPurchPersonName">
+          <DataField>SalesPurchPersonName</DataField>
+        </Field>
+        <Field Name="ReferenceText">
+          <DataField>ReferenceText</DataField>
+        </Field>
+        <Field Name="YourRef_PurchHeader">
+          <DataField>YourRef_PurchHeader</DataField>
+        </Field>
+        <Field Name="CompanyAddr5">
+          <DataField>CompanyAddr5</DataField>
+        </Field>
+        <Field Name="CompanyAddr6">
+          <DataField>CompanyAddr6</DataField>
+        </Field>
+        <Field Name="CompanyAddr7">
+          <DataField>CompanyAddr7</DataField>
+        </Field>
+        <Field Name="CompanyAddr8">
+          <DataField>CompanyAddr8</DataField>
+        </Field>
+        <Field Name="BuyFrmVendNo_PurchHeader">
+          <DataField>BuyFrmVendNo_PurchHeader</DataField>
+        </Field>
+        <Field Name="BuyFromAddr1">
+          <DataField>BuyFromAddr1</DataField>
+        </Field>
+        <Field Name="BuyFromAddr2">
+          <DataField>BuyFromAddr2</DataField>
+        </Field>
+        <Field Name="BuyFromAddr3">
+          <DataField>BuyFromAddr3</DataField>
+        </Field>
+        <Field Name="BuyFromAddr4">
+          <DataField>BuyFromAddr4</DataField>
+        </Field>
+        <Field Name="BuyFromAddr5">
+          <DataField>BuyFromAddr5</DataField>
+        </Field>
+        <Field Name="BuyFromAddr6">
+          <DataField>BuyFromAddr6</DataField>
+        </Field>
+        <Field Name="BuyFromAddr7">
+          <DataField>BuyFromAddr7</DataField>
+        </Field>
+        <Field Name="BuyFromAddr8">
+          <DataField>BuyFromAddr8</DataField>
+        </Field>
+        <Field Name="PricesInclVAT_PurchHeader">
+          <DataField>PricesInclVAT_PurchHeader</DataField>
+        </Field>
+        <Field Name="OutputNo">
+          <DataField>OutputNo</DataField>
+        </Field>
+        <Field Name="VATBaseDisc_PurchHeader">
+          <DataField>VATBaseDisc_PurchHeader</DataField>
+        </Field>
+        <Field Name="VATBaseDisc_PurchHeaderFormat">
+          <DataField>VATBaseDisc_PurchHeaderFormat</DataField>
+        </Field>
+        <Field Name="PricesInclVATtxt">
+          <DataField>PricesInclVATtxt</DataField>
+        </Field>
+        <Field Name="PaymentTermsDesc">
+          <DataField>PaymentTermsDesc</DataField>
+        </Field>
+        <Field Name="ShipmentMethodDesc">
+          <DataField>ShipmentMethodDesc</DataField>
+        </Field>
+        <Field Name="PrepmtPaymentTermsDesc">
+          <DataField>PrepmtPaymentTermsDesc</DataField>
+        </Field>
+        <Field Name="ShowInternalInfo">
+          <DataField>ShowInternalInfo</DataField>
+        </Field>
+        <Field Name="TotalText">
+          <DataField>TotalText</DataField>
+        </Field>
+        <Field Name="DimText">
+          <DataField>DimText</DataField>
+        </Field>
+        <Field Name="CompanyInfoPhoneNoCaption">
+          <DataField>CompanyInfoPhoneNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoVATRegNoCaption">
+          <DataField>CompanyInfoVATRegNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoGiroNoCaption">
+          <DataField>CompanyInfoGiroNoCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankNameCaption">
+          <DataField>CompanyInfoBankNameCaption</DataField>
+        </Field>
+        <Field Name="CompanyInfoBankAccNoCaption">
+          <DataField>CompanyInfoBankAccNoCaption</DataField>
+        </Field>
+        <Field Name="OrderNoCaption">
+          <DataField>OrderNoCaption</DataField>
+        </Field>
+        <Field Name="PageCaption">
+          <DataField>PageCaption</DataField>
+        </Field>
+        <Field Name="DocumentDateCaption">
+          <DataField>DocumentDateCaption</DataField>
+        </Field>
+        <Field Name="BuyFrmVendNo_PurchHeaderCaption">
+          <DataField>BuyFrmVendNo_PurchHeaderCaption</DataField>
+        </Field>
+        <Field Name="PricesInclVAT_PurchHeaderCaption">
+          <DataField>PricesInclVAT_PurchHeaderCaption</DataField>
+        </Field>
+        <Field Name="HdrDimCaption">
+          <DataField>HdrDimCaption</DataField>
+        </Field>
+        <Field Name="LineAmt_PurchLine">
+          <DataField>LineAmt_PurchLine</DataField>
+        </Field>
+        <Field Name="LineAmt_PurchLineFormat">
+          <DataField>LineAmt_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="LineNo_PurchLine">
+          <DataField>LineNo_PurchLine</DataField>
+        </Field>
+        <Field Name="AllowInvDisctxt">
+          <DataField>AllowInvDisctxt</DataField>
+        </Field>
+        <Field Name="Type_PurchLine">
+          <DataField>Type_PurchLine</DataField>
+        </Field>
+        <Field Name="No_PurchLine">
+          <DataField>No_PurchLine</DataField>
+        </Field>
+        <Field Name="Desc_PurchLine">
+          <DataField>Desc_PurchLine</DataField>
+        </Field>
+        <Field Name="Qty_PurchLine">
+          <DataField>Qty_PurchLine</DataField>
+        </Field>
+        <Field Name="Qty_PurchLineFormat">
+          <DataField>Qty_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="UOM_PurchLine">
+          <DataField>UOM_PurchLine</DataField>
+        </Field>
+        <Field Name="DirUnitCost_PurchLine">
+          <DataField>DirUnitCost_PurchLine</DataField>
+        </Field>
+        <Field Name="DirUnitCost_PurchLineFormat">
+          <DataField>DirUnitCost_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="LineDisc_PurchLine">
+          <DataField>LineDisc_PurchLine</DataField>
+        </Field>
+        <Field Name="LineDisc_PurchLineFormat">
+          <DataField>LineDisc_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="LineAmt2_PurchLine">
+          <DataField>LineAmt2_PurchLine</DataField>
+        </Field>
+        <Field Name="LineAmt2_PurchLineFormat">
+          <DataField>LineAmt2_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="AllowInvDisc_PurchLine">
+          <DataField>AllowInvDisc_PurchLine</DataField>
+        </Field>
+        <Field Name="HomePage">
+          <DataField>HomePage</DataField>
+        </Field>
+        <Field Name="EMail">
+          <DataField>EMail</DataField>
+        </Field>
+        <Field Name="VATIdentifier_PurchLine">
+          <DataField>VATIdentifier_PurchLine</DataField>
+        </Field>
+        <Field Name="InvDiscAmt_PurchLine">
+          <DataField>InvDiscAmt_PurchLine</DataField>
+        </Field>
+        <Field Name="InvDiscAmt_PurchLineFormat">
+          <DataField>InvDiscAmt_PurchLineFormat</DataField>
+        </Field>
+        <Field Name="TotalInclVAT">
+          <DataField>TotalInclVAT</DataField>
+        </Field>
+        <Field Name="TotalInclVATFormat">
+          <DataField>TotalInclVATFormat</DataField>
+        </Field>
+        <Field Name="TotalInclVATText">
+          <DataField>TotalInclVATText</DataField>
+        </Field>
+        <Field Name="VATAmountText">
+          <DataField>VATAmountText</DataField>
+        </Field>
+        <Field Name="VATAmount">
+          <DataField>VATAmount</DataField>
+        </Field>
+        <Field Name="VATAmountFormat">
+          <DataField>VATAmountFormat</DataField>
+        </Field>
+        <Field Name="TotalExclVATText">
+          <DataField>TotalExclVATText</DataField>
+        </Field>
+        <Field Name="VATDiscountAmount">
+          <DataField>VATDiscountAmount</DataField>
+        </Field>
+        <Field Name="VATDiscountAmountFormat">
+          <DataField>VATDiscountAmountFormat</DataField>
+        </Field>
+        <Field Name="VATBaseAmount">
+          <DataField>VATBaseAmount</DataField>
+        </Field>
+        <Field Name="VATBaseAmountFormat">
+          <DataField>VATBaseAmountFormat</DataField>
+        </Field>
+        <Field Name="TotalAmountInclVAT">
+          <DataField>TotalAmountInclVAT</DataField>
+        </Field>
+        <Field Name="TotalAmountInclVATFormat">
+          <DataField>TotalAmountInclVATFormat</DataField>
+        </Field>
+        <Field Name="TotalSubTotal">
+          <DataField>TotalSubTotal</DataField>
+        </Field>
+        <Field Name="TotalSubTotalFormat">
+          <DataField>TotalSubTotalFormat</DataField>
+        </Field>
+        <Field Name="TotalInvoiceDiscountAmount">
+          <DataField>TotalInvoiceDiscountAmount</DataField>
+        </Field>
+        <Field Name="TotalInvoiceDiscountAmountFormat">
+          <DataField>TotalInvoiceDiscountAmountFormat</DataField>
+        </Field>
+        <Field Name="TotalAmount">
+          <DataField>TotalAmount</DataField>
+        </Field>
+        <Field Name="TotalAmountFormat">
+          <DataField>TotalAmountFormat</DataField>
+        </Field>
+        <Field Name="DirectUniCostCaption">
+          <DataField>DirectUniCostCaption</DataField>
+        </Field>
+        <Field Name="PurchLineLineDiscCaption">
+          <DataField>PurchLineLineDiscCaption</DataField>
+        </Field>
+        <Field Name="VATDiscountAmountCaption">
+          <DataField>VATDiscountAmountCaption</DataField>
+        </Field>
+        <Field Name="No_PurchLineCaption">
+          <DataField>No_PurchLineCaption</DataField>
+        </Field>
+        <Field Name="Desc_PurchLineCaption">
+          <DataField>Desc_PurchLineCaption</DataField>
+        </Field>
+        <Field Name="Qty_PurchLineCaption">
+          <DataField>Qty_PurchLineCaption</DataField>
+        </Field>
+        <Field Name="UOM_PurchLineCaption">
+          <DataField>UOM_PurchLineCaption</DataField>
+        </Field>
+        <Field Name="VATIdentifier_PurchLineCaption">
+          <DataField>VATIdentifier_PurchLineCaption</DataField>
+        </Field>
+        <Field Name="LineDimCaption">
+          <DataField>LineDimCaption</DataField>
+        </Field>
+        <Field Name="VATAmtLineVATBase">
+          <DataField>VATAmtLineVATBase</DataField>
+        </Field>
+        <Field Name="VATAmtLineVATBaseFormat">
+          <DataField>VATAmtLineVATBaseFormat</DataField>
+        </Field>
+        <Field Name="VATAmtLineVATAmt">
+          <DataField>VATAmtLineVATAmt</DataField>
+        </Field>
+        <Field Name="VATAmtLineVATAmtFormat">
+          <DataField>VATAmtLineVATAmtFormat</DataField>
+        </Field>
+        <Field Name="VATAmtLineLineAmt">
+          <DataField>VATAmtLineLineAmt</DataField>
+        </Field>
+        <Field Name="VATAmtLineLineAmtFormat">
+          <DataField>VATAmtLineLineAmtFormat</DataField>
+        </Field>
+        <Field Name="VATAmtLineInvDiscBaseAmt">
+          <DataField>VATAmtLineInvDiscBaseAmt</DataField>
+        </Field>
+        <Field Name="VATAmtLineInvDiscBaseAmtFormat">
+          <DataField>VATAmtLineInvDiscBaseAmtFormat</DataField>
+        </Field>
+        <Field Name="VATAmtLineInvDiscAmt">
+          <DataField>VATAmtLineInvDiscAmt</DataField>
+        </Field>
+        <Field Name="VATAmtLineInvDiscAmtFormat">
+          <DataField>VATAmtLineInvDiscAmtFormat</DataField>
+        </Field>
+        <Field Name="VATAmtLineVAT">
+          <DataField>VATAmtLineVAT</DataField>
+        </Field>
+        <Field Name="VATAmtLineVATFormat">
+          <DataField>VATAmtLineVATFormat</DataField>
+        </Field>
+        <Field Name="VATAmtLineVATIdentifier">
+          <DataField>VATAmtLineVATIdentifier</DataField>
+        </Field>
+        <Field Name="VALExchRate">
+          <DataField>VALExchRate</DataField>
+        </Field>
+        <Field Name="VALSpecLCYHeader">
+          <DataField>VALSpecLCYHeader</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCY">
+          <DataField>VALVATAmountLCY</DataField>
+        </Field>
+        <Field Name="VALVATAmountLCYFormat">
+          <DataField>VALVATAmountLCYFormat</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCY">
+          <DataField>VALVATBaseLCY</DataField>
+        </Field>
+        <Field Name="VALVATBaseLCYFormat">
+          <DataField>VALVATBaseLCYFormat</DataField>
+        </Field>
+        <Field Name="PayToVendNo_PurchHeader">
+          <DataField>PayToVendNo_PurchHeader</DataField>
+        </Field>
+        <Field Name="VendAddr8">
+          <DataField>VendAddr8</DataField>
+        </Field>
+        <Field Name="VendAddr7">
+          <DataField>VendAddr7</DataField>
+        </Field>
+        <Field Name="VendAddr6">
+          <DataField>VendAddr6</DataField>
+        </Field>
+        <Field Name="VendAddr5">
+          <DataField>VendAddr5</DataField>
+        </Field>
+        <Field Name="VendAddr4">
+          <DataField>VendAddr4</DataField>
+        </Field>
+        <Field Name="VendAddr3">
+          <DataField>VendAddr3</DataField>
+        </Field>
+        <Field Name="VendAddr2">
+          <DataField>VendAddr2</DataField>
+        </Field>
+        <Field Name="VendAddr1">
+          <DataField>VendAddr1</DataField>
+        </Field>
+        <Field Name="PaymentDetailsCaption">
+          <DataField>PaymentDetailsCaption</DataField>
+        </Field>
+        <Field Name="VendNoCaption">
+          <DataField>VendNoCaption</DataField>
+        </Field>
+        <Field Name="SellToCustNo_PurchHeader">
+          <DataField>SellToCustNo_PurchHeader</DataField>
+        </Field>
+        <Field Name="ShipToAddr1">
+          <DataField>ShipToAddr1</DataField>
+        </Field>
+        <Field Name="ShipToAddr2">
+          <DataField>ShipToAddr2</DataField>
+        </Field>
+        <Field Name="ShipToAddr3">
+          <DataField>ShipToAddr3</DataField>
+        </Field>
+        <Field Name="ShipToAddr4">
+          <DataField>ShipToAddr4</DataField>
+        </Field>
+        <Field Name="ShipToAddr5">
+          <DataField>ShipToAddr5</DataField>
+        </Field>
+        <Field Name="ShipToAddr6">
+          <DataField>ShipToAddr6</DataField>
+        </Field>
+        <Field Name="ShipToAddr7">
+          <DataField>ShipToAddr7</DataField>
+        </Field>
+        <Field Name="ShipToAddr8">
+          <DataField>ShipToAddr8</DataField>
+        </Field>
+        <Field Name="ShiptoAddressCaption">
+          <DataField>ShiptoAddressCaption</DataField>
+        </Field>
+        <Field Name="ShipToPhoneNo">
+          <DataField>ShipToPhoneNo</DataField>
+        </Field>
+        <Field Name="SellToCustNo_PurchHeaderCaption">
+          <DataField>SellToCustNo_PurchHeaderCaption</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmount">
+          <DataField>PrepmtLineAmount</DataField>
+        </Field>
+        <Field Name="PrepmtLineAmountFormat">
+          <DataField>PrepmtLineAmountFormat</DataField>
+        </Field>
+        <Field Name="TotalPrepmtLineAmount">
+          <DataField>TotalPrepmtLineAmount</DataField>
+        </Field>
+        <Field Name="TotalPrepmtLineAmountFormat">
+          <DataField>TotalPrepmtLineAmountFormat</DataField>
+        </Field>
+        <Field Name="PrepmtInvBufGLAccNo">
+          <DataField>PrepmtInvBufGLAccNo</DataField>
+        </Field>
+        <Field Name="PrepmtInvBufDesc">
+          <DataField>PrepmtInvBufDesc</DataField>
+        </Field>
+        <Field Name="TotalInclVATText2">
+          <DataField>TotalInclVATText2</DataField>
+        </Field>
+        <Field Name="TotalExclVATText2">
+          <DataField>TotalExclVATText2</DataField>
+        </Field>
+        <Field Name="PrepmtInvBufAmt">
+          <DataField>PrepmtInvBufAmt</DataField>
+        </Field>
+        <Field Name="PrepmtInvBufAmtFormat">
+          <DataField>PrepmtInvBufAmtFormat</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountText">
+          <DataField>PrepmtVATAmountText</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmount">
+          <DataField>PrepmtVATAmount</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmountFormat">
+          <DataField>PrepmtVATAmountFormat</DataField>
+        </Field>
+        <Field Name="PrepmtTotalAmountInclVAT">
+          <DataField>PrepmtTotalAmountInclVAT</DataField>
+        </Field>
+        <Field Name="PrepmtTotalAmountInclVATFormat">
+          <DataField>PrepmtTotalAmountInclVATFormat</DataField>
+        </Field>
+        <Field Name="PrepmtVATBaseAmount">
+          <DataField>PrepmtVATBaseAmount</DataField>
+        </Field>
+        <Field Name="PrepmtVATBaseAmountFormat">
+          <DataField>PrepmtVATBaseAmountFormat</DataField>
+        </Field>
+        <Field Name="PrepmtInvBuDescCaption">
+          <DataField>PrepmtInvBuDescCaption</DataField>
+        </Field>
+        <Field Name="PrepmtInvBufGLAccNoCaption">
+          <DataField>PrepmtInvBufGLAccNoCaption</DataField>
+        </Field>
+        <Field Name="PrepaymentSpecCaption">
+          <DataField>PrepaymentSpecCaption</DataField>
+        </Field>
+        <Field Name="PrepmtLoopLineNo">
+          <DataField>PrepmtLoopLineNo</DataField>
+        </Field>
+        <Field Name="DummyColumn">
+          <DataField>DummyColumn</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineVATAmt">
+          <DataField>PrepmtVATAmtLineVATAmt</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineVATAmtFormat">
+          <DataField>PrepmtVATAmtLineVATAmtFormat</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineVATBase">
+          <DataField>PrepmtVATAmtLineVATBase</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineVATBaseFormat">
+          <DataField>PrepmtVATAmtLineVATBaseFormat</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineLineAmt">
+          <DataField>PrepmtVATAmtLineLineAmt</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineLineAmtFormat">
+          <DataField>PrepmtVATAmtLineLineAmtFormat</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineVAT">
+          <DataField>PrepmtVATAmtLineVAT</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineVATFormat">
+          <DataField>PrepmtVATAmtLineVATFormat</DataField>
+        </Field>
+        <Field Name="PrepmtVATAmtLineVATId">
+          <DataField>PrepmtVATAmtLineVATId</DataField>
+        </Field>
+        <Field Name="PrepymtVATAmtSpecCaption">
+          <DataField>PrepymtVATAmtSpecCaption</DataField>
+        </Field>
+        <Field Name="EncodedNo">
+          <DataField>EncodedNo</DataField>
+        </Field>
+        <Field Name="CompanyPicture">
+          <DataField>CompanyPicture</DataField>
+        </Field>
+        <Field Name="EncodedLineNo">
+          <DataField>EncodedLineNo</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

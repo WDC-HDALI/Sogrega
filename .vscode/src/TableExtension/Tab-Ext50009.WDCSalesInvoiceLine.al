@@ -3,6 +3,7 @@ tableextension 50009 "WDC Sales Invoice Line" extends "Sales Invoice Line"
     //*************Documentation***************************
     //WDC01  HD  26/08/2024  Create this current object
     //WDC02  HG  28/10/2025  Add field  "Reference No."
+    //WDC03  HG  22/05/2026  Add "shipment No." , "Gross weight" , "Net weight"
 
     fields
     {
@@ -66,6 +67,33 @@ tableextension 50009 "WDC Sales Invoice Line" extends "Sales Invoice Line"
             Captionml = ENU = 'Position', FRA = 'Position';
             DataClassification = ToBeClassified;
         }
+        //<<WDC03
+        field(50012; "Posted Whse Shp No."; Code[20])
+        {
+            CaptionML = ENU = 'Posted Whse Shp No.', FRA = 'N° Exp entrepôt enreg.';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Posted Whse. Shipment Line"."No." where(
+                                                           "Source No." = field("Order No."),
+                                                           "Source Line No." = field("Order Line No."),
+                                                           "Source Document" = const("Sales Order")));
+            Editable = false;
+        }
+        //>>WDC03
+        field(50013; "Ship Gross weight"; Decimal)
+        {
+            CaptionML = ENG = 'Gross Weight(Kg)', FRA = 'Poid brut(Kg)';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Posted Whse. Shipment Header"."Gross Weight" where("No." = field("Posted Whse Shp No.")));
+            Editable = false;
+        }
+        field(50014; "Ship Net weight"; Decimal)
+        {
+            CaptionML = ENG = 'Net Weight(Kg)', FRA = 'Poid net(Kg)';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Posted Whse. Shipment Header"."Net Weight" where("No." = field("Posted Whse Shp No.")));
+            Editable = false;
+        }
+        //>>WDC03
     }
 
 }

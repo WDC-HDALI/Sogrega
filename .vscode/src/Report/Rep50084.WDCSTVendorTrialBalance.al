@@ -223,7 +223,7 @@ report 50084 "WDC-ST Vendor Trial Balance"
         Text005: Label 'Page %1';
         VendLedgEntry: Record "Detailed Vendor Ledg. Entry";
         // FiltreDateCalc: Codeunit "DateFilter-Calc";
-        FiltreDateCalc: Codeunit "WDC-ST DateFilter-Calc";
+        FiltreDateCalc: Codeunit "WDC DateFilter-Calc";
         StartDate: Date;
         EndDate: Date;
         PreviousStartDate: Date;

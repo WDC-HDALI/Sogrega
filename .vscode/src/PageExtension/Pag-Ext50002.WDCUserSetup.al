@@ -3,6 +3,7 @@ pageextension 50002 "WDC User Setup" extends "User Setup"
     //*************Documentation***************************
     //WDC01  CHG  22/08/2024  Create this current object
     //WDC02  HG   11/12/2024  show field 
+    //WDC03  HG   12/05/2026  Show field "Allow weight import"
 
     layout
     {
@@ -34,6 +35,13 @@ pageextension 50002 "WDC User Setup" extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            //<<WDC03
+            field("Allow Weight Import"; Rec."Allow Weight Import")
+            {
+                ApplicationArea = All;
+            }
+            //>>WDC03
+
             // field("Update BOM"; Rec."Update BOM")
             // {
             //     ApplicationArea = all;

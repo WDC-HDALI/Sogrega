@@ -1,4 +1,4 @@
-codeunit 50085 "WDC-ST DateFilter-Calc"
+codeunit 50005 "WDC DateFilter-Calc"
 {
     //[Scope('OnPrem')]
     procedure VerifMonthPeriod("Filter": Text[30])

@@ -4,6 +4,7 @@ using Microsoft.Manufacturing.Document;
 /**********************************Documentation*********************
  //WDC01     WDC.HG    03/12/2024        show field "Reference No."
 //WDC02       WDC.HG    18/12/2025      show field "External Sales Order No."
+//WDC03       WDC.HG    18/06/2026      add Customer Name
  *********************************************************************/
 
 pageextension 50042 WDCReleasedProductionOrder extends "Released Production Order"
@@ -27,6 +28,12 @@ pageextension 50042 WDCReleasedProductionOrder extends "Released Production Orde
             {
                 ApplicationArea = all;
             }
+            //<<WDC03
+            field("Customer Name"; Rec."Customer Name")
+            {
+                ApplicationArea = all;
+            }
+            //>>WDC03
             //<<WDC02
             field("External Sales Order No."; Rec."External Sales Order No.")
             {
