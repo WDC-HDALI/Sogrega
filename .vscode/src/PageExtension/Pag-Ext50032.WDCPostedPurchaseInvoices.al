@@ -23,5 +23,12 @@ pageextension 50032 "WDC Posted Purchase Invoices" extends "Posted Purchase Invo
                 editable = false;
             }
         }
+        addafter("Buy-from Vendor Name")
+        {
+            field("Vendor Posting Group"; Rec."Vendor Posting Group")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 }

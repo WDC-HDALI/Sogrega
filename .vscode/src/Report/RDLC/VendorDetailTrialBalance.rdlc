@@ -8,6 +8,7 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>0a3de399-0378-40e9-8657-edca665eb926</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
@@ -18,25 +19,34 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.63542cm</Width>
+                  <Width>2.4709cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.55cm</Width>
+                  <Width>1.75cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.19369cm</Width>
+                  <Width>2.8702cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.58542cm</Width>
+                  <Width>1.26792cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.15cm</Width>
+                  <Width>2.32979cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.22917cm</Width>
+                  <Width>2.33405cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.31187cm</Width>
+                  <Width>2.19729cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.19104cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.19437cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.7cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.55cm</Width>
@@ -73,9 +83,12 @@
                             <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
-                        <ColSpan>8</ColSpan>
+                        <ColSpan>11</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
                     <TablixCell />
                     <TablixCell />
                     <TablixCell />
@@ -246,6 +259,58 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="textbox30">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -287,6 +352,32 @@
                           </Paragraphs>
                           <rd:DefaultName>textbox31</rd:DefaultName>
                           <ZIndex>55</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox33">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox33</rd:DefaultName>
                           <Style>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -515,6 +606,72 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox15">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!DebitDeviseCaptionLbl.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!CreditDeviseCaptionLbl.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="DebitCaption">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -564,6 +721,39 @@
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>46</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox34">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!BalanceDeviseCaptionLbl.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox34</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -675,9 +865,12 @@ Fields!PageCaption.Value</Value>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>9</ColSpan>
+                        <ColSpan>12</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
                     <TablixCell />
                     <TablixCell />
                     <TablixCell />
@@ -757,6 +950,56 @@ Fields!PageCaption.Value</Value>
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox16">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox16</rd:DefaultName>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="TextBox14">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -777,9 +1020,10 @@ Fields!PageCaption.Value</Value>
                             <PaddingRight>4pt</PaddingRight>
                           </Style>
                         </Textbox>
-                        <ColSpan>4</ColSpan>
+                        <ColSpan>5</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
                     <TablixCell />
                     <TablixCell />
                     <TablixCell />
@@ -824,6 +1068,68 @@ Fields!PageCaption.Value</Value>
                     <TablixCell />
                     <TablixCell />
                     <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox17">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Fields!PreviousDeviseDebitAmount.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox17</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Fields!PreviousDeviseCreditAmount.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="PreviousDebitAmountLCY">
@@ -876,6 +1182,37 @@ Fields!PageCaption.Value</Value>
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>37</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox35">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Fields!PreviousDeviseDebitAmount_PreviousDeviseCreditAmount.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox35</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -1112,6 +1449,78 @@ Fields!PageCaption.Value</Value>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox19">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Fields!Detailed_Vendor_Ledg__Entry__Debit_Amount.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox19</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Fields!Detailed_Vendor_Ledg__Entry__Credit_Amount.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Detailed_Vendor_Ledg__Entry__Debit_Amount__LCY___Control1120116">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1131,6 +1540,9 @@ Fields!PageCaption.Value</Value>
                           </Paragraphs>
                           <ZIndex>3</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <LeftBorder>
                               <Style>Solid</Style>
                             </LeftBorder>
@@ -1164,6 +1576,42 @@ Fields!PageCaption.Value</Value>
                           </Paragraphs>
                           <ZIndex>2</ZIndex>
                           <Style>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox36">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!BalanceDevise.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox36</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <LeftBorder>
                               <Style>Solid</Style>
                             </LeftBorder>
@@ -1279,6 +1727,80 @@ Fields!PageCaption.Value</Value>
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox20">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(sum(Fields!Detailed_Vendor_Ledg__Entry__Debit_Amount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000</Format>
+                                    <Color>Purple</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox20</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox8">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(sum(Fields!Detailed_Vendor_Ledg__Entry__Credit_Amount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                    <Color>Purple</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Detailed_Vendor_Ledg__Entry__Debit_Amount__LCY___Control1120136">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1333,6 +1855,43 @@ Fields!PageCaption.Value</Value>
                           </Paragraphs>
                           <ZIndex>11</ZIndex>
                           <Style>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>Solid</Style>
+                            </RightBorder>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox37">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Last(Fields!BalanceDevise.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                    <Color>Purple</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox37</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <LeftBorder>
                               <Style>Solid</Style>
                             </LeftBorder>
@@ -1451,6 +2010,68 @@ Fields!PageCaption.Value</Value>
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox21">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(last(Fields!DebitDevisePeriodAmount_PreviousDebitDeviseAmount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox21</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox9">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(last(Fields!CreditDevisePeriodAmount_PreviousCreditDeviseAmount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="textbox96">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1503,6 +2124,37 @@ Fields!PageCaption.Value</Value>
                           </Paragraphs>
                           <rd:DefaultName>textbox97</rd:DefaultName>
                           <ZIndex>16</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox39">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Last(Fields!DebitDevisePeriodAmount_PreviousDeviseDebitAmount___CreditDevisePeriodAmount_PreviousCreditDeviseAmount_.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox39</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -1616,6 +2268,66 @@ Fields!PageCaption.Value</Value>
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox22">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Last(Fields!DebitDevisePeriodAmount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox22</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox10">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Last(Fields!CreditDevisePeriodAmount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="textbox83">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1666,6 +2378,36 @@ Fields!PageCaption.Value</Value>
                           </Paragraphs>
                           <rd:DefaultName>textbox84</rd:DefaultName>
                           <ZIndex>21</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox40">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Last(Fields!DebitDevisePeriodAmount_CreditDevisePeriodAmount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox40</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -1777,6 +2519,68 @@ Fields!PageCaption.Value</Value>
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox23">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(last(Fields!DebitDevisePeriodAmount_PreviousDebitDeviseAmount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox23</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox11">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(last(Fields!CreditDevisePeriodAmount_PreviousCreditDeviseAmount.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="textbox53">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1827,6 +2631,37 @@ Fields!PageCaption.Value</Value>
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>26</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox41">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Code.BlankZero(Last(Fields!DebitDevisePeriodAmount_PreviousDeviseDebitAmount___CreditDevisePeriodAmount_PreviousCreditDeviseAmount_.Value))</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox41</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -1931,9 +2766,12 @@ Fields!PageCaption.Value</Value>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>9</ColSpan>
+                        <ColSpan>12</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
                     <TablixCell />
                     <TablixCell />
                     <TablixCell />
@@ -1983,6 +2821,68 @@ Fields!PageCaption.Value</Value>
                     <TablixCell />
                     <TablixCell />
                     <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox24">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=last(Fields!GeneralDebitDeviseAmount.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox24</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox12">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=last(Fields!GeneralCreditDeviseAmount.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="GeneralDebitAmountLCY">
@@ -2035,6 +2935,37 @@ Fields!PageCaption.Value</Value>
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>32</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>4pt</PaddingLeft>
+                            <PaddingRight>4pt</PaddingRight>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox42">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Last(Fields!GeneralDebitDeviseAmount_GeneralCreditDeviseAmount.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0.000;-#,0.000;''</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox42</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -2110,6 +3041,9 @@ Fields!PageCaption.Value</Value>
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -2243,7 +3177,7 @@ Fields!PageCaption.Value</Value>
             </Filters>
             <Top>0.47619cm</Top>
             <Height>4.446cm</Height>
-            <Width>18.40556cm</Width>
+            <Width>25.05556cm</Width>
             <Visibility>
               <Hidden>=IIF(Fields!Posting_DateCaption.Value = "",True,False)</Hidden>
             </Visibility>
@@ -2280,7 +3214,7 @@ Fields!PageCaption.Value</Value>
         <Height>4.92219cm</Height>
         <Style />
       </Body>
-      <Width>18.73016cm</Width>
+      <Width>25.05556cm</Width>
       <Page>
         <PageHeader>
           <Height>1.692cm</Height>
@@ -2439,13 +3373,13 @@ Fields!PageCaption.Value</Value>
           </ReportItems>
           <Style />
         </PageHeader>
-        <PageHeight>29.7cm</PageHeight>
-        <PageWidth>21cm</PageWidth>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
         <InteractiveHeight>11in</InteractiveHeight>
         <InteractiveWidth>8.5in</InteractiveWidth>
-        <LeftMargin>1cm</LeftMargin>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
         <TopMargin>1cm</TopMargin>
-        <BottomMargin>0.5cm</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -2488,6 +3422,7 @@ End Function
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>dcde1d05-140f-450f-bfc4-0b5627a2d1f3</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
@@ -2557,11 +3492,29 @@ End Function
         <Field Name="PreviousCreditAmountLCYFormat">
           <DataField>PreviousCreditAmountLCYFormat</DataField>
         </Field>
+        <Field Name="PreviousDeviseCreditAmount">
+          <DataField>PreviousDeviseCreditAmount</DataField>
+        </Field>
+        <Field Name="PreviousDeviseCreditAmountFormat">
+          <DataField>PreviousDeviseCreditAmountFormat</DataField>
+        </Field>
+        <Field Name="PreviousDeviseDebitAmount">
+          <DataField>PreviousDeviseDebitAmount</DataField>
+        </Field>
+        <Field Name="PreviousDeviseDebitAmountFormat">
+          <DataField>PreviousDeviseDebitAmountFormat</DataField>
+        </Field>
         <Field Name="PreviousDebitAmountLCY_PreviousCreditAmountLCY">
           <DataField>PreviousDebitAmountLCY_PreviousCreditAmountLCY</DataField>
         </Field>
         <Field Name="PreviousDebitAmountLCY_PreviousCreditAmountLCYFormat">
           <DataField>PreviousDebitAmountLCY_PreviousCreditAmountLCYFormat</DataField>
+        </Field>
+        <Field Name="PreviousDeviseDebitAmount_PreviousDeviseCreditAmount">
+          <DataField>PreviousDeviseDebitAmount_PreviousDeviseCreditAmount</DataField>
+        </Field>
+        <Field Name="PreviousDeviseDebitAmount_PreviousDeviseCreditAmountFormat">
+          <DataField>PreviousDeviseDebitAmount_PreviousDeviseCreditAmountFormat</DataField>
         </Field>
         <Field Name="ReportDebitAmountLCY_Control1120062">
           <DataField>ReportDebitAmountLCY_Control1120062</DataField>
@@ -2593,11 +3546,29 @@ End Function
         <Field Name="GeneralCreditAmountLCYFormat">
           <DataField>GeneralCreditAmountLCYFormat</DataField>
         </Field>
+        <Field Name="GeneralDebitDeviseAmount">
+          <DataField>GeneralDebitDeviseAmount</DataField>
+        </Field>
+        <Field Name="GeneralDebitDeviseAmountFormat">
+          <DataField>GeneralDebitDeviseAmountFormat</DataField>
+        </Field>
+        <Field Name="GeneralCreditDeviseAmount">
+          <DataField>GeneralCreditDeviseAmount</DataField>
+        </Field>
+        <Field Name="GeneralCreditDeviseAmountFormat">
+          <DataField>GeneralCreditDeviseAmountFormat</DataField>
+        </Field>
         <Field Name="GeneralDebitAmountLCY_GeneralCreditAmountLCY">
           <DataField>GeneralDebitAmountLCY_GeneralCreditAmountLCY</DataField>
         </Field>
         <Field Name="GeneralDebitAmountLCY_GeneralCreditAmountLCYFormat">
           <DataField>GeneralDebitAmountLCY_GeneralCreditAmountLCYFormat</DataField>
+        </Field>
+        <Field Name="GeneralDebitDeviseAmount_GeneralCreditDeviseAmount">
+          <DataField>GeneralDebitDeviseAmount_GeneralCreditDeviseAmount</DataField>
+        </Field>
+        <Field Name="GeneralDebitDeviseAmount_GeneralCreditDeviseAmountFormat">
+          <DataField>GeneralDebitDeviseAmount_GeneralCreditDeviseAmountFormat</DataField>
         </Field>
         <Field Name="Vendor_Date_Filter">
           <DataField>Vendor_Date_Filter</DataField>
@@ -2638,8 +3609,17 @@ End Function
         <Field Name="CreditCaption">
           <DataField>CreditCaption</DataField>
         </Field>
+        <Field Name="CreditDeviseCaptionLbl">
+          <DataField>CreditDeviseCaptionLbl</DataField>
+        </Field>
+        <Field Name="DebitDeviseCaptionLbl">
+          <DataField>DebitDeviseCaptionLbl</DataField>
+        </Field>
         <Field Name="BalanceCaption">
           <DataField>BalanceCaption</DataField>
+        </Field>
+        <Field Name="BalanceDeviseCaptionLbl">
+          <DataField>BalanceDeviseCaptionLbl</DataField>
         </Field>
         <Field Name="ContinuedCaption">
           <DataField>ContinuedCaption</DataField>
@@ -2656,6 +3636,12 @@ End Function
         <Field Name="DebitPeriodAmount_PreviousDebitAmountLCY___CreditPeriodAmount_PreviousCreditAmountLCY_Format">
           <DataField>DebitPeriodAmount_PreviousDebitAmountLCY___CreditPeriodAmount_PreviousCreditAmountLCY_Format</DataField>
         </Field>
+        <Field Name="DebitDevisePeriodAmount_PreviousDeviseDebitAmount___CreditDevisePeriodAmount_PreviousCreditDeviseAmount_">
+          <DataField>DebitDevisePeriodAmount_PreviousDeviseDebitAmount___CreditDevisePeriodAmount_PreviousCreditDeviseAmount_</DataField>
+        </Field>
+        <Field Name="DebitDevisePeriodAmount_PreviousDeviseDebitAmount___CreditDevisePeriodAmount_PreviousCreditDeviseAmount_Format">
+          <DataField>DebitDevisePeriodAmount_PreviousDeviseDebitAmount___CreditDevisePeriodAmount_PreviousCreditDeviseAmount_Format</DataField>
+        </Field>
         <Field Name="CreditPeriodAmount_PreviousCreditAmountLCY">
           <DataField>CreditPeriodAmount_PreviousCreditAmountLCY</DataField>
         </Field>
@@ -2667,6 +3653,18 @@ End Function
         </Field>
         <Field Name="DebitPeriodAmount_PreviousDebitAmountLCYFormat">
           <DataField>DebitPeriodAmount_PreviousDebitAmountLCYFormat</DataField>
+        </Field>
+        <Field Name="CreditDevisePeriodAmount_PreviousCreditDeviseAmount">
+          <DataField>CreditDevisePeriodAmount_PreviousCreditDeviseAmount</DataField>
+        </Field>
+        <Field Name="CreditDevisePeriodAmount_PreviousCreditDeviseAmountFormat">
+          <DataField>CreditDevisePeriodAmount_PreviousCreditDeviseAmountFormat</DataField>
+        </Field>
+        <Field Name="DebitDevisePeriodAmount_PreviousDebitDeviseAmount">
+          <DataField>DebitDevisePeriodAmount_PreviousDebitDeviseAmount</DataField>
+        </Field>
+        <Field Name="DebitDevisePeriodAmount_PreviousDebitDeviseAmountFormat">
+          <DataField>DebitDevisePeriodAmount_PreviousDebitDeviseAmountFormat</DataField>
         </Field>
         <Field Name="STRSUBSTNO_Text006_EndDate_">
           <DataField>STRSUBSTNO_Text006_EndDate_</DataField>
@@ -2683,6 +3681,12 @@ End Function
         <Field Name="DebitPeriodAmountFormat">
           <DataField>DebitPeriodAmountFormat</DataField>
         </Field>
+        <Field Name="DebitDevisePeriodAmount">
+          <DataField>DebitDevisePeriodAmount</DataField>
+        </Field>
+        <Field Name="DebitDevisePeriodAmountFormat">
+          <DataField>DebitDevisePeriodAmountFormat</DataField>
+        </Field>
         <Field Name="DebitPeriodAmount_PreviousDebitAmountLCY_Control1120082">
           <DataField>DebitPeriodAmount_PreviousDebitAmountLCY_Control1120082</DataField>
         </Field>
@@ -2695,6 +3699,12 @@ End Function
         <Field Name="CreditPeriodAmountFormat">
           <DataField>CreditPeriodAmountFormat</DataField>
         </Field>
+        <Field Name="CreditDevisePeriodAmount">
+          <DataField>CreditDevisePeriodAmount</DataField>
+        </Field>
+        <Field Name="CreditDevisePeriodAmountFormat">
+          <DataField>CreditDevisePeriodAmountFormat</DataField>
+        </Field>
         <Field Name="CreditPeriodAmount_PreviousCreditAmountLCY_Control1120086">
           <DataField>CreditPeriodAmount_PreviousCreditAmountLCY_Control1120086</DataField>
         </Field>
@@ -2706,6 +3716,12 @@ End Function
         </Field>
         <Field Name="DebitPeriodAmount_CreditPeriodAmountFormat">
           <DataField>DebitPeriodAmount_CreditPeriodAmountFormat</DataField>
+        </Field>
+        <Field Name="DebitDevisePeriodAmount_CreditDevisePeriodAmount">
+          <DataField>DebitDevisePeriodAmount_CreditDevisePeriodAmount</DataField>
+        </Field>
+        <Field Name="DebitDevisePeriodAmount_CreditDevisePeriodAmountFormat">
+          <DataField>DebitDevisePeriodAmount_CreditDevisePeriodAmountFormat</DataField>
         </Field>
         <Field Name="DebitPeriodAmount_PreviousDebitAmountLCY___CreditPeriodAmount_PreviousCreditAmountLCY__Control1120090">
           <DataField>DebitPeriodAmount_PreviousDebitAmountLCY___CreditPeriodAmount_PreviousCreditAmountLCY__Control1120090</DataField>
@@ -2733,6 +3749,18 @@ End Function
         </Field>
         <Field Name="Detailed_Vendor_Ledg__Entry__Credit_Amount__LCY__Format">
           <DataField>Detailed_Vendor_Ledg__Entry__Credit_Amount__LCY__Format</DataField>
+        </Field>
+        <Field Name="Detailed_Vendor_Ledg__Entry__Credit_Amount">
+          <DataField>Detailed_Vendor_Ledg__Entry__Credit_Amount</DataField>
+        </Field>
+        <Field Name="Detailed_Vendor_Ledg__Entry__Credit_AmountFormat">
+          <DataField>Detailed_Vendor_Ledg__Entry__Credit_AmountFormat</DataField>
+        </Field>
+        <Field Name="Detailed_Vendor_Ledg__Entry__Debit_Amount">
+          <DataField>Detailed_Vendor_Ledg__Entry__Debit_Amount</DataField>
+        </Field>
+        <Field Name="Detailed_Vendor_Ledg__Entry__Debit_AmountFormat">
+          <DataField>Detailed_Vendor_Ledg__Entry__Debit_AmountFormat</DataField>
         </Field>
         <Field Name="Debit_Amount__LCY______Credit_Amount__LCY__">
           <DataField>Debit_Amount__LCY______Credit_Amount__LCY__</DataField>
@@ -2772,6 +3800,12 @@ End Function
         </Field>
         <Field Name="BalanceLCYFormat">
           <DataField>BalanceLCYFormat</DataField>
+        </Field>
+        <Field Name="BalanceDevise">
+          <DataField>BalanceDevise</DataField>
+        </Field>
+        <Field Name="BalanceDeviseFormat">
+          <DataField>BalanceDeviseFormat</DataField>
         </Field>
         <Field Name="Det_Vendor_L_E___Entry_No__">
           <DataField>Det_Vendor_L_E___Entry_No__</DataField>

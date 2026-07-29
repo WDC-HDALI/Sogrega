@@ -48,6 +48,18 @@ pageextension 50041 "WDC Item Card" extends "Item Card"
                 }
             }
         }
+        addafter("Net Weight")
+        {
+            field(PositiveWeightTolerance; rec."Positive Weight Tolerance %")
+            {
+                ApplicationArea = all;
+            }
+            field(NegativeWeightTolerance; rec."Negative Weight Tolerance %")
+            {
+                ApplicationArea = all;
+            }
+
+        }
 
     }
 }

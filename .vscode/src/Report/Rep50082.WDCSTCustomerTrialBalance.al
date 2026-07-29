@@ -23,9 +23,6 @@ report 50082 "WDC-ST Customer Trial Balance"
             column(STRSUBSTNO_Text004_PreviousStartDate_; STRSUBSTNO(Text004, PreviousStartDate))
             {
             }
-            column(STRSUBSTNO_Text005_CurrReport_PAGENO_; STRSUBSTNO(Text005, CurrReport.PAGENO))
-            {
-            }
             column(PageCaption; STRSUBSTNO(Text005, ' '))
             {
             }
@@ -126,56 +123,56 @@ report 50082 "WDC-ST Customer Trial Balance"
                 PreviousCreditAmountLCY := 0;
                 PeriodDebitAmountLCY := 0;
                 PeriodCreditAmountLCY := 0;
-                WITH CustLedgEntry DO BEGIN
-                    SETCURRENTKEY("Customer No.", "Posting Date", "Entry Type", "Initial Entry Global Dim. 1", "Initial Entry Global Dim. 2",
-                      "Currency Code");
-                    SETRANGE("Customer No.", "No.");
-                    // FR0004.begin
-                    // IF "Global Dimension 1 Filter" <> '' THEN
-                    // SETRANGE("Initial Entry Global Dim. 1","Global Dimension 1 Filter");
-                    // IF "Global Dimension 2 Filter" <> '' THEN
-                    // SETRANGE("Initial Entry Global Dim. 2","Global Dimension 2 Filter");
-                    // IF "Currency Filter" <> '' THEN
-                    // SETRANGE("Currency Code","Currency Filter");
-                    IF Customer.GETFILTER("Global Dimension 1 Filter") <> '' THEN
-                        SETRANGE("Initial Entry Global Dim. 1", Customer.GETFILTER("Global Dimension 1 Filter"));
-                    IF Customer.GETFILTER("Global Dimension 2 Filter") <> '' THEN
-                        SETRANGE("Initial Entry Global Dim. 2", Customer.GETFILTER("Global Dimension 2 Filter"));
-                    IF Customer.GETFILTER("Currency Filter") <> '' THEN
-                        SETRANGE("Currency Code", Customer.GETFILTER("Currency Filter"));
-                    // FR0004.end
-                    SETRANGE("Posting Date", 0D, PreviousEndDate);
-                    // FR0003.begin
-                    // FilterValues :=
-                    // FORMAT("Entry Type"::"Initial Entry") + '|' +
-                    // FORMAT("Entry Type"::"Unrealized Loss") + '|' +
-                    // FORMAT("Entry Type"::"Unrealized Gain") + '|' +
-                    // FORMAT("Entry Type"::"Realized Loss") + '|' +
-                    // FORMAT("Entry Type"::"Realized Gain") + '|' +
-                    // FORMAT("Entry Type"::"Payment Discount") + '|' +
-                    // FORMAT("Entry Type"::"Payment Discount (VAT Excl.)") + '|' +
-                    // FORMAT("Entry Type"::"Payment Discount (VAT Adjustment)") + '|' +
-                    // FORMAT("Entry Type"::"Payment Tolerance") + '|' +
-                    // FORMAT("Entry Type"::"Payment Discount Tolerance") + '|' +
-                    // FORMAT("Entry Type"::"Payment Tolerance (VAT Excl.)") + '|' +
-                    // FORMAT("Entry Type"::"Payment Tolerance (VAT Adjustment)") + '|' +
-                    // FORMAT("Entry Type"::"Payment Discount Tolerance (VAT Excl.)") + '|' +
-                    // FORMAT("Entry Type"::"Payment Discount Tolerance (VAT Adjustment)");
-                    // SETFILTER("Entry Type",FilterValues);
-                    SETFILTER("Entry Type", '<>%1', "Entry Type"::Application);
-                    // FR0003.end
-                    IF FIND('-') THEN
-                        REPEAT
-                            PreviousDebitAmountLCY += "Debit Amount (LCY)";
-                            PreviousCreditAmountLCY += "Credit Amount (LCY)";
-                        UNTIL NEXT = 0;
-                    SETRANGE("Posting Date", StartDate, EndDate);
-                    IF FIND('-') THEN
-                        REPEAT
-                            PeriodDebitAmountLCY += "Debit Amount (LCY)";
-                            PeriodCreditAmountLCY += "Credit Amount (LCY)";
-                        UNTIL NEXT = 0;
-                END;
+                //WITH CustLedgEntry DO BEGIN //FS
+                CustLedgEntry.SETCURRENTKEY("Customer No.", "Posting Date", "Entry Type", "Initial Entry Global Dim. 1", "Initial Entry Global Dim. 2",
+                  "Currency Code");
+                CustLedgEntry.SETRANGE("Customer No.", "No.");
+                // FR0004.begin
+                // IF "Global Dimension 1 Filter" <> '' THEN
+                // SETRANGE("Initial Entry Global Dim. 1","Global Dimension 1 Filter");
+                // IF "Global Dimension 2 Filter" <> '' THEN
+                // SETRANGE("Initial Entry Global Dim. 2","Global Dimension 2 Filter");
+                // IF "Currency Filter" <> '' THEN
+                // SETRANGE("Currency Code","Currency Filter");
+                IF Customer.GETFILTER("Global Dimension 1 Filter") <> '' THEN
+                    CustLedgEntry.SETRANGE("Initial Entry Global Dim. 1", Customer.GETFILTER("Global Dimension 1 Filter"));
+                IF Customer.GETFILTER("Global Dimension 2 Filter") <> '' THEN
+                    CustLedgEntry.SETRANGE("Initial Entry Global Dim. 2", Customer.GETFILTER("Global Dimension 2 Filter"));
+                IF Customer.GETFILTER("Currency Filter") <> '' THEN
+                    CustLedgEntry.SETRANGE("Currency Code", Customer.GETFILTER("Currency Filter"));
+                // FR0004.end
+                CustLedgEntry.SETRANGE("Posting Date", 0D, PreviousEndDate);
+                // FR0003.begin
+                // FilterValues :=
+                // FORMAT("Entry Type"::"Initial Entry") + '|' +
+                // FORMAT("Entry Type"::"Unrealized Loss") + '|' +
+                // FORMAT("Entry Type"::"Unrealized Gain") + '|' +
+                // FORMAT("Entry Type"::"Realized Loss") + '|' +
+                // FORMAT("Entry Type"::"Realized Gain") + '|' +
+                // FORMAT("Entry Type"::"Payment Discount") + '|' +
+                // FORMAT("Entry Type"::"Payment Discount (VAT Excl.)") + '|' +
+                // FORMAT("Entry Type"::"Payment Discount (VAT Adjustment)") + '|' +
+                // FORMAT("Entry Type"::"Payment Tolerance") + '|' +
+                // FORMAT("Entry Type"::"Payment Discount Tolerance") + '|' +
+                // FORMAT("Entry Type"::"Payment Tolerance (VAT Excl.)") + '|' +
+                // FORMAT("Entry Type"::"Payment Tolerance (VAT Adjustment)") + '|' +
+                // FORMAT("Entry Type"::"Payment Discount Tolerance (VAT Excl.)") + '|' +
+                // FORMAT("Entry Type"::"Payment Discount Tolerance (VAT Adjustment)");
+                // SETFILTER("Entry Type",FilterValues);
+                CustLedgEntry.SETFILTER("Entry Type", '<>%1', CustLedgEntry."Entry Type"::Application);
+                // FR0003.end
+                IF FIND('-') THEN
+                    REPEAT
+                        PreviousDebitAmountLCY += "Debit Amount (LCY)";
+                        PreviousCreditAmountLCY += "Credit Amount (LCY)";
+                    UNTIL NEXT = 0;
+                CustLedgEntry.SETRANGE("Posting Date", StartDate, EndDate);
+                IF FIND('-') THEN
+                    REPEAT
+                        PeriodDebitAmountLCY += "Debit Amount (LCY)";
+                        PeriodCreditAmountLCY += "Credit Amount (LCY)";
+                    UNTIL NEXT = 0;
+                //END;
                 // FR0005.begin
                 // IF NOT ImprNonMvt AND (PeriodDebitAmountLCY = 0) AND (PeriodCreditAmountLCY = 0) THEN
 
@@ -201,7 +198,7 @@ report 50082 "WDC-ST Customer Trial Balance"
                     EndDate := 0D
                 ELSE
                     EndDate := GETRANGEMAX("Date Filter");
-                CurrReport.CREATETOTALS(PreviousDebitAmountLCY, PreviousCreditAmountLCY, PeriodDebitAmountLCY, PeriodCreditAmountLCY);
+                //CurrReport.CREATETOTALS(PreviousDebitAmountLCY, PreviousCreditAmountLCY, PeriodDebitAmountLCY, PeriodCreditAmountLCY); //FS
             end;
         }
     }
@@ -248,7 +245,7 @@ report 50082 "WDC-ST Customer Trial Balance"
         Text004: Label 'Fiscal Year Start Date : %1';
         Text005: Label 'Page %1';
         CustLedgEntry: Record 379;
-        FiltreDateCalc: Codeunit 50085;
+        FiltreDateCalc: Codeunit 50005;
         StartDate: Date;
         EndDate: Date;
         PreviousStartDate: Date;

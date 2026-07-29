@@ -5,8 +5,6 @@ using Microsoft.Manufacturing.Document;
  //WDC01     WDC.HG     03/12/2024       create current object
  //WDC02     WDC.HG    18/12/2025        Show field "External Sales Order No."
  *********************************************************************/
-
-
 pageextension 50051 "WDC Released Prod. Order Lines" extends "Released Prod. Order Lines"
 {
     layout

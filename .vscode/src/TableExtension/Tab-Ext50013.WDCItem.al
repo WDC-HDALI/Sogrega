@@ -5,6 +5,7 @@ tableextension 50013 "WDC Item" extends Item
     //WDC01  HD  07/10/2024  Create the current object
     //WDC02  HG  13/12/2024  add fields 
     //WDC03  WDC.IM  27/12/2024 Add Field "Reference No."
+    //WDC04  WDC.HG  18/03/2026 Add field Tolerance Poid Difference 
 
     fields
     {
@@ -55,5 +56,18 @@ tableextension 50013 "WDC Item" extends Item
             CalcFormula = lookup("Item Reference"."Reference No." where("Item No." = field("No."), "Reference Type" = filter("Item Reference Type"::Customer)));
         }
         //>>WDC03
+        //<<WDC04
+        field(50005; "Positive Weight Tolerance %"; Decimal)
+        {
+            Captionml = ENU = 'Positive Weight Tolerance %', FRA = 'Tolérance positive poids %';
+            DataClassification = ToBeClassified;
+        }
+
+        field(50006; "Negative Weight Tolerance %"; Decimal)
+        {
+            Captionml = ENU = 'Negative Weight Tolerance %', FRA = 'Tolérance négative poids %';
+            DataClassification = ToBeClassified;
+        }
+        //>>WDC04
     }
 }

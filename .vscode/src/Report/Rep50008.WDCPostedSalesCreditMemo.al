@@ -4,6 +4,7 @@ report 50008 "WDC Posted Sales Credit Memo"
     //WDC01     WDC.HG            Creation of "posted sales Invoice" report 
     //WDC02     WDC.IM            Add Shipping Adress
     //WDC03     WDC.HG            Add technical description of moule to the report 
+    //WDC04     WDC.HG             26/03/2026 Display Credit Memo No.
     *********************************************************************/
     RDLCLayout = './.vscode/src/Report/RDLC/PostedSalesCrMemo.rdl';
     CaptionML = ENU = 'Posted Sales Credit Memo', FRA = 'Avoir vente enregistré';
@@ -79,9 +80,14 @@ report 50008 "WDC Posted Sales Credit Memo"
             column(Paiement; Paiement)
             {
             }
-            column(BDMRInvoiceNo; BDMRInvoiceNo)
+            // column(BDMRInvoiceNo; BDMRInvoiceNo)
+            // {
+            // }
+            //<<WDC04
+            column(BDMRInvoiceNo; "No.")
             {
             }
+            //>>WDC04
             column(Posting_Date; "Posting Date")
             {
             }
@@ -455,12 +461,6 @@ report 50008 "WDC Posted Sales Credit Memo"
             {
             }
             column(VATRegistrationNo_Lbl; GetCustomerVATRegistrationNumberLbl)
-            {
-            }
-            column(GlobalLocationNumber; GetCustomerGlobalLocationNumber)
-            {
-            }
-            column(GlobalLocationNumber_Lbl; GetCustomerGlobalLocationNumberLbl)
             {
             }
 
@@ -914,21 +914,21 @@ report 50008 "WDC Posted Sales Credit Memo"
                     //>>WDC03
 
                     Groupe := ((NumeroDescription - 1) div 23) + 1;
-
-                    VATAmountLine.Init();
-                    VATAmountLine."VAT Identifier" := "VAT Identifier";
-                    VATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
-                    VATAmountLine."Tax Group Code" := "Tax Group Code";
-                    VATAmountLine."VAT %" := "VAT %";
-                    VATAmountLine."VAT Base" := Amount;
-                    VATAmountLine."Amount Including VAT" := "Amount Including VAT";
-                    VATAmountLine."Line Amount" := "Line Amount";
-                    if "Allow Invoice Disc." then
-                        VATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
-                    VATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
-                    VATAmountLine."VAT Clause Code" := "VAT Clause Code";
-                    VATAmountLine.InsertLine();
-
+                    //<<FS
+                    // VATAmountLine.Init();
+                    // VATAmountLine."VAT Identifier" := "VAT Identifier";
+                    // VATAmountLine."VAT Calculation Type" := "VAT Calculation Type";
+                    // VATAmountLine."Tax Group Code" := "Tax Group Code";
+                    // VATAmountLine."VAT %" := "VAT %";
+                    // VATAmountLine."VAT Base" := Amount;
+                    // VATAmountLine."Amount Including VAT" := "Amount Including VAT";
+                    // VATAmountLine."Line Amount" := "Line Amount";
+                    // if "Allow Invoice Disc." then
+                    //     VATAmountLine."Inv. Disc. Base Amount" := "Line Amount";
+                    // VATAmountLine."Invoice Discount Amount" := "Inv. Discount Amount";
+                    // VATAmountLine."VAT Clause Code" := "VAT Clause Code";
+                    // VATAmountLine.InsertLine();
+                    //>>FS
                     TransHeaderAmount += PrevLineAmount;
                     PrevLineAmount := "Line Amount";
                     TotalSubTotal += "Line Amount";
@@ -954,8 +954,9 @@ report 50008 "WDC Posted Sales Credit Memo"
 
                 trigger OnPreDataItem()
                 begin
-                    VATAmountLine.DeleteAll();
-                    VATClauseLine.DeleteAll();
+                    //<<FS
+                    // VATAmountLine.DeleteAll();
+                    // VATClauseLine.DeleteAll();
                     ShipmentLine.Reset();
                     ShipmentLine.DeleteAll();
                     MoreLines := Find('+');
@@ -996,259 +997,261 @@ report 50008 "WDC Posted Sales Credit Memo"
                         SETRANGE(Number, 1, (23 - (NumeroDescription mod 23)) mod 23);
                 end;
             }
-            dataitem(VATAmountLine; "VAT Amount Line")
-            {
-                DataItemTableView = SORTING("VAT Identifier", "VAT Calculation Type", "Tax Group Code", "Use Tax", Positive);
-                UseTemporary = true;
-                column(InvoiceDiscountAmount_VATAmountLine; "Invoice Discount Amount")
-                {
-                    AutoFormatExpression = Header."Currency Code";
-                    AutoFormatType = 1;
-                }
-                column(InvoiceDiscountAmount_VATAmountLine_Lbl; FieldCaption("Invoice Discount Amount"))
-                {
-                }
-                column(InvoiceDiscountBaseAmount_VATAmountLine; "Inv. Disc. Base Amount")
-                {
-                    AutoFormatExpression = Header."Currency Code";
-                    AutoFormatType = 1;
-                }
-                column(InvoiceDiscountBaseAmount_VATAmountLine_Lbl; FieldCaption("Inv. Disc. Base Amount"))
-                {
-                }
-                column(LineAmount_VatAmountLine; "Line Amount")
-                {
-                    AutoFormatExpression = Header."Currency Code";
-                    AutoFormatType = 1;
-                }
-                column(LineAmount_VatAmountLine_Lbl; FieldCaption("Line Amount"))
-                {
-                }
-                column(VATAmount_VatAmountLine; "VAT Amount")
-                {
-                    AutoFormatExpression = Header."Currency Code";
-                    AutoFormatType = 1;
-                }
-                column(VATAmount_VatAmountLine_Lbl; FieldCaption("VAT Amount"))
-                {
-                }
-                column(VATAmountLCY_VATAmountLine; VATAmountLCY)
-                {
-                }
-                column(VATAmountLCY_VATAmountLine_Lbl; VATAmountLCYLbl)
-                {
-                }
-                column(VATBase_VatAmountLine; "VAT Base")
-                {
-                    AutoFormatExpression = Line.GetCurrencyCode();
-                    AutoFormatType = 1;
-                }
-                column(VATBase_VatAmountLine_Lbl; FieldCaption("VAT Base"))
-                {
-                }
-                column(VATBaseLCY_VATAmountLine; VATBaseLCY)
-                {
-                }
-                column(VATBaseLCY_VATAmountLine_Lbl; VATBaseLCYLbl)
-                {
-                }
-                column(VATIdentifier_VatAmountLine; "VAT Identifier")
-                {
-                }
-                column(VATIdentifier_VatAmountLine_Lbl; FieldCaption("VAT Identifier"))
-                {
-                }
-                column(VATPct_VatAmountLine; "VAT %")
-                {
-                    DecimalPlaces = 0 : 5;
-                }
-                column(VATPct_VatAmountLine_Lbl; FieldCaption("VAT %"))
-                {
-                }
-                column(NoOfVATIdentifiers; Count)
-                {
-                }
+            //<<FS
+            // dataitem(VATAmountLine; "VAT Amount Line")
+            // {
+            //     DataItemTableView = SORTING("VAT Identifier", "VAT Calculation Type", "Tax Group Code", "Use Tax", Positive);
+            //     UseTemporary = true;
+            //     column(InvoiceDiscountAmount_VATAmountLine; "Invoice Discount Amount")
+            //     {
+            //         AutoFormatExpression = Header."Currency Code";
+            //         AutoFormatType = 1;
+            //     }
+            //     column(InvoiceDiscountAmount_VATAmountLine_Lbl; FieldCaption("Invoice Discount Amount"))
+            //     {
+            //     }
+            //     column(InvoiceDiscountBaseAmount_VATAmountLine; "Inv. Disc. Base Amount")
+            //     {
+            //         AutoFormatExpression = Header."Currency Code";
+            //         AutoFormatType = 1;
+            //     }
+            //     column(InvoiceDiscountBaseAmount_VATAmountLine_Lbl; FieldCaption("Inv. Disc. Base Amount"))
+            //     {
+            //     }
+            //     column(LineAmount_VatAmountLine; "Line Amount")
+            //     {
+            //         AutoFormatExpression = Header."Currency Code";
+            //         AutoFormatType = 1;
+            //     }
+            //     column(LineAmount_VatAmountLine_Lbl; FieldCaption("Line Amount"))
+            //     {
+            //     }
+            //     column(VATAmount_VatAmountLine; "VAT Amount")
+            //     {
+            //         AutoFormatExpression = Header."Currency Code";
+            //         AutoFormatType = 1;
+            //     }
+            //     column(VATAmount_VatAmountLine_Lbl; FieldCaption("VAT Amount"))
+            //     {
+            //     }
+            //     column(VATAmountLCY_VATAmountLine; VATAmountLCY)
+            //     {
+            //     }
+            //     column(VATAmountLCY_VATAmountLine_Lbl; VATAmountLCYLbl)
+            //     {
+            //     }
+            //     column(VATBase_VatAmountLine; "VAT Base")
+            //     {
+            //         AutoFormatExpression = Line.GetCurrencyCode();
+            //         AutoFormatType = 1;
+            //     }
+            //     column(VATBase_VatAmountLine_Lbl; FieldCaption("VAT Base"))
+            //     {
+            //     }
+            //     column(VATBaseLCY_VATAmountLine; VATBaseLCY)
+            //     {
+            //     }
+            //     column(VATBaseLCY_VATAmountLine_Lbl; VATBaseLCYLbl)
+            //     {
+            //     }
+            //     column(VATIdentifier_VatAmountLine; "VAT Identifier")
+            //     {
+            //     }
+            //     column(VATIdentifier_VatAmountLine_Lbl; FieldCaption("VAT Identifier"))
+            //     {
+            //     }
+            //     column(VATPct_VatAmountLine; "VAT %")
+            //     {
+            //         DecimalPlaces = 0 : 5;
+            //     }
+            //     column(VATPct_VatAmountLine_Lbl; FieldCaption("VAT %"))
+            //     {
+            //     }
+            //     column(NoOfVATIdentifiers; Count)
+            //     {
+            //     }
 
-                trigger OnAfterGetRecord()
-                begin
-                    VATBaseLCY :=
-                      GetBaseLCY(
-                        Header."Posting Date", Header."Currency Code",
-                        Header."Currency Factor");
-                    VATAmountLCY :=
-                      GetAmountLCY(
-                        Header."Posting Date", Header."Currency Code",
-                        Header."Currency Factor");
+            //     trigger OnAfterGetRecord()
+            //     begin
+            //         VATBaseLCY :=
+            //           GetBaseLCY(
+            //             Header."Posting Date", Header."Currency Code",
+            //             Header."Currency Factor");
+            //         VATAmountLCY :=
+            //           GetAmountLCY(
+            //             Header."Posting Date", Header."Currency Code",
+            //             Header."Currency Factor");
 
-                    TotalVATBaseLCY += VATBaseLCY;
-                    TotalVATAmountLCY += VATAmountLCY;
+            //         TotalVATBaseLCY += VATBaseLCY;
+            //         TotalVATAmountLCY += VATAmountLCY;
 
-                    // if ShowVATClause("VAT Clause Code") then begin
-                    //     VATClauseLine := VATAmountLine;
-                    //     if VATClauseLine.Insert() then;
-                    // end;
-                end;
+            //         // if ShowVATClause("VAT Clause Code") then begin
+            //         //     VATClauseLine := VATAmountLine;
+            //         //     if VATClauseLine.Insert() then;
+            //         // end;
+            //     end;
 
-                trigger OnPreDataItem()
-                begin
-                    Clear(VATBaseLCY);
-                    Clear(VATAmountLCY);
+            //     trigger OnPreDataItem()
+            //     begin
+            //         Clear(VATBaseLCY);
+            //         Clear(VATAmountLCY);
 
-                    TotalVATBaseLCY := 0;
-                    TotalVATAmountLCY := 0;
-                end;
-            }
-            dataitem(VATClauseLine; "VAT Amount Line")
-            {
-                DataItemTableView = SORTING("VAT Identifier", "VAT Calculation Type", "Tax Group Code", "Use Tax", Positive);
-                UseTemporary = true;
-                column(VATClausesHeader; VATClausesText)
-                {
-                }
-                column(VATIdentifier_VATClauseLine; "VAT Identifier")
-                {
-                }
-                column(Code_VATClauseLine; VATClause.Code)
-                {
-                }
-                column(Code_VATClauseLine_Lbl; VATClause.FieldCaption(Code))
-                {
-                }
-                column(Description_VATClauseLine; VATClause.Description)
-                {
-                }
-                column(Description2_VATClauseLine; VATClause."Description 2")
-                {
-                }
-                column(VATAmount_VATClauseLine; "VAT Amount")
-                {
-                    AutoFormatExpression = Header."Currency Code";
-                    AutoFormatType = 1;
-                }
-                column(NoOfVATClauses; Count)
-                {
-                }
-
-
-                trigger OnAfterGetRecord()
-                begin
-                    if "VAT Clause Code" = '' then
-                        CurrReport.Skip();
-                    if not VATClause.Get("VAT Clause Code") then
-                        CurrReport.Skip();
-                    // VATClause.GetDescription(Header);
-                end;
-
-                trigger OnPreDataItem()
-                begin
-                    if Count = 0 then
-                        VATClausesText := ''
-                    else
-                        VATClausesText := VATClausesLbl;
-                end;
-            }
-
-            trigger OnAfterGetRecord()
-            var
-
-                CurrencyExchangeRate: Record "Currency Exchange Rate";
-                lItem: Record Item;
-            begin
-                if BankAccount.get(Header."Company Bank Account Code") then;
-
-                CalcFields("Work Description");
-                ShowWorkDescription := "Work Description".HasValue;
-                Clear(PaymentInstructionsTxt);
-                CLEAR(TotalRemise);
-                GsalesLine.SetRange("Document No.", "No.");
-                if GsalesLine.FindSet then Begin
-                    NbInvoiceLine := GsalesLine.Count;
-                    TotPage := round(NbInvoiceLine / 23, 1, '>');
-                    repeat
-                        TotalRemise += GsalesLine."Line Discount Amount";
-                        If (GsalesLine.Type = GsalesLine.Type::Item) and (GsalesLine."Gen. Prod. Posting Group" = 'PF') then
-                            if lItem.Get(GsalesLine."No.") Then
-                                If ItemCateg.get(lItem."Item Category Code") Then;
-                    until GsalesLine.Next = 0;
-                End;
-                ChecksPayableText := StrSubstNo(ChecksPayableLbl, CompanyInfo.Name);
-                // FormatAddressFields(Header);
-                //FormatDocumentFields(Header);
-                if SellToContact.Get("Sell-to Contact No.") then;
-                if BillToContact.Get("Bill-to Contact No.") then;
-
-                if not Cust.Get("Bill-to Customer No.") then
-                    Clear(Cust);
+            //         TotalVATBaseLCY := 0;
+            //         TotalVATAmountLCY := 0;
+            //     end;
+            // }
+            // dataitem(VATClauseLine; "VAT Amount Line")
+            // {
+            //     DataItemTableView = SORTING("VAT Identifier", "VAT Calculation Type", "Tax Group Code", "Use Tax", Positive);
+            //     UseTemporary = true;
+            //     column(VATClausesHeader; VATClausesText)
+            //     {
+            //     }
+            //     column(VATIdentifier_VATClauseLine; "VAT Identifier")
+            //     {
+            //     }
+            //     column(Code_VATClauseLine; VATClause.Code)
+            //     {
+            //     }
+            //     column(Code_VATClauseLine_Lbl; VATClause.FieldCaption(Code))
+            //     {
+            //     }
+            //     column(Description_VATClauseLine; VATClause.Description)
+            //     {
+            //     }
+            //     column(Description2_VATClauseLine; VATClause."Description 2")
+            //     {
+            //     }
+            //     column(VATAmount_VATClauseLine; "VAT Amount")
+            //     {
+            //         AutoFormatExpression = Header."Currency Code";
+            //         AutoFormatType = 1;
+            //     }
+            //     column(NoOfVATClauses; Count)
+            //     {
+            //     }
 
 
-                if "Currency Code" <> '' then begin
-                    CurrencyExchangeRate.FindCurrency("Posting Date", "Currency Code", 1);
-                    CalculatedExchRate :=
-                      Round(1 / "Currency Factor" * CurrencyExchangeRate."Exchange Rate Amount", 0.000001);
-                    ExchangeRateText := StrSubstNo(ExchangeRateTxt, CalculatedExchRate, CurrencyExchangeRate."Exchange Rate Amount");
-                end;
+            //     trigger OnAfterGetRecord()
+            //     begin
+            //         if "VAT Clause Code" = '' then
+            //             CurrReport.Skip();
+            //         if not VATClause.Get("VAT Clause Code") then
+            //             CurrReport.Skip();
+            //         // VATClause.GetDescription(Header);
+            //     end;
 
-                GetLineFeeNoteOnReportHist("No.");
-                country.Get("VAT Country/Region Code");
-                if country1.Get("Ship-to Country/Region Code") then;//WDC03
+            //     trigger OnPreDataItem()
+            //     begin
+            //         if Count = 0 then
+            //             VATClausesText := ''
+            //         else
+            //             VATClausesText := VATClausesLbl;
+            //     end;
+            // }
+
+            // trigger OnAfterGetRecord()
+            // var
+
+            //     CurrencyExchangeRate: Record "Currency Exchange Rate";
+            //     lItem: Record Item;
+            // begin
+            //     if BankAccount.get(Header."Company Bank Account Code") then;
+
+            //     CalcFields("Work Description");
+            //     ShowWorkDescription := "Work Description".HasValue;
+            //     Clear(PaymentInstructionsTxt);
+            //     CLEAR(TotalRemise);
+            //     GsalesLine.SetRange("Document No.", "No.");
+            //     if GsalesLine.FindSet then Begin
+            //         NbInvoiceLine := GsalesLine.Count;
+            //         TotPage := round(NbInvoiceLine / 23, 1, '>');
+            //         repeat
+            //             TotalRemise += GsalesLine."Line Discount Amount";
+            //             If (GsalesLine.Type = GsalesLine.Type::Item) and (GsalesLine."Gen. Prod. Posting Group" = 'PF') then
+            //                 if lItem.Get(GsalesLine."No.") Then
+            //                     If ItemCateg.get(lItem."Item Category Code") Then;
+            //         until GsalesLine.Next = 0;
+            //     End;
+            //     ChecksPayableText := StrSubstNo(ChecksPayableLbl, CompanyInfo.Name);
+            //     // FormatAddressFields(Header);
+            //     //FormatDocumentFields(Header);
+            //     if SellToContact.Get("Sell-to Contact No.") then;
+            //     if BillToContact.Get("Bill-to Contact No.") then;
+
+            //     if not Cust.Get("Bill-to Customer No.") then
+            //         Clear(Cust);
 
 
-                CalcFields("Amount Including VAT");
-                //RemainingAmount := GetRemainingAmount;
-                if RemainingAmount = 0 then
-                    RemainingAmountTxt := AlreadyPaidLbl
-                else
-                    if RemainingAmount <> "Amount Including VAT" then
-                        RemainingAmountTxt := StrSubstNo(PartiallyPaidLbl, Format(RemainingAmount, 0, '<Precision,2><Standard Format,0>'))
-                    else
-                        RemainingAmountTxt := '';
+            //     if "Currency Code" <> '' then begin
+            //         CurrencyExchangeRate.FindCurrency("Posting Date", "Currency Code", 1);
+            //         CalculatedExchRate :=
+            //           Round(1 / "Currency Factor" * CurrencyExchangeRate."Exchange Rate Amount", 0.000001);
+            //         ExchangeRateText := StrSubstNo(ExchangeRateTxt, CalculatedExchRate, CurrencyExchangeRate."Exchange Rate Amount");
+            //     end;
 
-                TotalSubTotal := 0;
-                TotalInvDiscAmount := 0;
-                TotalAmount := 0;
-                TotalAmountVAT := 0;
-                TotalAmountInclVAT := 0;
-                TotalPaymentDiscOnVAT := 0;
-                MonthTxt := Format(DATE2DMY("Posting Date", 2));
-                IF StrLen(MonthTxt) <> 2 then
-                    MonthTxt := '0' + MonthTxt;
-                BDMRInvoiceNo := "No.";
+            //     GetLineFeeNoteOnReportHist("No.");
+            //     country.Get("VAT Country/Region Code");
+            //     if country1.Get("Ship-to Country/Region Code") then;//WDC03
 
-                IF NOT CustSell.Get("Sell-to Customer No.") then
-                    CustSell.Reset();
 
-                Clear(Paiement);
-                if "Payment Method Code" = 'PRLVT' then
-                    Paiement := 'Prélèvement le ' + Format("Due Date")
-                else
-                    Paiement := "Payment Method Code" + ' ' + PaymentTerms.Description;
-                //<<WDC 
-                salesinvoiceline.Reset();
-                salesinvoiceline.SetRange(salesinvoiceline."Document No.", "No.");
-                salesinvoiceline.SetRange(salesinvoiceline.Type, salesinvoiceline.Type::Item);
-                if salesinvoiceline.FindFirst() then begin
-                    PostedWhsShipmentLine.reset();
-                    PostedWhsShipmentLine.SetRange(PostedWhsShipmentLine."Posted Source Document", PostedWhsShipmentLine."Posted Source Document"::"Posted Shipment");
-                    PostedWhsShipmentLine.SetRange(PostedWhsShipmentLine."Posted Source No.", salesinvoiceline."Shipment No.");
-                    if PostedWhsShipmentLine.FindFirst() then
-                        PostedWhsShipmentheader.get(PostedWhsShipmentLine."No.");
-                    repeat
-                        PieceNumber += salesinvoiceline.Quantity;
-                    until salesinvoiceline.Next() = 0;
-                end;
-                //>>WDC
-                TextAdr := '';
-                if "Shortcut Dimension 1 Code" = 'MJ' then
-                    TextAdr := 'Zone Industrielle Menzel jemil , Menzel Jemil , Bizerte';
-                if "Shortcut Dimension 1 Code" = 'BA' then
-                    TextAdr := 'Zone Industrielle Bouargoub , Bouargoub , Nabeul';
-                //>>WDC
-            end;
+            //     CalcFields("Amount Including VAT");
+            //     //RemainingAmount := GetRemainingAmount;
+            //     if RemainingAmount = 0 then
+            //         RemainingAmountTxt := AlreadyPaidLbl
+            //     else
+            //         if RemainingAmount <> "Amount Including VAT" then
+            //             RemainingAmountTxt := StrSubstNo(PartiallyPaidLbl, Format(RemainingAmount, 0, '<Precision,2><Standard Format,0>'))
+            //         else
+            //             RemainingAmountTxt := '';
 
-            trigger OnPreDataItem()
-            begin
-                FirstLineHasBeenOutput := false;
-            end;
+            //     TotalSubTotal := 0;
+            //     TotalInvDiscAmount := 0;
+            //     TotalAmount := 0;
+            //     TotalAmountVAT := 0;
+            //     TotalAmountInclVAT := 0;
+            //     TotalPaymentDiscOnVAT := 0;
+            //     MonthTxt := Format(DATE2DMY("Posting Date", 2));
+            //     IF StrLen(MonthTxt) <> 2 then
+            //         MonthTxt := '0' + MonthTxt;
+            //     BDMRInvoiceNo := "No.";
+
+            //     IF NOT CustSell.Get("Sell-to Customer No.") then
+            //         CustSell.Reset();
+
+            //     Clear(Paiement);
+            //     if "Payment Method Code" = 'PRLVT' then
+            //         Paiement := 'Prélèvement le ' + Format("Due Date")
+            //     else
+            //         Paiement := "Payment Method Code" + ' ' + PaymentTerms.Description;
+            //     //<<WDC 
+            //     salesinvoiceline.Reset();
+            //     salesinvoiceline.SetRange(salesinvoiceline."Document No.", "No.");
+            //     salesinvoiceline.SetRange(salesinvoiceline.Type, salesinvoiceline.Type::Item);
+            //     if salesinvoiceline.FindFirst() then begin
+            //         PostedWhsShipmentLine.reset();
+            //         PostedWhsShipmentLine.SetRange(PostedWhsShipmentLine."Posted Source Document", PostedWhsShipmentLine."Posted Source Document"::"Posted Shipment");
+            //         PostedWhsShipmentLine.SetRange(PostedWhsShipmentLine."Posted Source No.", salesinvoiceline."Shipment No.");
+            //         if PostedWhsShipmentLine.FindFirst() then
+            //             PostedWhsShipmentheader.get(PostedWhsShipmentLine."No.");
+            //         repeat
+            //             PieceNumber += salesinvoiceline.Quantity;
+            //         until salesinvoiceline.Next() = 0;
+            //     end;
+            //     //>>WDC
+            //     TextAdr := '';
+            //     if "Shortcut Dimension 1 Code" = 'MJ' then
+            //         TextAdr := 'Zone Industrielle Menzel jemil , Menzel Jemil , Bizerte';
+            //     if "Shortcut Dimension 1 Code" = 'BA' then
+            //         TextAdr := 'Zone Industrielle Bouargoub , Bouargoub , Nabeul';
+            //     //>>WDC
+            // end;
+
+            // trigger OnPreDataItem()
+            // begin
+            //     FirstLineHasBeenOutput := false;
+            // end;
+            //>>FS
         }
     }
     requestpage

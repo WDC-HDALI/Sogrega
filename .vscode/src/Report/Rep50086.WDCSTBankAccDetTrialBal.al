@@ -409,7 +409,7 @@ report 50086 "WDC-ST BankAcc. Det Trial Bal"
         Text008: Label 'Total';
         OriginalLedgerEntry: Record "Bank Account Ledger Entry";
         // FiltreDateCalc: Codeunit "DateFilter-Calc";
-        FiltreDateCalc: Codeunit "WDC-ST DateFilter-Calc";
+        FiltreDateCalc: Codeunit "WDC DateFilter-Calc";
         StartDate: Date;
         EndDate: Date;
         PreviousStartDate: Date;

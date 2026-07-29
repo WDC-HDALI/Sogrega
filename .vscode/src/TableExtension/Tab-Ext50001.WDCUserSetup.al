@@ -3,6 +3,7 @@ tableextension 50001 "WDC User Setup" extends "User Setup"
     //*************Documentation***************************
     //WDC01  CHG  22/08/2024  Create this current object
     //WDC02  HG   11/12/2024  Add field "Check Accounting"
+    //WDC03  HG   12/05/2026  Add field "Allow Weight Import"
 
     fields
     {
@@ -40,6 +41,13 @@ tableextension 50001 "WDC User Setup" extends "User Setup"
             CaptionML = ENU = 'Check Accounting', FRA = 'Vérif Compta';
             DataClassification = ToBeClassified;
         }
+        //<<WDC03
+        field(50006; "Allow Weight Import"; Boolean)
+        {
+            CaptionML = ENU = 'Allow Weight Import', FRA = 'Autoriser import poid';
+            DataClassification = ToBeClassified;
+        }
+        //>>WDC03
         // field(50006; "Update BOM"; Boolean)
         // {
         //     CaptionML = ENU = 'Update BOM', FRA = 'MAJ Nomenclature';

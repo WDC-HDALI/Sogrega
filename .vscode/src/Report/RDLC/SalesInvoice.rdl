@@ -1090,10 +1090,10 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                                         <Width>0.07938cm</Width>
                                       </TablixColumn>
                                       <TablixColumn>
-                                        <Width>3.11596cm</Width>
+                                        <Width>3.03659cm</Width>
                                       </TablixColumn>
                                       <TablixColumn>
-                                        <Width>7.89878cm</Width>
+                                        <Width>7.53357cm</Width>
                                       </TablixColumn>
                                       <TablixColumn>
                                         <Width>1.54925cm</Width>
@@ -1102,7 +1102,7 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                                         <Width>1.91919cm</Width>
                                       </TablixColumn>
                                       <TablixColumn>
-                                        <Width>2.17976cm</Width>
+                                        <Width>2.6585cm</Width>
                                       </TablixColumn>
                                       <TablixColumn>
                                         <Width>3cm</Width>
@@ -1574,10 +1574,9 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                                                   <Paragraph>
                                                     <TextRuns>
                                                       <TextRun>
-                                                        <Value>=SUM(Fields!LineQuantity.Value)</Value>
+                                                        <Value>=IIF(SUM(Fields!LineQuantity.Value)=0,"",SUM(Fields!LineQuantity.Value))</Value>
                                                         <Style>
                                                           <FontSize>9pt</FontSize>
-                                                          <Format>#,0;-#,0;''</Format>
                                                         </Style>
                                                       </TextRun>
                                                     </TextRuns>
@@ -1614,14 +1613,14 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                                                         <Value>=Fields!UnitPrice.Value</Value>
                                                         <Style>
                                                           <FontSize>9pt</FontSize>
-                                                          <Format>#,0.00 '€';-#,0.00 '€';''</Format>
+                                                          <Format>#,0.000 '€';-#,0.000 '€';''</Format>
                                                         </Style>
                                                       </TextRun>
                                                       <TextRun>
                                                         <Value xml:space="preserve">        </Value>
                                                         <Style>
                                                           <FontSize>9pt</FontSize>
-                                                          <Format>#,0.00 '€';-#,0.00 '€';''</Format>
+                                                          <Format>#,0.000 '€';-#,0.000 '€';''</Format>
                                                         </Style>
                                                       </TextRun>
                                                     </TextRuns>
@@ -1659,7 +1658,7 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                                                         <Value>=SUM(Fields!LineAmount.Value)</Value>
                                                         <Style>
                                                           <FontSize>9pt</FontSize>
-                                                          <Format>#,0.00 '€';-#,0.00 '€';''</Format>
+                                                          <Format>#,0.000 '€';-#,0.000 '€';''</Format>
                                                         </Style>
                                                       </TextRun>
                                                     </TextRuns>
@@ -1742,7 +1741,7 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                                   </TablixRowHierarchy>
                                   <DataSetName>DataSet_Result</DataSetName>
                                   <Height>1.15cm</Height>
-                                  <Width>19.74232cm</Width>
+                                  <Width>19.77648cm</Width>
                                   <ZIndex>2</ZIndex>
                                   <Style>
                                     <Border>
@@ -3405,6 +3404,9 @@ End Function
         </Field>
         <Field Name="PieceNumber">
           <DataField>PieceNumber</DataField>
+        </Field>
+        <Field Name="PieceNumberFormat">
+          <DataField>PieceNumberFormat</DataField>
         </Field>
         <Field Name="Quantitétotal">
           <DataField>Quantitétotal</DataField>

@@ -5,14 +5,16 @@ codeunit 50002 "WDC Whse Subscribers"
 //WDC01  HD  26/08/2024 copy Matricule in sales document during the whse shp post 
 //WDC02  CHG  13/09/2024  test fields lors de lancement d'expédition 
 //WDC03  HG   29/08/2025 ADD "Customer No." field 
+//WDC05  HG   27/04/2026  Import Onedrive weight
 
 {
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Post Shipment", OnBeforeSalesLineModify, '', false, false)]
-    local procedure OnBeforeSalesLineModify(var SalesLine: Record "Sales Line"; var WarehouseShipmentLine: Record "Warehouse Shipment Line"; var ModifyLine: Boolean; Invoice: Boolean; WarehouseShipmentHeader: Record "Warehouse Shipment Header")
-    var
+    //<<FS
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales Whse. Post Shipment", OnBeforeSalesLineModify, '', false, false)]
+    local procedure OnBeforeSalesLineModify(var SalesLine: Record "Sales Line"; var WarehouseShipmentLine: Record "Warehouse Shipment Line"; var ModifyLine: Boolean; WhsePostParameters: Record "Whse. Post Parameters"; WarehouseShipmentHeader: Record "Warehouse Shipment Header")
     begin
         SalesLine.Matricule := WarehouseShipmentLine.Matricule;
     end;
+    //>>FS
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Post Shipment", OnBeforePostedWhseShptHeaderInsert, '', false, false)]
     local procedure OnBeforePostedWhseShptHeaderInsert(var PostedWhseShipmentHeader: Record "Posted Whse. Shipment Header"; WarehouseShipmentHeader: Record "Warehouse Shipment Header")
@@ -142,9 +144,25 @@ codeunit 50002 "WDC Whse Subscribers"
         if WarehouseReceiptLine."Source Document" = WarehouseReceiptLine."Source Document"::"Purchase Order" then
             WarehouseReceiptLine.validate("Qty. to Receive", 0);
     end;
-
     //<<WDC04
-
-
-
+    //<<WDC05
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post Batch", OnBeforeUpdateDeleteLines, '', false, false)]
+    local procedure OnBeforeUpdateDeleteLines(var ItemJournalLine: Record "Item Journal Line"; ItemRegNo: Integer)
+    var
+        WeightMgt: Codeunit "WDC Weight Management";
+        text001: TextConst ENU = 'The weight import file linked to the OF %1 has been successfully moved to the archive folder.', FRA = 'Le fichier d''import de poids lié à l''OF %1 a été correctement déplacé vers le dossier archieve.';
+        lItemJournalLine: record "Item Journal Line";
+    begin
+        lItemJournalLine.reset();
+        lItemJournalLine.SetCurrentKey("Journal Template Name", "Journal Batch Name", "Line No.");
+        lItemJournalLine.SetRange("Journal Template Name", ItemJournalLine."Journal Template Name");
+        lItemJournalLine.SetRange("Journal Batch Name", ItemJournalLine."Journal Batch Name");
+        if lItemJournalLine.FindLast() then begin
+            if lItemJournalLine."Entry Type" = lItemJournalLine."Entry Type"::Output then
+                if (lItemJournalLine."Net Weight" <> 0) and (lItemJournalLine."Weight Imported From Scale" = true) THEN BEGIN
+                    WeightMgt.MoveFileToArchive(lItemJournalLine."Order No.");
+                END;
+        end
+    end;
+    //>>WDC05
 }

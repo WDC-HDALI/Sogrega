@@ -191,7 +191,10 @@ report 50007 "WDC Sales Invoice"
                     AutoFormatType = 1;
                 }
                 column(Net_Weight; "Net Weight") { }
-                column(LineQuantity; "Quantity") { }
+                column(LineQuantity; "Quantity")
+                {
+                    DecimalPlaces = 0 : 5;
+                }
                 column(BCCStyle; gras) { }
 
 
@@ -488,7 +491,7 @@ report 50007 "WDC Sales Invoice"
         NbInvoiceLine: Integer;
         TotPage: Integer;
         DescriptionTextlength: Integer;
-        PieceNumber: Integer;
+        PieceNumber: decimal;
         Quantitétotal: Integer;
         SalesLineTemp: Record "Sales Line" temporary;
 

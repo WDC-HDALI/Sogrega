@@ -88,6 +88,18 @@ report 50087 "Journal BR"
                 column(CreditAmount; "Credit Amount")
                 {
                 }
+                column(Amount; Amount)
+                {
+
+                }
+                column(CreditCurrencyAmount; CreditCurrencyAmount)
+                {
+
+                }
+                column(DebitCurrencyAmount; DebitCurrencyAmount)
+                {
+
+                }
                 column(filtertext; filtertext + '  ')
                 {
                 }
@@ -97,6 +109,9 @@ report 50087 "Journal BR"
                     lCustomer: Record Customer;
                     lBankAccount: Record "Bank Account";
                 begin
+                    CreditCurrencyAmount := 0;
+                    DebitCurrencyAmount := 0;
+
                     JournalCode := '';
                     SourceName := '';
                     if "Source Type" = "Source Type"::"Fixed Asset" then
@@ -129,6 +144,10 @@ report 50087 "Journal BR"
                                     JournalCode := 'OD';
                             end;
 
+                    if "Credit Amount" <> 0 then
+                        CreditCurrencyAmount := "Source Currency Amount" * -1
+                    else
+                        DebitCurrencyAmount := "Source Currency Amount";
                 end;
 
                 trigger OnPreDataItem()
@@ -190,6 +209,8 @@ report 50087 "Journal BR"
     end;
 
     var
+        DebitCurrencyAmount: Decimal;
+        CreditCurrencyAmount: Decimal;
         SourceName: Text[100];
         CompanyInfo: Record "Company Information";
         JournalCode: Text;

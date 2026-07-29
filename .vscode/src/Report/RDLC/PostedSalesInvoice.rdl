@@ -1574,10 +1574,9 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                                                   <Paragraph>
                                                     <TextRuns>
                                                       <TextRun>
-                                                        <Value>=SUM(Fields!LineQuantity.Value)</Value>
+                                                        <Value>=IIF(SUM(Fields!LineQuantity.Value)=0,"",SUM(Fields!LineQuantity.Value))</Value>
                                                         <Style>
                                                           <FontSize>9pt</FontSize>
-                                                          <Format>#,0;-#,0;''</Format>
                                                         </Style>
                                                       </TextRun>
                                                     </TextRuns>
@@ -3346,6 +3345,9 @@ End Function
         </Field>
         <Field Name="PieceNumber">
           <DataField>PieceNumber</DataField>
+        </Field>
+        <Field Name="PieceNumberFormat">
+          <DataField>PieceNumberFormat</DataField>
         </Field>
         <Field Name="Quantitétotal">
           <DataField>Quantitétotal</DataField>

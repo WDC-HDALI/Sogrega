@@ -3332,12 +3332,6 @@ End Function
         <Field Name="VATRegistrationNo_Lbl">
           <DataField>VATRegistrationNo_Lbl</DataField>
         </Field>
-        <Field Name="GlobalLocationNumber">
-          <DataField>GlobalLocationNumber</DataField>
-        </Field>
-        <Field Name="GlobalLocationNumber_Lbl">
-          <DataField>GlobalLocationNumber_Lbl</DataField>
-        </Field>
         <Field Name="SellToFaxNo">
           <DataField>SellToFaxNo</DataField>
         </Field>
@@ -3718,114 +3712,6 @@ End Function
         </Field>
         <Field Name="NumeroAjouter">
           <DataField>NumeroAjouter</DataField>
-        </Field>
-        <Field Name="InvoiceDiscountAmount_VATAmountLine">
-          <DataField>InvoiceDiscountAmount_VATAmountLine</DataField>
-        </Field>
-        <Field Name="InvoiceDiscountAmount_VATAmountLineFormat">
-          <DataField>InvoiceDiscountAmount_VATAmountLineFormat</DataField>
-        </Field>
-        <Field Name="InvoiceDiscountAmount_VATAmountLine_Lbl">
-          <DataField>InvoiceDiscountAmount_VATAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="InvoiceDiscountBaseAmount_VATAmountLine">
-          <DataField>InvoiceDiscountBaseAmount_VATAmountLine</DataField>
-        </Field>
-        <Field Name="InvoiceDiscountBaseAmount_VATAmountLineFormat">
-          <DataField>InvoiceDiscountBaseAmount_VATAmountLineFormat</DataField>
-        </Field>
-        <Field Name="InvoiceDiscountBaseAmount_VATAmountLine_Lbl">
-          <DataField>InvoiceDiscountBaseAmount_VATAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="LineAmount_VatAmountLine">
-          <DataField>LineAmount_VatAmountLine</DataField>
-        </Field>
-        <Field Name="LineAmount_VatAmountLineFormat">
-          <DataField>LineAmount_VatAmountLineFormat</DataField>
-        </Field>
-        <Field Name="LineAmount_VatAmountLine_Lbl">
-          <DataField>LineAmount_VatAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="VATAmount_VatAmountLine">
-          <DataField>VATAmount_VatAmountLine</DataField>
-        </Field>
-        <Field Name="VATAmount_VatAmountLineFormat">
-          <DataField>VATAmount_VatAmountLineFormat</DataField>
-        </Field>
-        <Field Name="VATAmount_VatAmountLine_Lbl">
-          <DataField>VATAmount_VatAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="VATAmountLCY_VATAmountLine">
-          <DataField>VATAmountLCY_VATAmountLine</DataField>
-        </Field>
-        <Field Name="VATAmountLCY_VATAmountLineFormat">
-          <DataField>VATAmountLCY_VATAmountLineFormat</DataField>
-        </Field>
-        <Field Name="VATAmountLCY_VATAmountLine_Lbl">
-          <DataField>VATAmountLCY_VATAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="VATBase_VatAmountLine">
-          <DataField>VATBase_VatAmountLine</DataField>
-        </Field>
-        <Field Name="VATBase_VatAmountLineFormat">
-          <DataField>VATBase_VatAmountLineFormat</DataField>
-        </Field>
-        <Field Name="VATBase_VatAmountLine_Lbl">
-          <DataField>VATBase_VatAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="VATBaseLCY_VATAmountLine">
-          <DataField>VATBaseLCY_VATAmountLine</DataField>
-        </Field>
-        <Field Name="VATBaseLCY_VATAmountLineFormat">
-          <DataField>VATBaseLCY_VATAmountLineFormat</DataField>
-        </Field>
-        <Field Name="VATBaseLCY_VATAmountLine_Lbl">
-          <DataField>VATBaseLCY_VATAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="VATIdentifier_VatAmountLine">
-          <DataField>VATIdentifier_VatAmountLine</DataField>
-        </Field>
-        <Field Name="VATIdentifier_VatAmountLine_Lbl">
-          <DataField>VATIdentifier_VatAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="VATPct_VatAmountLine">
-          <DataField>VATPct_VatAmountLine</DataField>
-        </Field>
-        <Field Name="VATPct_VatAmountLineFormat">
-          <DataField>VATPct_VatAmountLineFormat</DataField>
-        </Field>
-        <Field Name="VATPct_VatAmountLine_Lbl">
-          <DataField>VATPct_VatAmountLine_Lbl</DataField>
-        </Field>
-        <Field Name="NoOfVATIdentifiers">
-          <DataField>NoOfVATIdentifiers</DataField>
-        </Field>
-        <Field Name="VATClausesHeader">
-          <DataField>VATClausesHeader</DataField>
-        </Field>
-        <Field Name="VATIdentifier_VATClauseLine">
-          <DataField>VATIdentifier_VATClauseLine</DataField>
-        </Field>
-        <Field Name="Code_VATClauseLine">
-          <DataField>Code_VATClauseLine</DataField>
-        </Field>
-        <Field Name="Code_VATClauseLine_Lbl">
-          <DataField>Code_VATClauseLine_Lbl</DataField>
-        </Field>
-        <Field Name="Description_VATClauseLine">
-          <DataField>Description_VATClauseLine</DataField>
-        </Field>
-        <Field Name="Description2_VATClauseLine">
-          <DataField>Description2_VATClauseLine</DataField>
-        </Field>
-        <Field Name="VATAmount_VATClauseLine">
-          <DataField>VATAmount_VATClauseLine</DataField>
-        </Field>
-        <Field Name="VATAmount_VATClauseLineFormat">
-          <DataField>VATAmount_VATClauseLineFormat</DataField>
-        </Field>
-        <Field Name="NoOfVATClauses">
-          <DataField>NoOfVATClauses</DataField>
         </Field>
       </Fields>
       <Query>
