@@ -31,6 +31,10 @@ pageextension 54102 WDCGeneralLedgerSetup extends "General Ledger Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("Column DEC RS Editable"; Rec."Column DEC RS Editable")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

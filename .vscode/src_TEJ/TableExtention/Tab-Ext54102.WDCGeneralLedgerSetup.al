@@ -40,5 +40,11 @@ tableextension 54102 WDCGeneralLedgerSetup extends "General Ledger Setup"
             DataClassification = ToBeClassified;
             tableRelation = "G/L Account";
         }
+        field(54106; "Column DEC RS Editable"; boolean)
+        {
+            CaptionML = ENU = 'Column DEC RS Editable', FRA = 'Colonne DEC RS modifiable';
+            DataClassification = ToBeClassified;
+        }
+
     }
 }
