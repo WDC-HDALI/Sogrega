@@ -938,7 +938,6 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                                 </Border>
                               </Style>
                             </Rectangle>
-                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
                       </TablixCells>
@@ -1616,7 +1615,7 @@ Cstr(Fields!DocumentExt.Value) + Chr(177)  +
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.GetData(36,1)</Value>
+                      <Value>=First(Fields!VATRegistrationNo.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontFamily>Times New Roman</FontFamily>
                       </Style>

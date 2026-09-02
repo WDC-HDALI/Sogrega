@@ -5,7 +5,7 @@ page 54100 "WDC Withholding Tax Decl"
     PageType = List;
     SourceTable = "WDC Withholding Tax Decl";
     DeleteAllowed = false;
-    //Editable = false;
+    //Editable =IsEditable;
     InsertAllowed = false;
     UsageCategory = Tasks;
 
@@ -71,230 +71,231 @@ page 54100 "WDC Withholding Tax Decl"
                 field(Attribut; Rec.Attribute)
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Type identifient Société"; Rec."Type of Company Identifier")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Identifient société"; Rec."Company Identifier")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Categorie Contribuable"; Rec."Taxpayer Category")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Année dépot"; Rec."Deposit Year")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Payment Month"; Rec."Payment Month")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Type of Beneficiary Identifier"; Rec."Type of Beneficiary Identifier")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Taxpayer Fiscal Number/ CIN"; Rec."Taxpayer Fiscal Number/ CIN")
                 {
                     ApplicationArea = All;
-                    // Editable = false;
+                    // Editable =IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Categorie Contribuable Bénéficiaire"; Rec."Taxpayer Category Beneficiary")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field(birthdate; Rec."Birth Date")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Resident In Tunisia"; Rec."Resident In Tunisia")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Name and First Name"; Rec."Name and First Name")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field(Adresse; Rec.Address)
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 // field("Activity"; Rec."Activity")
                 // {
                 //     ApplicationArea = All;
-                //     Editable = false;
+                //     Editable =IsEditable;
                 //     StyleExpr = FieldStyle;
                 // }
                 field(EMail; Rec.EMail)
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Phone Number"; Rec."Phone Number")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Payment Date"; Rec."Payment Date")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Invoice No."; Rec."Invoice No.")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("TEJ Declaration No."; Rec."TEJ Declaration No.")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                 }
                 field("ID Type Operation"; Rec."ID Type Operation")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Billing Year"; Rec."Billing Year")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field(CNPC; Rec.CNPC)
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("P-Charge"; Rec."P-Charge")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Amount HT"; Rec."Amount HT")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Withholding Tax Rate"; Rec."Withholding Tax Rate")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("VAT Rate"; Rec."VAT Rate")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                     Visible = InclureVAT;
                 }
                 field("VAT Amount"; Rec."VAT Amount")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                     Visible = InclureVAT;
                 }
                 field("Total Amount"; Rec."Total Amount")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Montant RS"; Rec."Montant RS")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 // field("Tax additionnelle (Code)"; Rec."Tax additionnelle (Code)")
                 // {
                 //     ApplicationArea = All;
-                //     Editable = false;
+                //     Editable =IsEditable;
                 //     StyleExpr = FieldStyle;
                 //}
                 // field("Tax additionnelle (taux)"; Rec."Tax additionnelle (taux)")
                 // {
                 //     ApplicationArea = All;
-                //     Editable = false;
+                //     Editable =IsEditable;
                 //     StyleExpr = FieldStyle;
                 // }
                 field("Montant Net servi"; Rec."Montant Net servi")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Code devise"; Rec."Code devise")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Taux de change"; Rec."Taux de change")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
+                    DecimalPlaces = 0 : 5;
                 }
                 field("Montant RS devise"; Rec."Montant RS devise")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Total Currency Amount"; Rec."Total Currency Amount")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
                 field("Net Amount in Currency"; Rec."Net Amount in Currency")
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    Editable = IsEditable;
                     StyleExpr = FieldStyle;
                 }
 
@@ -392,12 +393,12 @@ page 54100 "WDC Withholding Tax Decl"
     var
         lDeclarationRS: Record "WDC Withholding Tax Decl";
     begin
+
         lDeclarationRS.DeleteAll();
         CompanyInformation.GET();
         GeneralLedgerSetup.Get();
-        if GeneralLedgerSetup."Incl VAT Withholding Tax Decl" then begin
-            InclureVAT := true;
-        end;
+        IsEditable := GeneralLedgerSetup."Column DEC RS Editable";
+        InclureVAT := GeneralLedgerSetup."Incl VAT Withholding Tax Decl"
     end;
 
     trigger OnAfterGetRecord()
@@ -435,7 +436,9 @@ page 54100 "WDC Withholding Tax Decl"
         lDetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry";
         lDeclarationRS: Record "WDC Withholding Tax Decl";
         lDeclarationRS1: Record "WDC Withholding Tax Decl";
-
+        lCurrencyFactor: Decimal;
+        lText003: TextConst FRA = 'Aucune écriture de retenue à la source n''a été trouvée entre le %1 et le %2',
+                            ENU = 'No withholding tax entry was found between %1 and %2';
     begin
         GLSetup.get;
         lDeclarationRS.DeleteAll();
@@ -557,11 +560,16 @@ page 54100 "WDC Withholding Tax Decl"
                     lDeclarationRS1.SETRANGE("G/L Account No.", GLEntry."G/L Account No.");
                     lDeclarationRS1.SETFILTER("Invoice No.", '');
                     IF lDeclarationRS1.FINDSET THEN BEGIN
-                        CurrencyExchangeRate.RESET;
-                        CurrencyExchangeRate.SETRANGE("Currency Code", GLEntry."Source Currency Code");
-                        if CurrencyExchangeRate.FINDSET then begin
-                            lDeclarationRS1."Code devise" := CurrencyExchangeRate."Currency Code";
-                            lDeclarationRS1."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                        // CurrencyExchangeRate.RESET;
+                        // CurrencyExchangeRate.SETRANGE("Currency Code", GLEntry."Source Currency Code");
+                        // if CurrencyExchangeRate.FINDSET then begin
+                        //     lDeclarationRS1."Code devise" := CurrencyExchangeRate."Currency Code";
+                        //     lDeclarationRS1."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                        // end;
+                        if lVendorLedgerEntry1."Currency Code" <> '' Then begin
+                            lDeclarationRS1."Code devise" := lVendorLedgerEntry1."Currency Code";
+                            lCurrencyFactor := 1 / lVendorLedgerEntry.GetAdjustedCurrencyFactor();
+                            lDeclarationRS1."Taux de change" := lCurrencyFactor;
                         end;
                         lDeclarationRS1."Amount HT" := TotalMontantHT;
                         lDeclarationRS1."Montant RS" := TotalMontantRS;
@@ -578,7 +586,8 @@ page 54100 "WDC Withholding Tax Decl"
                 END;
                 SeqNo += 1;
             UNTIL (GLEntry.NEXT = 0);
-        END;
+        END ELSE
+            Message(lText003, FORMAT(StartDate), FORMAT(EndDate));
     end;
 
 
@@ -648,15 +657,16 @@ page 54100 "WDC Withholding Tax Decl"
         lPurchaseInvHeader: Record "Purch. Inv. Header";
         lPurchaseInvLine: Record "Purch. Inv. Line";
         lDetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry";
+        lVendLegEntries: record "Vendor Ledger Entry";
         lGeneralLedgerSetup: Record "General Ledger Setup";
         lAmountTTC: Decimal;
+        CurrencyFactor: Decimal;
     BEGIN
         lGeneralLedgerSetup.GET;
         SeqNo += 1;
         lDeclarationRS.COPY(pDeclarationRS);
         lDeclarationRS."Entry No." := SeqNo;
         lDeclarationRS."Invoice No." := pDetailedVendorLedgEntry."Document No.";
-        lPurchaseInvHeader.RESET;
         IF lPurchaseInvHeader.GET(pDetailedVendorLedgEntry."Document No.") THEN BEGIN
             lDeclarationRS."Amount HT" := 0;
             lDeclarationRS."Montant Net servi" := 0;
@@ -736,14 +746,23 @@ page 54100 "WDC Withholding Tax Decl"
             lDeclarationRS."Billing Year" := FORMAT(DATE2DMY(lPurchaseInvHeader."Posting Date", 3));
             CurrencyCode := lPurchaseInvHeader."Currency Code";
             IF CurrencyCode <> '' THEN BEGIN
-                IF Currency.GET(CurrencyCode) THEN;
-                CurrencyExchangeRate.RESET;
-                CurrencyExchangeRate.SETRANGE("Currency Code", Currency.Code);
-                IF CurrencyExchangeRate.FINDSET THEN BEGIN
-                    lDeclarationRS."Code devise" := Currency.Code;
-                    lDeclarationRS."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                lVendLegEntries.RESET;
+                lVendLegEntries.SetCurrentKey("Document No.");
+                lVendLegEntries.SETRANGE("Document No.", lPurchaseInvHeader."No.");
+                lVendLegEntries.SetRange("Document Type", lVendLegEntries."Document Type"::Invoice);
+                IF lVendLegEntries.FINDSET THEN BEGIN
+                    lDeclarationRS."Code devise" := CurrencyCode;
+                    CurrencyFactor := 1 / lVendLegEntries.GetAdjustedCurrencyFactor();
+                    lDeclarationRS."Taux de change" := CurrencyFactor;
 
                     //<< Cmt HD
+                    //IF Currency.GET(CurrencyCode) THEN;
+                    // CurrencyExchangeRate.RESET;
+                    // CurrencyExchangeRate.SETRANGE("Currency Code", Currency.Code);
+                    // IF CurrencyExchangeRate.FINDSET THEN BEGIN
+                    //     lDeclarationRS."Code devise" := Currency.Code;
+                    //     lDeclarationRS."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+
                     // lDeclarationRS."Montant RS devise" := lDeclarationRS."Montant RS" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
                     // lDeclarationRS."Montant RS devise" := ROUND(lDeclarationRS."Montant RS devise", 0.001, '<');
                     // lDeclarationRS."Total Currency Amount" := lDeclarationRS."Total Amount" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
@@ -782,6 +801,7 @@ page 54100 "WDC Withholding Tax Decl"
         lDetailedVendorLedgEntry1: Record 380;
         InvoiceNo: Code[20];
         MntTTc: Decimal;
+        CurrencyFactor: Decimal;
     BEGIN
         //REPEAT
         IF lVendorLedgEntry.GET(pDetailedVendorLedgEntry."Vendor Ledger Entry No.") THEN BEGIN
@@ -846,23 +866,31 @@ page 54100 "WDC Withholding Tax Decl"
                 lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Montant Net servi", 0.001, '<');
             END;
             CurrencyCode := lVendorLedgEntry."Currency Code";
+            CurrencyFactor := 1 / lVendorLedgEntry.GetAdjustedCurrencyFactor();
             IF CurrencyCode <> '' THEN BEGIN
-                IF Currency.GET(CurrencyCode) THEN;
-                CurrencyExchangeRate.RESET;
-                CurrencyExchangeRate.SETRANGE("Currency Code", Currency.Code);
-                IF CurrencyExchangeRate.FINDSET THEN BEGIN
-                    lDeclarationRS."Code devise" := Currency.Code;
-                    lDeclarationRS."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                    lDeclarationRS."Montant RS devise" := lDeclarationRS."Montant RS" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                    lDeclarationRS."Montant RS devise" := ROUND(lDeclarationRS."Montant RS devise", 0.001, '<');
-                    lDeclarationRS."Total Currency Amount" := lDeclarationRS."Total Amount" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt"; //CMt HD
-                    lDeclarationRS."Total Currency Amount" := ROUND(lDeclarationRS."Total Currency Amount", 0.001, '<');
-                    lDeclarationRS."Net Amount in Currency" := lDeclarationRS."Montant Net servi" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                    lDeclarationRS."Net Amount in Currency" := ROUND(lDeclarationRS."Net Amount in Currency", 0.001, '<');
-                    TotalRSDevise += lDeclarationRS."Montant RS devise";
-                    TotalTTCDevise += lDeclarationRS."Total Currency Amount";
-                    TotalNetServiceDevise += lDeclarationRS."Net Amount in Currency";
-                END;
+                // IF Currency.GET(CurrencyCode) THEN;
+                // CurrencyExchangeRate.RESET;
+                // CurrencyExchangeRate.SETRANGE("Currency Code", Currency.Code);
+                // IF CurrencyExchangeRate.FINDSET THEN BEGIN
+                //     lDeclarationRS."Code devise" := Currency.Code;
+                //lDeclarationRS."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                // lDeclarationRS."Montant RS devise" := lDeclarationRS."Montant RS" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                // lDeclarationRS."Montant RS devise" := ROUND(lDeclarationRS."Montant RS devise", 0.001, '<');
+                // lDeclarationRS."Total Currency Amount" := lDeclarationRS."Total Amount" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt"; //CMt HD
+                // lDeclarationRS."Total Currency Amount" := ROUND(lDeclarationRS."Total Currency Amount", 0.001, '<');
+                // lDeclarationRS."Net Amount in Currency" := lDeclarationRS."Montant Net servi" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                lDeclarationRS."Code devise" := CurrencyCode;
+                lDeclarationRS."Taux de change" := CurrencyFactor; //WDC05
+                lDeclarationRS."Montant RS devise" := lDeclarationRS."Montant RS" * CurrencyFactor;
+                lDeclarationRS."Montant RS devise" := ROUND(lDeclarationRS."Montant RS devise", 0.001, '<');
+                lDeclarationRS."Total Currency Amount" := lDeclarationRS."Total Amount" * CurrencyFactor; //CMt HD
+                lDeclarationRS."Total Currency Amount" := ROUND(lDeclarationRS."Total Currency Amount", 0.001, '<');
+                lDeclarationRS."Net Amount in Currency" := lDeclarationRS."Montant Net servi" * CurrencyFactor;
+                lDeclarationRS."Net Amount in Currency" := ROUND(lDeclarationRS."Net Amount in Currency", 0.001, '<');
+                TotalRSDevise += lDeclarationRS."Montant RS devise";
+                TotalTTCDevise += lDeclarationRS."Total Currency Amount";
+                TotalNetServiceDevise += lDeclarationRS."Net Amount in Currency";
+                //END;
             END;
 
             TotalMontantTTC += ROUND(lDeclarationRS."Total Amount", 0.001, '<');
@@ -1225,8 +1253,8 @@ page 54100 "WDC Withholding Tax Decl"
         GLEntry: Record "G/L Entry";
         SeqNo: Integer;
         GLAccount: Record "G/L Account";
-        Currency: Record Currency;
-        CurrencyExchangeRate: Record "Currency Exchange Rate";
+        // Currency: Record Currency;
+        // CurrencyExchangeRate: Record "Currency Exchange Rate";
         CurrencyCode: Code[10];
         TotalMontantHT: Decimal;
         TotalNetService: Decimal;
@@ -1244,5 +1272,6 @@ page 54100 "WDC Withholding Tax Decl"
         DeclarationNo: Code[20];
         Counter: Integer;
         NoSeries: Codeunit "No. Series";
+        IsEditable: Boolean;
 
 }
