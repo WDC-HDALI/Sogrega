@@ -40,7 +40,7 @@ pageextension 50051 "WDC Released Prod. Order Lines" extends "Released Prod. Ord
                 lProdOrder.CalcFields("External Sales Order No.");
                 rec."Sales Order No." := lProdOrder."Sales Order No.";
                 rec."External Sales Order No." := lProdOrder."External Sales Order No.";
-                rec.modify();
+                if rec.modify() then;
                 CurrPage.update(false);
             end;
         end;
