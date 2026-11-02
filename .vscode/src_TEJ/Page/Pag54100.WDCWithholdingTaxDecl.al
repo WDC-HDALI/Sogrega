@@ -16,22 +16,22 @@ page 54100 "WDC Withholding Tax Decl"
             group(Periode)
             {
                 CaptionML = FRA = 'Période', ENU = 'Period';
-                field("StartDate"; "StartDate")
+                field("StartDate"; StartDate)
                 {
                     ApplicationArea = All;
                     CaptionML = FRA = 'Date début', ENU = 'Start Date';
                     trigger OnValidate()
                     var
-                        lDeclarationRS: Record "WDC Withholding Tax Decl";
+                        lDeclarRS: Record "WDC Withholding Tax Decl";
                     begin
                         if EndDate <> 0D then begin
                             EndDate := 0D;
-                            lDeclarationRS.DeleteAll();
+                            lDeclarRS.DeleteAll();
                             CurrPage.Update(false);
                         end;
                     end;
                 }
-                field("EndDate"; "EndDate")
+                field("EndDate"; EndDate)
                 {
                     ApplicationArea = All;
                     CaptionML = FRA = 'Date fin', ENU = 'End Date';
@@ -43,6 +43,11 @@ page 54100 "WDC Withholding Tax Decl"
                     //         ERROR(ErrorMessage);
                     //     InsertDeclaration();
                     // end;
+                }
+                field("DocNoFilter"; DocNoFilter)
+                {
+                    ApplicationArea = All;
+                    CaptionML = FRA = 'N° document', ENU = 'Document No.';
                 }
 
 
@@ -56,16 +61,16 @@ page 54100 "WDC Withholding Tax Decl"
                     StyleExpr = FieldStyle;
                     trigger OnValidate()
                     var
-                        lDeclarationRS: Record "WDC Withholding Tax Decl";
+                        lDeclarRS: Record "WDC Withholding Tax Decl";
                     begin
-                        lDeclarationRS.RESET;
-                        lDeclarationRS.SETRANGE("Document No.", Rec."Document No.");
-                        lDeclarationRS.SETFILTER("Invoice No.", '<>%1', '');
-                        IF lDeclarationRS.FINDSET THEN
+                        lDeclarRS.RESET;
+                        lDeclarRS.SETRANGE("Document No.", Rec."Document No.");
+                        lDeclarRS.SETFILTER("Invoice No.", '<>%1', '');
+                        IF lDeclarRS.FINDSET THEN
                             REPEAT
-                                lDeclarationRS.Export := Rec.Export;
-                                lDeclarationRS.MODIFY;
-                            UNTIL (lDeclarationRS.NEXT = 0);
+                                lDeclarRS.Export := Rec.Export;
+                                lDeclarRS.MODIFY;
+                            UNTIL (lDeclarRS.NEXT = 0);
                     end;
                 }
                 field(Attribut; Rec.Attribute)
@@ -361,7 +366,7 @@ page 54100 "WDC Withholding Tax Decl"
                 image = SelectLineToApply;
                 trigger OnAction()
                 var
-                    lDeclarationRS: Record "WDC Withholding Tax Decl";
+                    lDeclarRS: Record "WDC Withholding Tax Decl";
                 begin
                     SeelectDeselectAll;
                 end;
@@ -391,14 +396,14 @@ page 54100 "WDC Withholding Tax Decl"
 
     trigger OnOpenPage()
     var
-        lDeclarationRS: Record "WDC Withholding Tax Decl";
+        lDeclarRS: Record "WDC Withholding Tax Decl";
     begin
 
-        lDeclarationRS.DeleteAll();
+        lDeclarRS.DeleteAll();
         CompanyInformation.GET();
-        GeneralLedgerSetup.Get();
-        IsEditable := GeneralLedgerSetup."Column DEC RS Editable";
-        InclureVAT := GeneralLedgerSetup."Incl VAT Withholding Tax Decl"
+        GenLedgSetup.Get();
+        IsEditable := GenLedgSetup."Column DEC RS Editable";
+        InclureVAT := GenLedgSetup."Incl VAT Withholding Tax Decl"
     end;
 
     trigger OnAfterGetRecord()
@@ -430,25 +435,28 @@ page 54100 "WDC Withholding Tax Decl"
 
     procedure InsertDeclaration()
     var
-        lVendorLedgerEntry: Record "Vendor Ledger Entry";
-        lVendorLedgerEntry1: Record "Vendor Ledger Entry";
+        lVendLedgerEntr: Record "Vendor Ledger Entry";
+        lVendLedgerEntr1: Record "Vendor Ledger Entry";
         lVendor: Record Vendor;
-        lDetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry";
-        lDeclarationRS: Record "WDC Withholding Tax Decl";
-        lDeclarationRS1: Record "WDC Withholding Tax Decl";
+        lDetVendLedgEntr: Record "Detailed Vendor Ledg. Entry";
+        lDeclarRS: Record "WDC Withholding Tax Decl";
+        lDeclarRS1: Record "WDC Withholding Tax Decl";
         lCurrencyFactor: Decimal;
         lText003: TextConst FRA = 'Aucune écriture de retenue à la source n''a été trouvée entre le %1 et le %2',
                             ENU = 'No withholding tax entry was found between %1 and %2';
     begin
         GLSetup.get;
-        lDeclarationRS.DeleteAll();
+        lDeclarRS.DeleteAll();
         SeqNo := 1;
         CLEAR(GLEntry);
         GLEntry.SETCURRENTKEY("G/L Account No.", "Document No.", "Posting Date");
-        GLEntry.SETFILTER("G/L Account No.", GeneralLedgerSetup."Withholding Tax Accounts");
+        GLEntry.SETFILTER("G/L Account No.", GenLedgSetup."Withholding Tax Accounts");
         GLEntry.SETFILTER("Posting Date", '%1..%2', StartDate, EndDate);
+        GLEntry.SETRANGE(Reversed, False);
         //GLEntry.SETRANGE("Entry Type", GLEntry."Entry Type"::Definitive);
-        //GLEntry.SetRange("Document No.", 'REG260245');
+        if DocNoFilter <> '' then
+            GLEntry.SETRANGE("Document No.", DocNoFilter);
+        //GLEntry.SetRange("Document No.", 'REG261599');
         IF GLEntry.FINDSET THEN BEGIN
             REPEAT
                 IF (DocNo <> GLEntry."Document No.") OR (CompGenNo <> GLEntry."G/L Account No.") THEN BEGIN
@@ -463,125 +471,130 @@ page 54100 "WDC Withholding Tax Decl"
                     DocNo := GLEntry."Document No.";
                     CompGenNo := GLEntry."G/L Account No.";
                     MntDoc := 0;
-                    lVendorLedgerEntry.Reset();
-                    lVendorLedgerEntry.SetCurrentKey("Document No.");
-                    lVendorLedgerEntry.SETRANGE("Document No.", GLEntry."Document No.");
-                    lVendorLedgerEntry.Setfilter("Vendor No.", '<>%1', 'FRS-00073');
-                    IF lVendorLedgerEntry.FindLast() THEN begin
-                        lVendorLedgerEntry.CALCFIELDS(Amount);
-                        MntDoc += lVendorLedgerEntry.Amount;
+                    lVendLedgerEntr.Reset();
+                    lVendLedgerEntr.SetCurrentKey("Document No.");
+                    lVendLedgerEntr.SETRANGE("Document No.", GLEntry."Document No.");
+                    lVendLedgerEntr.Setfilter("Vendor No.", '<>%1', 'FRS-00073');
+                    IF lVendLedgerEntr.FindLast() THEN begin
+                        lVendLedgerEntr.CALCFIELDS(Amount);
+                        MntDoc += lVendLedgerEntr.Amount;
                     end;
                     IF MntDoc <> 0 THEN BEGIN
-                        lDeclarationRS.INIT;
-                        lDeclarationRS."Entry No." := SeqNo;
-                        lDeclarationRS.Attribute := 1;
-                        lDeclarationRS."Type of Company Identifier" := 1;
-                        lDeclarationRS."Taxpayer Category" := 'PM';
-                        lDeclarationRS."Company Identifier" := COPYSTR(CompanyInformation."VAT Registration No.", 1, 8);
+                        lDeclarRS.INIT;
+                        lDeclarRS."Entry No." := SeqNo;
+                        lDeclarRS.Attribute := 1;
+                        lDeclarRS."Type of Company Identifier" := 1;
+                        lDeclarRS."Taxpayer Category" := 'PM';
+                        lDeclarRS."Company Identifier" := COPYSTR(CompanyInformation."VAT Registration No.", 1, 8);
 
 
-                        if generalLedgerSetup.CNPC = generalLedgerSetup.CNPC::"l''opération de retenue à la source a été effectuée en vertu d''une convention de non double imposition" then
-                            lDeclarationRS.CNPC := 1
+                        if GenLedgSetup.CNPC = GenLedgSetup.CNPC::"l''opération de retenue à la source a été effectuée en vertu d''une convention de non double imposition" then
+                            lDeclarRS.CNPC := 1
                         else
-                            lDeclarationRS.CNPC := 0;
-                        If generalLedgerSetup.P_Charge = generalLedgerSetup.P_Charge::"La retenue à la source a été prise en charge" then
-                            lDeclarationRS."P-Charge" := 1
+                            lDeclarRS.CNPC := 0;
+                        If GenLedgSetup.P_Charge = GenLedgSetup.P_Charge::"La retenue à la source a été prise en charge" then
+                            lDeclarRS."P-Charge" := 1
                         else
-                            lDeclarationRS."P-Charge" := 0;
-                        if GeneralLedgerSetup."Incl VAT Withholding Tax Decl" then begin
-                            lDeclarationRS."Tax additionnelle (Code)" := 'RSTVA100';
-                            lDeclarationRS."Tax additionnelle (taux)" := 100;
+                            lDeclarRS."P-Charge" := 0;
+                        if GenLedgSetup."Incl VAT Withholding Tax Decl" then begin
+                            lDeclarRS."Tax additionnelle (Code)" := 'RSTVA100';
+                            lDeclarRS."Tax additionnelle (taux)" := 100;
                         end;
-                        //lDeclarationRS."Deposit Year" := '20' + COPYSTR(FORMAT(GLEntry."Posting Date"), 7, 4);
-                        lDeclarationRS."Deposit Year" := FORMAT(DATE2DMY(GLEntry."Posting Date", 3));
-                        lDeclarationRS."Payment Month" := COPYSTR(FORMAT(GLEntry."Posting Date"), 4, 2);
+                        //lDeclarRS."Deposit Year" := '20' + COPYSTR(FORMAT(GLEntry."Posting Date"), 7, 4);
+                        lDeclarRS."Deposit Year" := FORMAT(DATE2DMY(GLEntry."Posting Date", 3));
+                        lDeclarRS."Payment Month" := COPYSTR(FORMAT(GLEntry."Posting Date"), 4, 2);
                         GLAccount.GET(GLEntry."G/L Account No.");
-                        lDeclarationRS."ID Type Operation" := GLAccount."ID Type Operation";
+                        lDeclarRS."ID Type Operation" := GLAccount."ID Type Operation";
                         IF FORMAT(GLAccount."Withholding Tax Code") <> '' THEN BEGIN
                             WithholdingTax.RESET;
                             WithholdingTax.SETRANGE(Code, GLAccount."Withholding Tax Code");
                             IF WithholdingTax.FINDFIRST() THEN
-                                lDeclarationRS."Withholding Tax Rate" := WithholdingTax."% Withholding Tax";
-                            //EVALUATE(lDeclarationRS."Withholding Tax Rate",DELCHR(FORMAT(GLAccount."Withholding Tax Code"),'=','%'));
+                                lDeclarRS."Withholding Tax Rate" := WithholdingTax."% Withholding Tax";
+                            //EVALUATE(lDeclarRS."Withholding Tax Rate",DELCHR(FORMAT(GLAccount."Withholding Tax Code"),'=','%'));
                         END;
-                        lDeclarationRS."Document No." := GLEntry."Document No.";                                  //HD
-                        lDeclarationRS."TEJ Declaration No." := NoSeries.GetNextNo(GLSetup."TEJ Declaration No"); //HD
-                        lDeclarationRS."G/L Account No." := GLEntry."G/L Account No.";
-                        lDeclarationRS."Payment Date" := FORMAT(GLEntry."Posting Date", 0, '<Day,2>/<Month,2>/<Year4>');
+                        lDeclarRS."Document No." := GLEntry."Document No.";                                  //HD
+                        lDeclarRS."TEJ Declaration No." := NoSeries.GetNextNo(GLSetup."TEJ Declaration No"); //HD
+                        lDeclarRS."G/L Account No." := GLEntry."G/L Account No.";
+                        lDeclarRS."Payment Date" := FORMAT(GLEntry."Posting Date", 0, '<Day,2>/<Month,2>/<Year4>');
 
-                        lVendorLedgerEntry1.RESET;
-                        lVendorLedgerEntry1.SetCurrentKey("Document No.");
-                        lVendorLedgerEntry1.SETRANGE("Document No.", GLEntry."Document No.");
-                        IF lVendorLedgerEntry1.FINDLAST THEN BEGIN
-                            lVendor.GET(lVendorLedgerEntry1."Vendor No.");
-                            lDeclarationRS."Taxpayer Fiscal Number/ CIN" := COPYSTR(lVendor."VAT Registration No.", 1, 8);
+                        lVendLedgerEntr1.RESET;
+                        lVendLedgerEntr1.SetCurrentKey("Document No.");
+                        lVendLedgerEntr1.SETRANGE("Document No.", GLEntry."Document No.");
+                        IF lVendLedgerEntr1.FINDLAST THEN BEGIN
+                            lVendor.GET(lVendLedgerEntr1."Vendor No.");
+                            lDeclarRS."Taxpayer Fiscal Number/ CIN" := COPYSTR(lVendor."VAT Registration No.", 1, 8);
                             if lVendor."Identification Type" = lVendor."Identification Type"::CIN then Begin
                                 lVendor.TestField("Birth Date");
-                                lDeclarationRS."Birth Date" := lVendor."Birth Date";
+                                lDeclarRS."Birth Date" := lVendor."Birth Date";
                             End;
                             IF lVendor."Vendor Type" = lVendor."Vendor Type"::"Personne Morale" THEN Begin
-                                lDeclarationRS."Type of Beneficiary Identifier" := 1;
-                                lDeclarationRS."Taxpayer Category Beneficiary" := 'PM'
+                                lDeclarRS."Type of Beneficiary Identifier" := 1;
+                                lDeclarRS."Taxpayer Category Beneficiary" := 'PM'
                             END ELSE IF lVendor."Vendor Type" = lVendor."Vendor Type"::"Personne Physique" THEN Begin
-                                lDeclarationRS."Type of Beneficiary Identifier" := 2;
-                                lDeclarationRS."Taxpayer Category Beneficiary" := 'PP';
+                                lDeclarRS."Type of Beneficiary Identifier" := 2;
+                                lDeclarRS."Taxpayer Category Beneficiary" := 'PP';
                             End;
-                            lDeclarationRS."Name and First Name" := lVendor.Name;
+                            lDeclarRS."Name and First Name" := lVendor.Name;
                             if lVendor."Resident" = lVendor."Resident"::Resident then
-                                lDeclarationRS."Resident In Tunisia" := 1
+                                lDeclarRS."Resident In Tunisia" := 1
                             else
-                                lDeclarationRS."Resident In Tunisia" := 0;
-                            lDeclarationRS.EMail := lVendor."E-Mail";
-                            //lDeclarationRS.Activity := lVendor.Activity;
-                            lDeclarationRS."Phone Number" := lVendor."Phone No.";
-                            lDeclarationRS.Address := lVendor.City;
-                            lDeclarationRS."Billing Year" := FORMAT(DATE2DMY(GLEntry."Posting Date", 3));
-                            lDeclarationRS.INSERT;
+                                lDeclarRS."Resident In Tunisia" := 0;
+                            lDeclarRS.EMail := lVendor."E-Mail";
+                            //lDeclarRS.Activity := lVendor.Activity;
+                            lDeclarRS."Phone Number" := lVendor."Phone No.";
+                            lDeclarRS.Address := lVendor.City;
+                            lDeclarRS."Billing Year" := FORMAT(DATE2DMY(GLEntry."Posting Date", 3));
+                            lDeclarRS.INSERT;
 
-                            lDetailedVendorLedgEntry.RESET;
-                            lDetailedVendorLedgEntry.SetCurrentKey("Document No.", "Document Type", "Posting Date");
-                            lDetailedVendorLedgEntry.SETRANGE("Document No.", lVendorLedgerEntry1."Document No.");
-                            lDetailedVendorLedgEntry.SETRANGE("Entry Type", lDetailedVendorLedgEntry."Entry Type"::Application);
-                            lDetailedVendorLedgEntry.SETRANGE("Initial Document Type", lDetailedVendorLedgEntry."Initial Document Type"::Payment);
-                            IF lDetailedVendorLedgEntry.FINDSET THEN BEGIN
+                            lDetVendLedgEntr.RESET;
+                            lDetVendLedgEntr.SetCurrentKey("Document No.", "Document Type", "Posting Date");
+                            lDetVendLedgEntr.SETRANGE("Document No.", lVendLedgerEntr1."Document No.");
+                            lDetVendLedgEntr.SETRANGE("Entry Type", lDetVendLedgEntr."Entry Type"::Application);
+                            lDetVendLedgEntr.SETRANGE("Initial Document Type", lDetVendLedgEntr."Initial Document Type"::Payment);
+                            IF lDetVendLedgEntr.FINDSET THEN BEGIN
                                 CreditAdded := FALSE;
-                                IF (lDetailedVendorLedgEntry.COUNT = 1) THEN BEGIN
-                                    InsertInv(lVendorLedgerEntry1, lDeclarationRS);
-                                END ELSE BEGIN
-                                    InsertFromVendorLedEntry(lDetailedVendorLedgEntry, lDeclarationRS);
-                                END;
-                            END ELSE
-                                InsertInv(lVendorLedgerEntry1, lDeclarationRS);
+                                // IF (lDetVendLedgEntr.COUNT = 1) THEN BEGIN
+                                //     InsertInv(lVendLedgerEntr1, lDeclarRS);
+                                // END ELSE BEGIN
+                                //     InsertInvoiceFromVendorLedEntry(lDetVendLedgEntr, lDeclarRS);
+                                // END;
+                            END;//ELSE
+                            InsertInv(lVendLedgerEntr1, lDeclarRS);
                         END;
                     END;
 
-                    lDeclarationRS1.RESET();
-                    lDeclarationRS1.SETRANGE("Document No.", GLEntry."Document No.");
-                    lDeclarationRS1.SETRANGE("G/L Account No.", GLEntry."G/L Account No.");
-                    lDeclarationRS1.SETFILTER("Invoice No.", '');
-                    IF lDeclarationRS1.FINDSET THEN BEGIN
-                        // CurrencyExchangeRate.RESET;
-                        // CurrencyExchangeRate.SETRANGE("Currency Code", GLEntry."Source Currency Code");
-                        // if CurrencyExchangeRate.FINDSET then begin
-                        //     lDeclarationRS1."Code devise" := CurrencyExchangeRate."Currency Code";
-                        //     lDeclarationRS1."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                        // end;
-                        if lVendorLedgerEntry1."Currency Code" <> '' Then begin
-                            lDeclarationRS1."Code devise" := lVendorLedgerEntry1."Currency Code";
-                            lCurrencyFactor := 1 / lVendorLedgerEntry.GetAdjustedCurrencyFactor();
-                            lDeclarationRS1."Taux de change" := lCurrencyFactor;
+                    lDeclarRS1.RESET();
+                    lDeclarRS1.SETRANGE("Document No.", GLEntry."Document No.");
+                    lDeclarRS1.SETRANGE("G/L Account No.", GLEntry."G/L Account No.");
+                    lDeclarRS1.SETFILTER("Invoice No.", '');
+                    IF lDeclarRS1.FINDSET THEN BEGIN
+                        if lVendLedgerEntr1."Currency Code" <> '' Then begin
+                            lDeclarRS1."Code devise" := lVendLedgerEntr1."Currency Code";
+                            lCurrencyFactor := 1 / lVendLedgerEntr.GetAdjustedCurrencyFactor();
+                            lDeclarRS1."Taux de change" := lCurrencyFactor;
+                            lDeclarRS1."Montant RS devise" := Abs(GLEntry."Source Currency Amount");
+                            lDeclarRS1."Total Currency Amount" := lDeclarRS1."Montant RS devise" * 100 / lDeclarRS1."Withholding Tax Rate";
+                            lDeclarRS1."Net Amount in Currency" := lDeclarRS1."Total Currency Amount" - lDeclarRS1."Montant RS devise";
                         end;
-                        lDeclarationRS1."Amount HT" := TotalMontantHT;
-                        lDeclarationRS1."Montant RS" := TotalMontantRS;
-                        lDeclarationRS1."Total Amount" := TotalMontantTTC;
-                        lDeclarationRS1."VAT Amount" := TotalMontantTVA;
-                        lDeclarationRS1."Montant Net servi" := TotalNetService;
-                        lDeclarationRS1."Montant RS devise" := TotalRSDevise;
-                        lDeclarationRS1."Total Currency Amount" := TotalTTCDevise;
-                        lDeclarationRS1."Net Amount in Currency" := TotalNetServiceDevise;
+                        //<<HD02092026
+                        lDeclarRS1."Montant RS" := Abs(GLEntry.Amount);
+                        lDeclarRS1."Amount HT" := lDeclarRS1."Montant RS" * 100 / lDeclarRS1."Withholding Tax Rate";
+                        lDeclarRS1."Total Amount" := lDeclarRS1."Amount HT" + lDeclarRS1."VAT Amount";
+                        lDeclarRS1."Montant Net servi" := lDeclarRS1."Total Amount" - lDeclarRS1."Montant RS";
+
+                        // TEJManagement.GetTotalPaymentAmount(GLEntry."Document No.",
+                        //                                     lDeclarRS1."Amount HT",
+                        //                                     lDeclarRS1."Montant RS",
+                        //                                     lDeclarRS1."Total Amount",
+                        //                                     lDeclarRS1."VAT Amount",
+                        //                                     lDeclarRS1."Montant Net servi",
+                        //                                     lDeclarRS1."Montant RS devise",
+                        //                                     lDeclarRS1."Total Currency Amount",
+                        //                                     lDeclarRS1."Net Amount in Currency");
+                        //>>HD02092026
                         IF TotalMontantHT <> 0 THEN
-                            lDeclarationRS1."VAT Rate" := TotalMontantTVA * 100 / TotalMontantHT;
-                        lDeclarationRS1.MODIFY;
+                            lDeclarRS1."VAT Rate" := TotalMontantTVA * 100 / TotalMontantHT;
+                        lDeclarRS1.MODIFY;
                     END;
                 END;
                 SeqNo += 1;
@@ -591,159 +604,129 @@ page 54100 "WDC Withholding Tax Decl"
     end;
 
 
-    LOCAL PROCEDURE InsertInv(pVendorLedgerEntry: Record "Vendor Ledger Entry"; pDeclarationRS: Record "WDC Withholding Tax Decl");
+    LOCAL PROCEDURE InsertInv(pVendLedgerEntr: Record "Vendor Ledger Entry"; pDeclarRS: Record "WDC Withholding Tax Decl");
     VAR
-        DetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry";
-        DetailedVendorLedgEntry1: Record "Detailed Vendor Ledg. Entry";
-        lDetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry";
-        lDetailedVendorLedgEntry1: Record "Detailed Vendor Ledg. Entry";
-        lDetailedVendorLedgEntry2: Record "Detailed Vendor Ledg. Entry";
+        DetVendLedgEntr: Record "Detailed Vendor Ledg. Entry";
+        DetVendLedgEntr1: Record "Detailed Vendor Ledg. Entry";
+        lDetVendLedgEntr: Record "Detailed Vendor Ledg. Entry";
+        lDetVendLedgEntr1: Record "Detailed Vendor Ledg. Entry";
+        lDetVendLedgEntr2: Record "Detailed Vendor Ledg. Entry";
+        pp: page 624;
     BEGIN
-        CLEAR(DetailedVendorLedgEntry);
-        DetailedVendorLedgEntry.SetCurrentKey("Document No.", "Document Type", "Posting Date");
-        DetailedVendorLedgEntry.SETRANGE("Document No.", pVendorLedgerEntry."Document No.");
-        DetailedVendorLedgEntry.SETRANGE("Entry Type", DetailedVendorLedgEntry."Entry Type"::Application);
-        DetailedVendorLedgEntry.SETRANGE("Initial Document Type", DetailedVendorLedgEntry."Initial Document Type"::Invoice);
-        DetailedVendorLedgEntry.SETRANGE(Unapplied, FALSE);
-        IF DetailedVendorLedgEntry.FINDSET THEN BEGIN
+        CLEAR(DetVendLedgEntr);
+        DetVendLedgEntr.SetCurrentKey("Document No.", "Document Type", "Posting Date");
+        DetVendLedgEntr.SETRANGE("Document No.", pVendLedgerEntr."Document No.");
+        DetVendLedgEntr.SETRANGE("Entry Type", DetVendLedgEntr."Entry Type"::Application);
+        DetVendLedgEntr.SETRANGE("Initial Document Type", DetVendLedgEntr."Initial Document Type"::Invoice);
+        DetVendLedgEntr.SETRANGE(Unapplied, FALSE);
+        IF DetVendLedgEntr.FINDSET THEN BEGIN
             REPEAT
-                lDetailedVendorLedgEntry.RESET;
-                lDetailedVendorLedgEntry.SetCurrentKey("Vendor Ledger Entry No.", "Entry Type", "Posting Date");
-                lDetailedVendorLedgEntry.SETRANGE("Vendor Ledger Entry No.", DetailedVendorLedgEntry."Vendor Ledger Entry No.");
-                lDetailedVendorLedgEntry.SETRANGE("Entry Type", lDetailedVendorLedgEntry."Entry Type"::Application);
-                IF lDetailedVendorLedgEntry.COUNT > 1 THEN BEGIN
-                    lDetailedVendorLedgEntry1.RESET;
-                    lDetailedVendorLedgEntry1.SetCurrentKey("Document No.", "Document Type", "Posting Date");
-                    lDetailedVendorLedgEntry1.SETRANGE("Document No.", GLEntry."Document No.");
-                    lDetailedVendorLedgEntry1.SETRANGE("Vendor Ledger Entry No.", DetailedVendorLedgEntry."Vendor Ledger Entry No.");
-                    lDetailedVendorLedgEntry1.SETRANGE("Entry Type", lDetailedVendorLedgEntry."Entry Type"::Application);
-                    lDetailedVendorLedgEntry1.CALCSUMS(Amount);
-                    IF lDetailedVendorLedgEntry1.Amount <> 0 THEN BEGIN
-                        DetailedVendorLedgEntry1.RESET;
-                        DetailedVendorLedgEntry1.SetCurrentKey("Vendor Ledger Entry No.", "Ledger Entry Amount", "Posting Date");
-                        DetailedVendorLedgEntry1.SETRANGE("Vendor Ledger Entry No.", DetailedVendorLedgEntry."Vendor Ledger Entry No.");
-                        DetailedVendorLedgEntry1.SETRANGE("Ledger Entry Amount", TRUE);
-                        DetailedVendorLedgEntry1.SETRANGE(Unapplied, FALSE);
-                        IF DetailedVendorLedgEntry1.FINDSET THEN
-                            //InsertFromPaymentCHQ(DetailedVendorLedgEntry1."Document No.", pDeclarationRS)
-                            InsertFromVendorLedEntry(DetailedVendorLedgEntry1, pDeclarationRS);
-                    END;
-                END ELSE BEGIN
-                    DetailedVendorLedgEntry1.RESET;
-                    DetailedVendorLedgEntry1.SetCurrentKey("Vendor Ledger Entry No.", "Ledger Entry Amount", "Posting Date");
-                    DetailedVendorLedgEntry1.SETRANGE("Vendor Ledger Entry No.", DetailedVendorLedgEntry."Vendor Ledger Entry No.");
-                    DetailedVendorLedgEntry1.SETRANGE("Ledger Entry Amount", TRUE);
-                    DetailedVendorLedgEntry1.SETRANGE(Unapplied, FALSE);
-                    IF DetailedVendorLedgEntry1.FINDSET THEN
-                        REPEAT
-                            InsertFromPurchInv(pDeclarationRS, DetailedVendorLedgEntry1);
-                        UNTIL (DetailedVendorLedgEntry1.NEXT = 0);
-                END;
-            UNTIL (DetailedVendorLedgEntry.NEXT = 0);
+                InsertInvoiceFromVendorLedEntry(DetVendLedgEntr, pDeclarRS);
+            UNTIL (DetVendLedgEntr.NEXT = 0);
         END
-        ELSE BEGIN
-            // InsertFromPayment(pDeclarationRS);
-            CLEAR(DetailedVendorLedgEntry);
-            DetailedVendorLedgEntry.SetCurrentKey("Document No.", "Document Type", "Posting Date");
-            DetailedVendorLedgEntry.SETRANGE("Document No.", pVendorLedgerEntry."Document No.");
-            if DetailedVendorLedgEntry.FINDSET() then
-                InsertFromVendorLedEntry(DetailedVendorLedgEntry, pDeclarationRS);
-        END;
+        // ELSE BEGIN
+        //     // InsertFromPayment(pDeclarRS);
+        //     CLEAR(DetVendLedgEntr);
+        //     DetVendLedgEntr.SetCurrentKey("Document No.", "Document Type", "Posting Date");
+        //     DetVendLedgEntr.SETRANGE("Document No.", pVendLedgerEntr."Document No.");
+        //     if DetVendLedgEntr.FINDSET() then
+        //         InsertInvoiceFromVendorLedEntry(DetVendLedgEntr, pDeclarRS);
+        // END;
     END;
 
-    LOCAL PROCEDURE InsertFromPurchInv(pDeclarationRS: Record "WDC Withholding Tax Decl"; pDetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry");
+    LOCAL PROCEDURE InsertFromPurchInv(pDeclarRS: Record "WDC Withholding Tax Decl"; pDetVendLedgEntr: Record "Detailed Vendor Ledg. Entry");
     VAR
-        lDeclarationRS: Record "WDC Withholding Tax Decl";
+        lDeclarRS: Record "WDC Withholding Tax Decl";
         lPurchaseInvHeader: Record "Purch. Inv. Header";
         lPurchaseInvLine: Record "Purch. Inv. Line";
-        lDetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry";
+        lDetVendLedgEntr: Record "Detailed Vendor Ledg. Entry";
         lVendLegEntries: record "Vendor Ledger Entry";
-        lGeneralLedgerSetup: Record "General Ledger Setup";
+        lGenLedgSetup: Record "General Ledger Setup";
         lAmountTTC: Decimal;
         CurrencyFactor: Decimal;
     BEGIN
-        lGeneralLedgerSetup.GET;
+        lGenLedgSetup.GET;
         SeqNo += 1;
-        lDeclarationRS.COPY(pDeclarationRS);
-        lDeclarationRS."Entry No." := SeqNo;
-        lDeclarationRS."Invoice No." := pDetailedVendorLedgEntry."Document No.";
-        IF lPurchaseInvHeader.GET(pDetailedVendorLedgEntry."Document No.") THEN BEGIN
-            lDeclarationRS."Amount HT" := 0;
-            lDeclarationRS."Montant Net servi" := 0;
-            lDeclarationRS."Net Amount in Currency" := 0;
-            lDeclarationRS."Montant RS devise" := 0;
-            lDeclarationRS."Total Amount" := 0;
-            lDeclarationRS."Total Currency Amount" := 0;
-            lDeclarationRS."VAT Amount" := 0;
+        lDeclarRS.COPY(pDeclarRS);
+        lDeclarRS."Entry No." := SeqNo;
+        lDeclarRS."Invoice No." := pDetVendLedgEntr."Document No.";
+        IF lPurchaseInvHeader.GET(pDetVendLedgEntr."Document No.") THEN BEGIN
+            lDeclarRS."Amount HT" := 0;
+            lDeclarRS."Montant Net servi" := 0;
+            lDeclarRS."Net Amount in Currency" := 0;
+            lDeclarRS."Montant RS devise" := 0;
+            lDeclarRS."Total Amount" := 0;
+            lDeclarRS."Total Currency Amount" := 0;
+            lDeclarRS."VAT Amount" := 0;
             lPurchaseInvHeader.CALCFIELDS(Amount, "Amount Including VAT");
             CLEAR(lPurchaseInvLine);
             lPurchaseInvLine.SETRANGE("Document No.", lPurchaseInvHeader."No.");
-            if lGeneralLedgerSetup."Purch. Stamp Account No." <> '' then
-                lPurchaseInvLine.SETFILTER("No.", '<>%1', lGeneralLedgerSetup."Purch. Stamp Account No.");
+            if lGenLedgSetup."Purch. Stamp Account No." <> '' then
+                lPurchaseInvLine.SETFILTER("No.", '<>%1', lGenLedgSetup."Purch. Stamp Account No.");
             lPurchaseInvLine.SETFILTER(Amount, '<>%1', 0);
             IF lPurchaseInvLine.FINDSET THEN
                 REPEAT
-                    lDeclarationRS."Amount HT" += lPurchaseInvLine.Amount;
-                    lDeclarationRS."Amount HT" := ROUND(lDeclarationRS."Amount HT", 0.001, '<');
-                    lDeclarationRS."VAT Rate" := lPurchaseInvLine."VAT %";
+                    lDeclarRS."Amount HT" += lPurchaseInvLine.Amount;
+                    lDeclarRS."Amount HT" := ROUND(lDeclarRS."Amount HT", 0.001, '<');
+                    lDeclarRS."VAT Rate" := lPurchaseInvLine."VAT %";
                 UNTIL lPurchaseInvLine.NEXT = 0;
 
             if lPurchaseInvHeader."Currency Factor" <> 0 then
-                lDeclarationRS."Amount HT" := lDeclarationRS."Amount HT" / lPurchaseInvHeader."Currency Factor";//HD on a ajouté au pour les facture en devise
-            lDeclarationRS."Amount HT" := ROUND(lDeclarationRS."Amount HT", 0.001, '<'); //HD
+                lDeclarRS."Amount HT" := lDeclarRS."Amount HT" / lPurchaseInvHeader."Currency Factor";//HD on a ajouté au pour les facture en devise
+            lDeclarRS."Amount HT" := ROUND(lDeclarRS."Amount HT", 0.001, '<'); //HD
 
-            lDeclarationRS."VAT Amount" := ROUND(lDeclarationRS."Amount HT", 0.001, '<') * lDeclarationRS."VAT Rate" / 100;
-            lDeclarationRS."VAT Amount" := ROUND(lDeclarationRS."VAT Amount", 0.001, '<');
+            lDeclarRS."VAT Amount" := ROUND(lDeclarRS."Amount HT", 0.001, '<') * lDeclarRS."VAT Rate" / 100;
+            lDeclarRS."VAT Amount" := ROUND(lDeclarRS."VAT Amount", 0.001, '<');
 
-            lDeclarationRS."Total Amount" := ROUND(lDeclarationRS."Amount HT", 0.001, '<') + ROUND(lDeclarationRS."VAT Amount", 0.001, '<');
-            lDeclarationRS."Total Amount" := ROUND(lDeclarationRS."Total Amount", 0.001, '<');
+            lDeclarRS."Total Amount" := ROUND(lDeclarRS."Amount HT", 0.001, '<') + ROUND(lDeclarRS."VAT Amount", 0.001, '<');
+            lDeclarRS."Total Amount" := ROUND(lDeclarRS."Total Amount", 0.001, '<');
 
-            lDeclarationRS."Montant RS" := ROUND(lDeclarationRS."Total Amount", 0.001, '<') * lDeclarationRS."Withholding Tax Rate" / 100;
-            lDeclarationRS."Montant RS" := ROUND(lDeclarationRS."Montant RS", 0.001, '<');
+            lDeclarRS."Montant RS" := ROUND(lDeclarRS."Total Amount", 0.001, '<') * lDeclarRS."Withholding Tax Rate" / 100;
+            lDeclarRS."Montant RS" := ROUND(lDeclarRS."Montant RS", 0.001, '<');
 
-            lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Total Amount", 0.001, '<') - ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-            lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Montant Net servi", 0.001, '<');
+            lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Total Amount", 0.001, '<') - ROUND(lDeclarRS."Montant RS", 0.001, '<');
+            lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Montant Net servi", 0.001, '<');
 
             lAmountTTC := 0;
             IF NOT CreditAdded THEN BEGIN
-                lDetailedVendorLedgEntry.RESET();
-                lDetailedVendorLedgEntry.SetCurrentKey("Document No.", "Document Type", "Posting Date");
-                lDetailedVendorLedgEntry.SETRANGE("Document No.", pDetailedVendorLedgEntry."Document No.");
-                lDetailedVendorLedgEntry.SETRANGE("Initial Document Type", lDetailedVendorLedgEntry."Initial Document Type"::"Credit Memo");
-                lDetailedVendorLedgEntry.SETRANGE("Transaction No.", pDetailedVendorLedgEntry."Transaction No.");
-                IF lDetailedVendorLedgEntry.FINDSET() THEN BEGIN
+                lDetVendLedgEntr.RESET();
+                lDetVendLedgEntr.SetCurrentKey("Document No.", "Document Type", "Posting Date");
+                lDetVendLedgEntr.SETRANGE("Document No.", pDetVendLedgEntr."Document No.");
+                lDetVendLedgEntr.SETRANGE("Initial Document Type", lDetVendLedgEntr."Initial Document Type"::"Credit Memo");
+                lDetVendLedgEntr.SETRANGE("Transaction No.", pDetVendLedgEntr."Transaction No.");
+                IF lDetVendLedgEntr.FINDSET() THEN BEGIN
                     REPEAT
-                        //lAmountTTC += lDetailedVendorLedgEntry.Amount; //Cmt HD
-                        lAmountTTC += lDetailedVendorLedgEntry."Amount (LCY)"; //HD
-                    UNTIL (lDetailedVendorLedgEntry.NEXT) = 0;
-                    IF lAmountTTC < lDeclarationRS."Total Amount" THEN BEGIN
+                        //lAmountTTC += lDetVendLedgEntr.Amount; //Cmt HD
+                        lAmountTTC += lDetVendLedgEntr."Amount (LCY)"; //HD
+                    UNTIL (lDetVendLedgEntr.NEXT) = 0;
+                    IF lAmountTTC < lDeclarRS."Total Amount" THEN BEGIN
                         CreditAdded := TRUE;
-                        lDeclarationRS."Total Amount" += lAmountTTC;
-                        lDeclarationRS."Total Amount" := ROUND(lDeclarationRS."Total Amount", 0.001, '<');
-                        lDeclarationRS."Montant RS" := ROUND(lDeclarationRS."Total Amount", 0.001, '<') * lDeclarationRS."Withholding Tax Rate" / 100;
-                        lDeclarationRS."Montant RS" := ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-                        lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Total Amount", 0.001, '<') - ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-                        lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Montant Net servi", 0.001, '<');
-                        lDeclarationRS."Amount HT" := 100 * ROUND(lDeclarationRS."Total Amount", 0.001, '<') / (100 + lDeclarationRS."VAT Rate");
-                        lDeclarationRS."Amount HT" := ROUND(lDeclarationRS."Amount HT", 0.001, '<');
-                        lDeclarationRS."VAT Amount" := ROUND(lDeclarationRS."Amount HT", 0.001, '<') * lDeclarationRS."VAT Rate" / 100;
-                        lDeclarationRS."VAT Amount" := ROUND(lDeclarationRS."VAT Amount", 0.001, '<');
-                        IF (ROUND(lDeclarationRS."Amount HT", 0.001, '<') + ROUND(lDeclarationRS."VAT Amount", 0.001, '<') <> ROUND(lDeclarationRS."Total Amount", 0.001, '<')) THEN BEGIN
-                            lDeclarationRS."Total Amount" := ROUND(lDeclarationRS."Amount HT", 0.001, '<') + ROUND(lDeclarationRS."VAT Amount", 0.001, '<');
-                            lDeclarationRS."Montant RS" := lDeclarationRS."Total Amount" * lDeclarationRS."Withholding Tax Rate" / 100;
-                            lDeclarationRS."Montant RS" := ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-                            lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Total Amount", 0.001, '<') - ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-                            lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Montant Net servi", 0.001, '<');
+                        lDeclarRS."Total Amount" += lAmountTTC;
+                        lDeclarRS."Total Amount" := ROUND(lDeclarRS."Total Amount", 0.001, '<');
+                        lDeclarRS."Montant RS" := ROUND(lDeclarRS."Total Amount", 0.001, '<') * lDeclarRS."Withholding Tax Rate" / 100;
+                        lDeclarRS."Montant RS" := ROUND(lDeclarRS."Montant RS", 0.001, '<');
+                        lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Total Amount", 0.001, '<') - ROUND(lDeclarRS."Montant RS", 0.001, '<');
+                        lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Montant Net servi", 0.001, '<');
+                        lDeclarRS."Amount HT" := 100 * ROUND(lDeclarRS."Total Amount", 0.001, '<') / (100 + lDeclarRS."VAT Rate");
+                        lDeclarRS."Amount HT" := ROUND(lDeclarRS."Amount HT", 0.001, '<');
+                        lDeclarRS."VAT Amount" := ROUND(lDeclarRS."Amount HT", 0.001, '<') * lDeclarRS."VAT Rate" / 100;
+                        lDeclarRS."VAT Amount" := ROUND(lDeclarRS."VAT Amount", 0.001, '<');
+                        IF (ROUND(lDeclarRS."Amount HT", 0.001, '<') + ROUND(lDeclarRS."VAT Amount", 0.001, '<') <> ROUND(lDeclarRS."Total Amount", 0.001, '<')) THEN BEGIN
+                            lDeclarRS."Total Amount" := ROUND(lDeclarRS."Amount HT", 0.001, '<') + ROUND(lDeclarRS."VAT Amount", 0.001, '<');
+                            lDeclarRS."Montant RS" := lDeclarRS."Total Amount" * lDeclarRS."Withholding Tax Rate" / 100;
+                            lDeclarRS."Montant RS" := ROUND(lDeclarRS."Montant RS", 0.001, '<');
+                            lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Total Amount", 0.001, '<') - ROUND(lDeclarRS."Montant RS", 0.001, '<');
+                            lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Montant Net servi", 0.001, '<');
                         END;
                     END;
                 END;
             END;
-            TotalMontantHT += ROUND(lDeclarationRS."Amount HT", 0.001, '<');
-            TotalMontantTVA += ROUND(lDeclarationRS."VAT Amount", 0.001, '<');
-            TotalMontantTTC += ROUND(lDeclarationRS."Total Amount", 0.001, '<');
-            TotalMontantRS += ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-            TotalNetService += ROUND(lDeclarationRS."Montant Net servi", 0.001, '<');
-            lDeclarationRS."Billing Year" := FORMAT(DATE2DMY(lPurchaseInvHeader."Posting Date", 3));
+            TotalMontantHT += ROUND(lDeclarRS."Amount HT", 0.001, '<');
+            TotalMontantTVA += ROUND(lDeclarRS."VAT Amount", 0.001, '<');
+            TotalMontantTTC += ROUND(lDeclarRS."Total Amount", 0.001, '<');
+            TotalMontantRS += ROUND(lDeclarRS."Montant RS", 0.001, '<');
+            TotalNetService += ROUND(lDeclarRS."Montant Net servi", 0.001, '<');
+            lDeclarRS."Billing Year" := FORMAT(DATE2DMY(lPurchaseInvHeader."Posting Date", 3));
             CurrencyCode := lPurchaseInvHeader."Currency Code";
             IF CurrencyCode <> '' THEN BEGIN
                 lVendLegEntries.RESET;
@@ -751,119 +734,126 @@ page 54100 "WDC Withholding Tax Decl"
                 lVendLegEntries.SETRANGE("Document No.", lPurchaseInvHeader."No.");
                 lVendLegEntries.SetRange("Document Type", lVendLegEntries."Document Type"::Invoice);
                 IF lVendLegEntries.FINDSET THEN BEGIN
-                    lDeclarationRS."Code devise" := CurrencyCode;
+                    lDeclarRS."Code devise" := CurrencyCode;
                     CurrencyFactor := 1 / lVendLegEntries.GetAdjustedCurrencyFactor();
-                    lDeclarationRS."Taux de change" := CurrencyFactor;
+                    lDeclarRS."Taux de change" := CurrencyFactor;
 
                     //<< Cmt HD
                     //IF Currency.GET(CurrencyCode) THEN;
                     // CurrencyExchangeRate.RESET;
                     // CurrencyExchangeRate.SETRANGE("Currency Code", Currency.Code);
                     // IF CurrencyExchangeRate.FINDSET THEN BEGIN
-                    //     lDeclarationRS."Code devise" := Currency.Code;
-                    //     lDeclarationRS."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                    //     lDeclarRS."Code devise" := Currency.Code;
+                    //     lDeclarRS."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
 
-                    // lDeclarationRS."Montant RS devise" := lDeclarationRS."Montant RS" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                    // lDeclarationRS."Montant RS devise" := ROUND(lDeclarationRS."Montant RS devise", 0.001, '<');
-                    // lDeclarationRS."Total Currency Amount" := lDeclarationRS."Total Amount" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                    // lDeclarationRS."Total Currency Amount" := ROUND(lDeclarationRS."Total Currency Amount", 0.001, '<');
-                    // lDeclarationRS."Net Amount in Currency" := lDeclarationRS."Montant Net servi" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                    // lDeclarationRS."Net Amount in Currency" := ROUND(lDeclarationRS."Net Amount in Currency", 0.001, '<');
-                    // TotalRSDevise += lDeclarationRS."Montant RS devise";
-                    // TotalTTCDevise += lDeclarationRS."Total Currency Amount";
-                    // TotalNetServiceDevise += lDeclarationRS."Net Amount in Currency";
+                    // lDeclarRS."Montant RS devise" := lDeclarRS."Montant RS" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                    // lDeclarRS."Montant RS devise" := ROUND(lDeclarRS."Montant RS devise", 0.001, '<');
+                    // lDeclarRS."Total Currency Amount" := lDeclarRS."Total Amount" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                    // lDeclarRS."Total Currency Amount" := ROUND(lDeclarRS."Total Currency Amount", 0.001, '<');
+                    // lDeclarRS."Net Amount in Currency" := lDeclarRS."Montant Net servi" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                    // lDeclarRS."Net Amount in Currency" := ROUND(lDeclarRS."Net Amount in Currency", 0.001, '<');
+                    // TotalRSDevise += lDeclarRS."Montant RS devise";
+                    // TotalTTCDevise += lDeclarRS."Total Currency Amount";
+                    // TotalNetServiceDevise += lDeclarRS."Net Amount in Currency";
                     //>>Cmt HD
 
                     //<<HD
-                    lDeclarationRS."Montant RS devise" := ROUND(lPurchaseInvHeader."Amount Including VAT", 0.001, '<') * lDeclarationRS."Withholding Tax Rate" / 100;
-                    lDeclarationRS."Montant RS devise" := ROUND(lDeclarationRS."Montant RS devise", 0.001, '<');
+                    lDeclarRS."Montant RS devise" := ROUND(lPurchaseInvHeader."Amount Including VAT", 0.001, '<') * lDeclarRS."Withholding Tax Rate" / 100;
+                    lDeclarRS."Montant RS devise" := ROUND(lDeclarRS."Montant RS devise", 0.001, '<');
 
-                    lDeclarationRS."Total Currency Amount" := lPurchaseInvHeader."Amount Including VAT";
-                    lDeclarationRS."Total Currency Amount" := ROUND(lDeclarationRS."Total Currency Amount", 0.001, '<');
+                    lDeclarRS."Total Currency Amount" := lPurchaseInvHeader."Amount Including VAT";
+                    lDeclarRS."Total Currency Amount" := ROUND(lDeclarRS."Total Currency Amount", 0.001, '<');
 
-                    lDeclarationRS."Net Amount in Currency" := lDeclarationRS."Total Currency Amount" - lDeclarationRS."Montant RS devise";
-                    lDeclarationRS."Net Amount in Currency" := ROUND(lDeclarationRS."Net Amount in Currency", 0.001, '<');
-                    TotalRSDevise += lDeclarationRS."Montant RS devise";
-                    TotalTTCDevise += lDeclarationRS."Total Currency Amount";
-                    TotalNetServiceDevise += lDeclarationRS."Net Amount in Currency";
+                    lDeclarRS."Net Amount in Currency" := lDeclarRS."Total Currency Amount" - lDeclarRS."Montant RS devise";
+                    lDeclarRS."Net Amount in Currency" := ROUND(lDeclarRS."Net Amount in Currency", 0.001, '<');
+                    TotalRSDevise += lDeclarRS."Montant RS devise";
+                    TotalTTCDevise += lDeclarRS."Total Currency Amount";
+                    TotalNetServiceDevise += lDeclarRS."Net Amount in Currency";
                     //>>HD
                 END;
             END;
-            lDeclarationRS.INSERT;
+            lDeclarRS.INSERT;
         END;
     END;
 
-    LOCAL PROCEDURE InsertFromVendorLedEntry(pDetailedVendorLedgEntry: Record "Detailed Vendor Ledg. Entry"; pDeclarationRS: Record "WDC Withholding Tax Decl");
+    LOCAL PROCEDURE InsertInvoiceFromVendorLedEntry(pDetVendLedgEntr: Record "Detailed Vendor Ledg. Entry"; pDeclarRS: Record "WDC Withholding Tax Decl");
     VAR
-        lDeclarationRS: Record "WDC Withholding Tax Decl";
+        lDeclarRS: Record "WDC Withholding Tax Decl";
         lVendorLedgEntry: Record 25;
-        lDetailedVendorLedgEntry: Record 380;
-        lDetailedVendorLedgEntry1: Record 380;
+        lDetVendLedgEntr: Record 380;
+        lDetVendLedgEntr1: Record 380;
         InvoiceNo: Code[20];
         MntTTc: Decimal;
         CurrencyFactor: Decimal;
     BEGIN
         //REPEAT
-        IF lVendorLedgEntry.GET(pDetailedVendorLedgEntry."Vendor Ledger Entry No.") THEN BEGIN
+        IF lVendorLedgEntry.GET(pDetVendLedgEntr."Vendor Ledger Entry No.") THEN BEGIN
             SeqNo += 1;
-            lDeclarationRS.COPY(pDeclarationRS);
-            lDeclarationRS."Entry No." := SeqNo;
+            lDeclarRS.COPY(pDeclarRS);
+            lDeclarRS."Entry No." := SeqNo;
 
-            CLEAR(lDetailedVendorLedgEntry);
-            lDetailedVendorLedgEntry.SETRANGE("Document No.", lVendorLedgEntry."Document No.");
-            lDetailedVendorLedgEntry.SETRANGE("Entry Type", lDetailedVendorLedgEntry."Entry Type"::Application);
-            lDetailedVendorLedgEntry.SETRANGE("Initial Document Type", lDetailedVendorLedgEntry."Initial Document Type"::Invoice);
-            IF lDetailedVendorLedgEntry.FINDSET THEN BEGIN
-                lDetailedVendorLedgEntry1.RESET;
-                lDetailedVendorLedgEntry1.SETRANGE("Vendor Ledger Entry No.", lDetailedVendorLedgEntry."Vendor Ledger Entry No.");
-                lDetailedVendorLedgEntry1.SETRANGE("Ledger Entry Amount", TRUE);
-                lDetailedVendorLedgEntry1.SETRANGE(Unapplied, FALSE);
-                IF lDetailedVendorLedgEntry1.FINDSET THEN
-                    InvoiceNo := lDetailedVendorLedgEntry1."Document No."
-                ELSE
-                    InvoiceNo := lVendorLedgEntry."Document No.";
-            END;
+            // CLEAR(lDetVendLedgEntr);
+            // lDetVendLedgEntr.SETRANGE("Document No.", pDeclarRS."Document No.");
+            // lDetVendLedgEntr.SETRANGE("Entry Type", lDetVendLedgEntr."Entry Type"::Application);
+            // lDetVendLedgEntr.SETRANGE("Initial Document Type", lDetVendLedgEntr."Initial Document Type"::Invoice);
+            // IF lDetVendLedgEntr.FINDSET THEN BEGIN
+            //     lDetVendLedgEntr1.RESET;
+            //     // lDetVendLedgEntr1.SETRANGE("Vendor Ledger Entry No.", lDetVendLedgEntr."Vendor Ledger Entry No.");
+            //     // lDetVendLedgEntr1.SETRANGE("Ledger Entry Amount", TRUE);
+            //     // lDetVendLedgEntr1.SETRANGE(Unapplied, FALSE);
+            //     lDetVendLedgEntr1.SETRANGE("Document No.", pDeclarRS."Document No.");
+            //     lDetVendLedgEntr1.SETRANGE("Vendor Ledger Entry No.", lDetVendLedgEntr."Applied Vend. Ledger Entry No.");
+            //     lDetVendLedgEntr1.SETRANGE("Applied Vend. Ledger Entry No.", lDetVendLedgEntr."Applied Vend. Ledger Entry No.");
+            //     lDetVendLedgEntr1.SETRANGE("Entry Type", lDetVendLedgEntr1."Entry Type"::Application);
+            //     IF lDetVendLedgEntr1.FINDSET THEN
+            //         MntTTc := Abs(lDetVendLedgEntr1."Amount (LCY)" * -1); //HD
+            //     // InvoiceNo := lDetVendLedgEntr1."Document No."
+            //     // ELSE
+            //     // InvoiceNo := lVendorLedgEntry."Document No.";
+            // END;
+            MntTTc := Abs(pDetVendLedgEntr."Amount (LCY)" * -1); //HD
+            InvoiceNo := pDetVendLedgEntr."Document No.";
             IF InvoiceNo = '' THEN
-                lDeclarationRS."Invoice No." := lVendorLedgEntry."Document No."
+                lDeclarRS."Invoice No." := lVendorLedgEntry."Document No."
             ELSE
-                lDeclarationRS."Invoice No." := InvoiceNo;
+                lDeclarRS."Invoice No." := InvoiceNo;
 
-            lDeclarationRS."Montant RS" := 0;
-            lDeclarationRS."Amount HT" := 0;
-            lDeclarationRS."Montant Net servi" := 0;
-            lDeclarationRS."Total Amount" := 0;
-            lDeclarationRS."VAT Amount" := 0;
+            lDeclarRS."Montant RS" := 0;
+            lDeclarRS."Amount HT" := 0;
+            lDeclarRS."Montant Net servi" := 0;
+            lDeclarRS."Total Amount" := 0;
+            lDeclarRS."VAT Amount" := 0;
 
             lVendorLedgEntry.CALCFIELDS(Amount);
             lVendorLedgEntry.CALCFIELDS("Amount (LCY)");
-            lDeclarationRS."Billing Year" := FORMAT(DATE2DMY(lVendorLedgEntry."Posting Date", 3));
+            lDeclarRS."Billing Year" := FORMAT(DATE2DMY(lVendorLedgEntry."Posting Date", 3));
             //MntTTc := lVendorLedgEntry.Amount; //Cmt HD
-            MntTTc := lVendorLedgEntry."Amount (LCY)";//HD
-            if MntTTc < 0 then
-                MntTTc := -MntTTc;
-            lDeclarationRS."Total Amount" := MntTTc;
+            //MntTTc := lVendorLedgEntry."Amount (LCY)";//HD
 
-            lDeclarationRS."Montant RS" := ROUND(lDeclarationRS."Total Amount", 0.001, '<') * lDeclarationRS."Withholding Tax Rate" / 100;
-            lDeclarationRS."Montant RS" := ROUND(lDeclarationRS."Montant RS", 0.001, '<');
 
-            lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Total Amount", 0.001, '<') - ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-            lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Montant Net servi", 0.001, '<');
+            lDeclarRS."Total Amount" := MntTTc;
 
-            lDeclarationRS."VAT Rate" := 0;
-            lDeclarationRS."Amount HT" := 100 * ROUND(lDeclarationRS."Total Amount", 0.001, '<') / (100 + lDeclarationRS."VAT Rate");
-            lDeclarationRS."Amount HT" := ROUND(lDeclarationRS."Amount HT", 0.001, '<');
-            TotalMontantHT += ROUND(lDeclarationRS."Amount HT", 0.001, '<');
+            lDeclarRS."Montant RS" := ROUND(lDeclarRS."Total Amount", 0.001, '<') * lDeclarRS."Withholding Tax Rate" / 100;
+            lDeclarRS."Montant RS" := ROUND(lDeclarRS."Montant RS", 0.001, '<');
 
-            lDeclarationRS."VAT Amount" := ROUND(lDeclarationRS."Amount HT", 0.001, '<') * lDeclarationRS."VAT Rate" / 100;
-            lDeclarationRS."VAT Amount" := ROUND(lDeclarationRS."VAT Amount", 0.001, '<');
-            TotalMontantTVA += ROUND(lDeclarationRS."VAT Amount", 0.001, '<');
+            lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Total Amount", 0.001, '<') - ROUND(lDeclarRS."Montant RS", 0.001, '<');
+            lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Montant Net servi", 0.001, '<');
+
+            lDeclarRS."VAT Rate" := 0;
+            lDeclarRS."Amount HT" := 100 * ROUND(lDeclarRS."Total Amount", 0.001, '<') / (100 + lDeclarRS."VAT Rate");
+            lDeclarRS."Amount HT" := ROUND(lDeclarRS."Amount HT", 0.001, '<');
+            TotalMontantHT += ROUND(lDeclarRS."Amount HT", 0.001, '<');
+
+            lDeclarRS."VAT Amount" := ROUND(lDeclarRS."Amount HT", 0.001, '<') * lDeclarRS."VAT Rate" / 100;
+            lDeclarRS."VAT Amount" := ROUND(lDeclarRS."VAT Amount", 0.001, '<');
+            TotalMontantTVA += ROUND(lDeclarRS."VAT Amount", 0.001, '<');
             //
-            IF (ROUND(lDeclarationRS."Amount HT", 0.001, '<') + ROUND(lDeclarationRS."VAT Amount", 0.001, '<') <> ROUND(lDeclarationRS."Total Amount", 0.001, '<')) THEN BEGIN
-                lDeclarationRS."Total Amount" := ROUND(lDeclarationRS."Amount HT", 0.001, '<') + ROUND(lDeclarationRS."VAT Amount", 0.001, '<');
-                lDeclarationRS."Montant RS" := lDeclarationRS."Total Amount" * lDeclarationRS."Withholding Tax Rate" / 100;
-                lDeclarationRS."Montant RS" := ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-                lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Total Amount", 0.001, '<') - ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-                lDeclarationRS."Montant Net servi" := ROUND(lDeclarationRS."Montant Net servi", 0.001, '<');
+            IF (ROUND(lDeclarRS."Amount HT", 0.001, '<') + ROUND(lDeclarRS."VAT Amount", 0.001, '<') <> ROUND(lDeclarRS."Total Amount", 0.001, '<')) THEN BEGIN
+                lDeclarRS."Total Amount" := ROUND(lDeclarRS."Amount HT", 0.001, '<') + ROUND(lDeclarRS."VAT Amount", 0.001, '<');
+                lDeclarRS."Montant RS" := lDeclarRS."Total Amount" * lDeclarRS."Withholding Tax Rate" / 100;
+                lDeclarRS."Montant RS" := ROUND(lDeclarRS."Montant RS", 0.001, '<');
+                lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Total Amount", 0.001, '<') - ROUND(lDeclarRS."Montant RS", 0.001, '<');
+                lDeclarRS."Montant Net servi" := ROUND(lDeclarRS."Montant Net servi", 0.001, '<');
             END;
             CurrencyCode := lVendorLedgEntry."Currency Code";
             CurrencyFactor := 1 / lVendorLedgEntry.GetAdjustedCurrencyFactor();
@@ -872,34 +862,34 @@ page 54100 "WDC Withholding Tax Decl"
                 // CurrencyExchangeRate.RESET;
                 // CurrencyExchangeRate.SETRANGE("Currency Code", Currency.Code);
                 // IF CurrencyExchangeRate.FINDSET THEN BEGIN
-                //     lDeclarationRS."Code devise" := Currency.Code;
-                //lDeclarationRS."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                // lDeclarationRS."Montant RS devise" := lDeclarationRS."Montant RS" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                // lDeclarationRS."Montant RS devise" := ROUND(lDeclarationRS."Montant RS devise", 0.001, '<');
-                // lDeclarationRS."Total Currency Amount" := lDeclarationRS."Total Amount" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt"; //CMt HD
-                // lDeclarationRS."Total Currency Amount" := ROUND(lDeclarationRS."Total Currency Amount", 0.001, '<');
-                // lDeclarationRS."Net Amount in Currency" := lDeclarationRS."Montant Net servi" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
-                lDeclarationRS."Code devise" := CurrencyCode;
-                lDeclarationRS."Taux de change" := CurrencyFactor; //WDC05
-                lDeclarationRS."Montant RS devise" := lDeclarationRS."Montant RS" * CurrencyFactor;
-                lDeclarationRS."Montant RS devise" := ROUND(lDeclarationRS."Montant RS devise", 0.001, '<');
-                lDeclarationRS."Total Currency Amount" := lDeclarationRS."Total Amount" * CurrencyFactor; //CMt HD
-                lDeclarationRS."Total Currency Amount" := ROUND(lDeclarationRS."Total Currency Amount", 0.001, '<');
-                lDeclarationRS."Net Amount in Currency" := lDeclarationRS."Montant Net servi" * CurrencyFactor;
-                lDeclarationRS."Net Amount in Currency" := ROUND(lDeclarationRS."Net Amount in Currency", 0.001, '<');
-                TotalRSDevise += lDeclarationRS."Montant RS devise";
-                TotalTTCDevise += lDeclarationRS."Total Currency Amount";
-                TotalNetServiceDevise += lDeclarationRS."Net Amount in Currency";
+                //     lDeclarRS."Code devise" := Currency.Code;
+                //lDeclarRS."Taux de change" := CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                // lDeclarRS."Montant RS devise" := lDeclarRS."Montant RS" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                // lDeclarRS."Montant RS devise" := ROUND(lDeclarRS."Montant RS devise", 0.001, '<');
+                // lDeclarRS."Total Currency Amount" := lDeclarRS."Total Amount" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt"; //CMt HD
+                // lDeclarRS."Total Currency Amount" := ROUND(lDeclarRS."Total Currency Amount", 0.001, '<');
+                // lDeclarRS."Net Amount in Currency" := lDeclarRS."Montant Net servi" * CurrencyExchangeRate."Relational Adjmt Exch Rate Amt";
+                lDeclarRS."Code devise" := CurrencyCode;
+                lDeclarRS."Taux de change" := CurrencyFactor; //WDC05
+                lDeclarRS."Montant RS devise" := lDeclarRS."Montant RS" * CurrencyFactor;
+                lDeclarRS."Montant RS devise" := ROUND(lDeclarRS."Montant RS devise", 0.001, '<');
+                lDeclarRS."Total Currency Amount" := lDeclarRS."Total Amount" * CurrencyFactor; //CMt HD
+                lDeclarRS."Total Currency Amount" := ROUND(lDeclarRS."Total Currency Amount", 0.001, '<');
+                lDeclarRS."Net Amount in Currency" := lDeclarRS."Montant Net servi" * CurrencyFactor;
+                lDeclarRS."Net Amount in Currency" := ROUND(lDeclarRS."Net Amount in Currency", 0.001, '<');
+                TotalRSDevise += lDeclarRS."Montant RS devise";
+                TotalTTCDevise += lDeclarRS."Total Currency Amount";
+                TotalNetServiceDevise += lDeclarRS."Net Amount in Currency";
                 //END;
             END;
 
-            TotalMontantTTC += ROUND(lDeclarationRS."Total Amount", 0.001, '<');
-            TotalMontantRS += ROUND(lDeclarationRS."Montant RS", 0.001, '<');
-            TotalNetService += ROUND(lDeclarationRS."Montant Net servi", 0.001, '<');
+            TotalMontantTTC += ROUND(lDeclarRS."Total Amount", 0.001, '<');
+            TotalMontantRS += ROUND(lDeclarRS."Montant RS", 0.001, '<');
+            TotalNetService += ROUND(lDeclarRS."Montant Net servi", 0.001, '<');
             //
-            lDeclarationRS.INSERT;
+            lDeclarRS.INSERT;
         END;
-        // UNTIL (pDetailedVendorLedgEntry.NEXT) = 0;
+        // UNTIL (pDetVendLedgEntr.NEXT) = 0;
     END;
 
     procedure createXMLFile()
@@ -908,9 +898,9 @@ page 54100 "WDC Withholding Tax Decl"
         NomFichier: Text;
         acteDepot: Integer;
         AcDep: Integer;
-        DeclarationRS: Record "WDC Withholding Tax Decl";
-        DeclarationRS1: Record "WDC Withholding Tax Decl";
-        DeclarationRS2: Record "WDC Withholding Tax Decl";
+        DeclarRS: Record "WDC Withholding Tax Decl";
+        DeclarRS1: Record "WDC Withholding Tax Decl";
+        DeclarRS2: Record "WDC Withholding Tax Decl";
         FileName: File;
         FileManagement: Codeunit "File Management";
         tmpBlob: Codeunit "Temp Blob";
@@ -920,10 +910,10 @@ page 54100 "WDC Withholding Tax Decl"
         lText001: textconst ENU = 'You have to select at least one record to generate the XML file.',
                             FRA = 'Vous devez sélectionner au moins un enregistrement pour générer le fichier XML.';
     begin
-        DeclarationRS.RESET;
-        DeclarationRS.SETRANGE(Export, TRUE);
-        IF DeclarationRS.FINDSET THEN BEGIN
-            GeneralLedgerSetup.get;
+        DeclarRS.RESET;
+        DeclarRS.SETRANGE(Export, TRUE);
+        IF DeclarRS.FINDSET THEN BEGIN
+            GenLedgSetup.get;
             Options := 'AjouterCertificats,ModifierCertificats,AnnulerCertificats';
             acteDepot := DIALOG.STRMENU(Options);
             IF acteDepot <> 0 THEN
@@ -935,126 +925,126 @@ page 54100 "WDC Withholding Tax Decl"
             OutStr.WriteText('<DeclarationsRS VersionSchema="1.0">' + CRLF);
             //@@@ DECLARANT (2)
             OutStr.WriteText(PADSTR('', 1) + '<Declarant>' + CRLF);
-            OutStr.WriteText(PADSTR('', 2) + '<TypeIdentifiant>' + FORMAT(DeclarationRS."Type of Company Identifier") + '</TypeIdentifiant>' + CRLF);
-            OutStr.WriteText(PADSTR('', 2) + '<Identifiant>' + DeclarationRS."Company Identifier" + '</Identifiant>' + CRLF);
-            OutStr.WriteText(PADSTR('', 2) + '<CategorieContribuable>' + DeclarationRS."Taxpayer Category" + '</CategorieContribuable>' + CRLF);
+            OutStr.WriteText(PADSTR('', 2) + '<TypeIdentifiant>' + FORMAT(DeclarRS."Type of Company Identifier") + '</TypeIdentifiant>' + CRLF);
+            OutStr.WriteText(PADSTR('', 2) + '<Identifiant>' + DeclarRS."Company Identifier" + '</Identifiant>' + CRLF);
+            OutStr.WriteText(PADSTR('', 2) + '<CategorieContribuable>' + DeclarRS."Taxpayer Category" + '</CategorieContribuable>' + CRLF);
             OutStr.WriteText(PADSTR('', 1) + '</Declarant>' + CRLF);
 
             //@@@ ReferenceDeclaration(2)
             OutStr.WriteText(PADSTR('', 1) + '<ReferenceDeclaration>' + CRLF);
             OutStr.WriteText(PADSTR('', 2) + '<ActeDepot>' + FORMAT(AcDep) + '</ActeDepot>' + CRLF);
-            OutStr.WriteText(PADSTR('', 2) + '<AnneeDepot>' + DeclarationRS."Deposit Year" + '</AnneeDepot>' + CRLF);
-            OutStr.WriteText(PADSTR('', 2) + '<MoisDepot>' + DeclarationRS."Payment Month" + '</MoisDepot>' + CRLF);
+            OutStr.WriteText(PADSTR('', 2) + '<AnneeDepot>' + DeclarRS."Deposit Year" + '</AnneeDepot>' + CRLF);
+            OutStr.WriteText(PADSTR('', 2) + '<MoisDepot>' + DeclarRS."Payment Month" + '</MoisDepot>' + CRLF);
             OutStr.WriteText(PADSTR('', 1) + '</ReferenceDeclaration>' + CRLF);
             //@@@ AjouterCertificats(I)
             OutStr.WriteText(PADSTR('', 1) + '<AjouterCertificats>' + CRLF);
-            DeclarationRS1.RESET;
-            DeclarationRS1.SETRANGE(Export, TRUE);
-            DeclarationRS1.SETRANGE("Invoice No.", '');
-            IF DeclarationRS1.FINDSET THEN BEGIN
+            DeclarRS1.RESET;
+            DeclarRS1.SETRANGE(Export, TRUE);
+            DeclarRS1.SETRANGE("Invoice No.", '');
+            IF DeclarRS1.FINDSET THEN BEGIN
                 REPEAT
                     //@@@Certificat
                     OutStr.WriteText(PADSTR('', 2) + '<Certificat>' + CRLF);
                     OutStr.WriteText(PADSTR('', 3) + '<Beneficiaire>' + CRLF);
                     OutStr.WriteText(PADSTR('', 4) + '<IdTaxpayer>' + CRLF);
-                    IF DeclarationRS1."Type of Beneficiary Identifier" = 1 THEN BEGIN
+                    IF DeclarRS1."Type of Beneficiary Identifier" = 1 THEN BEGIN
                         OutStr.WriteText(PADSTR('', 5) + '<MatriculeFiscal>' + CRLF);
-                        OutStr.WriteText(PADSTR('', 6) + '<TypeIdentifiant>' + FORMAT(DeclarationRS1."Type of Beneficiary Identifier") + '</TypeIdentifiant>' + CRLF);
-                        OutStr.WriteText(PADSTR('', 6) + '<Identifiant>' + DeclarationRS1."Taxpayer Fiscal Number/ CIN" + '</Identifiant>' + CRLF);
-                        OutStr.WriteText(PADSTR('', 6) + '<CategorieContribuable>' + DeclarationRS1."Taxpayer Category Beneficiary" + '</CategorieContribuable>' + CRLF);
+                        OutStr.WriteText(PADSTR('', 6) + '<TypeIdentifiant>' + FORMAT(DeclarRS1."Type of Beneficiary Identifier") + '</TypeIdentifiant>' + CRLF);
+                        OutStr.WriteText(PADSTR('', 6) + '<Identifiant>' + DeclarRS1."Taxpayer Fiscal Number/ CIN" + '</Identifiant>' + CRLF);
+                        OutStr.WriteText(PADSTR('', 6) + '<CategorieContribuable>' + DeclarRS1."Taxpayer Category Beneficiary" + '</CategorieContribuable>' + CRLF);
                         OutStr.WriteText(PADSTR('', 5) + '</MatriculeFiscal>' + CRLF);
                     END ELSE BEGIN
                         OutStr.WriteText(PADSTR('', 5) + '<CIN>' + CRLF);
-                        OutStr.WriteText(PADSTR('', 6) + '<TypeIdentifiant>' + FORMAT(DeclarationRS1."Type of Beneficiary Identifier") + '</TypeIdentifiant>' + CRLF);
-                        OutStr.WriteText(PADSTR('', 6) + '<Identifiant>' + DeclarationRS1."Taxpayer Fiscal Number/ CIN" + '</Identifiant>' + CRLF);
-                        OutStr.WriteText(PADSTR('', 6) + '<DateNaissance>' + FORMAT(DeclarationRS1."Birth Date", 0, '<Day,2>/<Month,2>/<Year4,4>') + '</DateNaissance>' + CRLF);
-                        OutStr.WriteText(PADSTR('', 6) + '<CategorieContribuable>' + DeclarationRS1."Taxpayer Category Beneficiary" + '</CategorieContribuable>' + CRLF);
+                        OutStr.WriteText(PADSTR('', 6) + '<TypeIdentifiant>' + FORMAT(DeclarRS1."Type of Beneficiary Identifier") + '</TypeIdentifiant>' + CRLF);
+                        OutStr.WriteText(PADSTR('', 6) + '<Identifiant>' + DeclarRS1."Taxpayer Fiscal Number/ CIN" + '</Identifiant>' + CRLF);
+                        OutStr.WriteText(PADSTR('', 6) + '<DateNaissance>' + FORMAT(DeclarRS1."Birth Date", 0, '<Day,2>/<Month,2>/<Year4,4>') + '</DateNaissance>' + CRLF);
+                        OutStr.WriteText(PADSTR('', 6) + '<CategorieContribuable>' + DeclarRS1."Taxpayer Category Beneficiary" + '</CategorieContribuable>' + CRLF);
                         OutStr.WriteText(PADSTR('', 5) + '</CIN>' + CRLF);
                     END;
 
                     OutStr.WriteText(PADSTR('', 4) + '</IdTaxpayer>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 4) + '<Resident>' + FORMAT(DeclarationRS1."Resident In Tunisia") + '</Resident>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 4) + '<NometprenonOuRaisonsociale>' + fncConvCaracSpec(DeclarationRS1."Name and First Name") + '</NometprenonOuRaisonsociale>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 4) + '<Adresse>' + fncConvCaracSpec(DeclarationRS1.Address) + '</Adresse>' + CRLF);
-                    // OutStr.WriteText(PADSTR('', 4) + '<Activite>' + fncConvCaracSpec(DeclarationRS1.Activity) + '</Activite>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 4) + '<Resident>' + FORMAT(DeclarRS1."Resident In Tunisia") + '</Resident>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 4) + '<NometprenonOuRaisonsociale>' + fncConvCaracSpec(DeclarRS1."Name and First Name") + '</NometprenonOuRaisonsociale>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 4) + '<Adresse>' + fncConvCaracSpec(DeclarRS1.Address) + '</Adresse>' + CRLF);
+                    // OutStr.WriteText(PADSTR('', 4) + '<Activite>' + fncConvCaracSpec(DeclarRS1.Activity) + '</Activite>' + CRLF);
                     OutStr.WriteText(PADSTR('', 4) + '<InfosContact>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 5) + '<AdresseMail>' + fncConvCaracSpec(DeclarationRS1.EMail) + '</AdresseMail>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 5) + '<NumTel>' + DeclarationRS1."Phone Number" + '</NumTel>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 5) + '<AdresseMail>' + fncConvCaracSpec(DeclarRS1.EMail) + '</AdresseMail>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 5) + '<NumTel>' + DeclarRS1."Phone Number" + '</NumTel>' + CRLF);
                     OutStr.WriteText(PADSTR('', 4) + '</InfosContact>' + CRLF);
                     OutStr.WriteText(PADSTR('', 3) + '</Beneficiaire>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 3) + '<DatePayement>' + DeclarationRS1."Payment Date" + '</DatePayement>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 3) + '<Ref_certif_chez_declarant>' + DeclarationRS1."TEJ Declaration No." + '</Ref_certif_chez_declarant>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 3) + '<DatePayement>' + DeclarRS1."Payment Date" + '</DatePayement>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 3) + '<Ref_certif_chez_declarant>' + DeclarRS1."TEJ Declaration No." + '</Ref_certif_chez_declarant>' + CRLF);
                     OutStr.WriteText(PADSTR('', 3) + '<ListeOperations>' + CRLF);
 
-                    DeclarationRS2.RESET;
-                    DeclarationRS2.SETRANGE("Document No.", DeclarationRS1."Document No.");
-                    DeclarationRS2.SETFILTER("Invoice No.", '<>%1', '');
-                    IF DeclarationRS2.FINDSET THEN
+                    DeclarRS2.RESET;
+                    DeclarRS2.SETRANGE("Document No.", DeclarRS1."Document No.");
+                    DeclarRS2.SETFILTER("Invoice No.", '<>%1', '');
+                    IF DeclarRS2.FINDSET THEN
                         REPEAT
-                            OutStr.WriteText(PADSTR('', 4) + '<Operation IdTypeOperation=' + '"' + DeclarationRS2."ID Type Operation" + '"' + '>' + CRLF);
-                            OutStr.WriteText(PADSTR('', 5) + '<AnneeFacturation>' + DeclarationRS2."Billing Year" + '</AnneeFacturation>' + CRLF);
-                            OutStr.WriteText(PADSTR('', 5) + '<CNPC>' + FORMAT(DeclarationRS2.CNPC) + '</CNPC>' + CRLF);
-                            OutStr.WriteText(PADSTR('', 5) + '<P_Charge>' + FORMAT(DeclarationRS2."P-Charge") + '</P_Charge>' + CRLF);
-                            OutStr.WriteText(PADSTR('', 5) + '<MontantHT>' + DELCHR(FORMAT(ROUND(DeclarationRS2."Amount HT" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantHT>' + CRLF);
-                            OutStr.WriteText(PADSTR('', 5) + '<TauxRS>' + FormatAmount(FORMAT(DeclarationRS2."Withholding Tax Rate"), 6) + '</TauxRS>' + CRLF);
-                            //OutStr.WriteText(PADSTR('', 5) + '<TauxRS>' + DELCHR(FORMAT(ROUND(DeclarationRS2."Withholding Tax Rate" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TauxRS>' + CRLF);
+                            OutStr.WriteText(PADSTR('', 4) + '<Operation IdTypeOperation=' + '"' + DeclarRS2."ID Type Operation" + '"' + '>' + CRLF);
+                            OutStr.WriteText(PADSTR('', 5) + '<AnneeFacturation>' + DeclarRS2."Billing Year" + '</AnneeFacturation>' + CRLF);
+                            OutStr.WriteText(PADSTR('', 5) + '<CNPC>' + FORMAT(DeclarRS2.CNPC) + '</CNPC>' + CRLF);
+                            OutStr.WriteText(PADSTR('', 5) + '<P_Charge>' + FORMAT(DeclarRS2."P-Charge") + '</P_Charge>' + CRLF);
+                            OutStr.WriteText(PADSTR('', 5) + '<MontantHT>' + DELCHR(FORMAT(ROUND(DeclarRS2."Amount HT" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantHT>' + CRLF);
+                            OutStr.WriteText(PADSTR('', 5) + '<TauxRS>' + FormatAmount(FORMAT(DeclarRS2."Withholding Tax Rate"), 6) + '</TauxRS>' + CRLF);
+                            //OutStr.WriteText(PADSTR('', 5) + '<TauxRS>' + DELCHR(FORMAT(ROUND(DeclarRS2."Withholding Tax Rate" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TauxRS>' + CRLF);
 
-                            if GeneralLedgerSetup."Incl VAT Withholding Tax Decl" then begin
-                                OutStr.WriteText(PADSTR('', 5) + '<TauxTVA>' + FormatAmount(FORMAT(DeclarationRS2."VAT Rate"), 6) + '</TauxTVA>' + CRLF);
-                                //OutStr.WriteText(PADSTR('', 5) + '<TauxTVA>' + DELCHR(FORMAT(ROUND(DeclarationRS2."VAT Rate" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TauxTVA>' + CRLF);
-                                OutStr.WriteText(PADSTR('', 5) + '<MontantTVA>' + DELCHR(FORMAT(ROUND(DeclarationRS2."VAT Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantTVA>' + CRLF);
+                            if GenLedgSetup."Incl VAT Withholding Tax Decl" then begin
+                                OutStr.WriteText(PADSTR('', 5) + '<TauxTVA>' + FormatAmount(FORMAT(DeclarRS2."VAT Rate"), 6) + '</TauxTVA>' + CRLF);
+                                //OutStr.WriteText(PADSTR('', 5) + '<TauxTVA>' + DELCHR(FORMAT(ROUND(DeclarRS2."VAT Rate" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TauxTVA>' + CRLF);
+                                OutStr.WriteText(PADSTR('', 5) + '<MontantTVA>' + DELCHR(FORMAT(ROUND(DeclarRS2."VAT Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantTVA>' + CRLF);
                             end;
-                            OutStr.WriteText(PADSTR('', 5) + '<MontantTTC>' + DELCHR(FORMAT(ROUND(DeclarationRS2."Total Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantTTC>' + CRLF);
-                            OutStr.WriteText(PADSTR('', 5) + '<MontantRS>' + DELCHR(FORMAT(ROUND(DeclarationRS2."Montant RS" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantRS>' + CRLF);
+                            OutStr.WriteText(PADSTR('', 5) + '<MontantTTC>' + DELCHR(FORMAT(ROUND(DeclarRS2."Total Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantTTC>' + CRLF);
+                            OutStr.WriteText(PADSTR('', 5) + '<MontantRS>' + DELCHR(FORMAT(ROUND(DeclarRS2."Montant RS" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantRS>' + CRLF);
                             //OutStr.WriteText(PADSTR('',5)+'<TaxeAdditionnelle Code='+Finance1."Tax additionnelle (Code)"+'Taux='+FORMAT(Finance1."Tax additionnelle (taux)")+'</TaxeAdditionnelle>');
-                            OutStr.WriteText(PADSTR('', 5) + '<MontantNetServi>' + DELCHR(FORMAT(ROUND(DeclarationRS2."Montant Net servi" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantNetServi>' + CRLF);
-                            IF DeclarationRS2."Code devise" <> '' THEN BEGIN
+                            OutStr.WriteText(PADSTR('', 5) + '<MontantNetServi>' + DELCHR(FORMAT(ROUND(DeclarRS2."Montant Net servi" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantNetServi>' + CRLF);
+                            IF DeclarRS2."Code devise" <> '' THEN BEGIN
                                 OutStr.WriteText(PADSTR('', 5) + '<Devise>' + CRLF);
-                                OutStr.WriteText(PADSTR('', 6) + '<CodeDevise>' + DeclarationRS2."Code devise" + '</CodeDevise>' + CRLF);
-                                // OutStr.WriteText(PADSTR('', 5) + '<TauxChange>' + FormatAmount(FORMAT(DeclarationRS2."Taux de change"), 6) + '</TauxChange>' + CRLF); //Cmt HD
-                                OutStr.WriteText(PADSTR('', 5) + '<TauxChange>' + AmountToText(DeclarationRS2."Taux de change", 0.000001) + '</TauxChange>' + CRLF);
-                                OutStr.WriteText(PADSTR('', 6) + '<MontantRSDevise>' + DELCHR(FORMAT(ROUND(DeclarationRS2."Montant RS devise" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantRSDevise>' + CRLF); //HD
-                                OutStr.WriteText(PADSTR('', 6) + '<MontantTTCDevise>' + DELCHR(FORMAT(ROUND(DeclarationRS2."Total Currency Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantTTCDevise>' + CRLF);
-                                OutStr.WriteText(PADSTR('', 6) + '<MontantNetServiDevise>' + DELCHR(FORMAT(ROUND(DeclarationRS2."Net Amount in Currency" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantNetServiDevise>' + CRLF);
-                                // OutStr.WriteText(PADSTR('', 6) + '<MontantRSDevise>' + AmountToText(DeclarationRS2."Montant RS devise") + '</MontantRSDevise>' + CRLF);
-                                // OutStr.WriteText(PADSTR('', 6) + '<MontantTTCDevise>' + AmountToText(DeclarationRS2."Total Currency Amount") + '</MontantTTCDevise>' + CRLF);
-                                // OutStr.WriteText(PADSTR('', 6) + '<MontantNetServiDevise>' + AmountToText(DeclarationRS2."Net Amount in Currency") + '</MontantNetServiDevise>' + CRLF);
+                                OutStr.WriteText(PADSTR('', 6) + '<CodeDevise>' + DeclarRS2."Code devise" + '</CodeDevise>' + CRLF);
+                                // OutStr.WriteText(PADSTR('', 5) + '<TauxChange>' + FormatAmount(FORMAT(DeclarRS2."Taux de change"), 6) + '</TauxChange>' + CRLF); //Cmt HD
+                                OutStr.WriteText(PADSTR('', 5) + '<TauxChange>' + AmountToText(DeclarRS2."Taux de change", 0.000001) + '</TauxChange>' + CRLF);
+                                OutStr.WriteText(PADSTR('', 6) + '<MontantRSDevise>' + DELCHR(FORMAT(ROUND(DeclarRS2."Montant RS devise" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantRSDevise>' + CRLF); //HD
+                                OutStr.WriteText(PADSTR('', 6) + '<MontantTTCDevise>' + DELCHR(FORMAT(ROUND(DeclarRS2."Total Currency Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantTTCDevise>' + CRLF);
+                                OutStr.WriteText(PADSTR('', 6) + '<MontantNetServiDevise>' + DELCHR(FORMAT(ROUND(DeclarRS2."Net Amount in Currency" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</MontantNetServiDevise>' + CRLF);
+                                // OutStr.WriteText(PADSTR('', 6) + '<MontantRSDevise>' + AmountToText(DeclarRS2."Montant RS devise") + '</MontantRSDevise>' + CRLF);
+                                // OutStr.WriteText(PADSTR('', 6) + '<MontantTTCDevise>' + AmountToText(DeclarRS2."Total Currency Amount") + '</MontantTTCDevise>' + CRLF);
+                                // OutStr.WriteText(PADSTR('', 6) + '<MontantNetServiDevise>' + AmountToText(DeclarRS2."Net Amount in Currency") + '</MontantNetServiDevise>' + CRLF);
                                 OutStr.WriteText(PADSTR('', 5) + '</Devise>' + CRLF);
                             END;
                             OutStr.WriteText(PADSTR('', 4) + '</Operation>' + CRLF);
-                        UNTIL (DeclarationRS2.NEXT) = 0;
+                        UNTIL (DeclarRS2.NEXT) = 0;
                     OutStr.WriteText(PADSTR('', 3) + '</ListeOperations>' + CRLF);
                     OutStr.WriteText(PADSTR('', 3) + '<TotalPayement>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 4) + '<TotalMontantHT>' + DELCHR(FORMAT(ROUND(DeclarationRS1."Amount HT" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantHT>' + CRLF);
-                    if GeneralLedgerSetup."Incl VAT Withholding Tax Decl" then
-                        OutStr.WriteText(PADSTR('', 4) + '<TotalMontantTVA>' + DELCHR(FORMAT(ROUND(DeclarationRS1."VAT Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantTVA>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 4) + '<TotalMontantTTC>' + DELCHR(FORMAT(ROUND(DeclarationRS1."Total Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantTTC>' + CRLF);
-                    OutStr.WriteText(PADSTR('', 4) + '<TotalMontantRS>' + DELCHR(FORMAT(ROUND(DeclarationRS1."Montant RS" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantRS>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 4) + '<TotalMontantHT>' + DELCHR(FORMAT(ROUND(DeclarRS1."Amount HT" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantHT>' + CRLF);
+                    if GenLedgSetup."Incl VAT Withholding Tax Decl" then
+                        OutStr.WriteText(PADSTR('', 4) + '<TotalMontantTVA>' + DELCHR(FORMAT(ROUND(DeclarRS1."VAT Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantTVA>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 4) + '<TotalMontantTTC>' + DELCHR(FORMAT(ROUND(DeclarRS1."Total Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantTTC>' + CRLF);
+                    OutStr.WriteText(PADSTR('', 4) + '<TotalMontantRS>' + DELCHR(FORMAT(ROUND(DeclarRS1."Montant RS" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantRS>' + CRLF);
                     //IF (Finance."Total Taxe"<>0) THEN BEGIN
                     //FileName.WriteText(PADSTR('',4)+'<TotalTaxes>');
                     //FileName.WriteText(PADSTR('',4)+'</TotalTaxes>');
                     //END;
-                    OutStr.WriteText(PADSTR('', 4) + '<TotalMontantNetServi>' + DELCHR(FORMAT(ROUND(DeclarationRS1."Montant Net servi" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantNetServi>' + CRLF);
-                    IF (DeclarationRS1."Code devise" <> '') THEN BEGIN
+                    OutStr.WriteText(PADSTR('', 4) + '<TotalMontantNetServi>' + DELCHR(FORMAT(ROUND(DeclarRS1."Montant Net servi" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantNetServi>' + CRLF);
+                    IF (DeclarRS1."Code devise" <> '') THEN BEGIN
                         OutStr.WriteText(PADSTR('', 4) + '<TotalDevise>' + CRLF);
-                        OutStr.WriteText(PADSTR('', 5) + '<TotalMontantDevise Code="' + DeclarationRS1."Code devise" + '">' + CRLF);
-                        OutStr.WriteText(PADSTR('', 6) + '<TotalMontantRS>' + DELCHR(FORMAT(ROUND(DeclarationRS1."Montant RS devise" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantRS>' + CRLF); //Cmt HD
-                        OutStr.WriteText(PADSTR('', 6) + '<TotalMontantTTC>' + DELCHR(FORMAT(ROUND(DeclarationRS1."Total Currency Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantTTC>' + CRLF); //Cmt HD
-                        OutStr.WriteText(PADSTR('', 6) + '<TotalMontantNetServi>' + DELCHR(FORMAT(ROUND(DeclarationRS1."Net Amount in Currency" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantNetServi>' + CRLF); //Cmt HD
-                        // OutStr.WriteText(PADSTR('', 6) + '<TotalMontantRS>' + AmountToText(DeclarationRS1."Montant RS devise") + '</TotalMontantRS>' + CRLF);
-                        // OutStr.WriteText(PADSTR('', 6) + '<TotalMontantTTC>' + AmountToText(DeclarationRS1."Total Currency Amount") + '</TotalMontantTTC>' + CRLF);
-                        // OutStr.WriteText(PADSTR('', 6) + '<TotalMontantNetServi>' + AmountToText(DeclarationRS1."Net Amount in Currency") + '</TotalMontantNetServi>' + CRLF);
+                        OutStr.WriteText(PADSTR('', 5) + '<TotalMontantDevise Code="' + DeclarRS1."Code devise" + '">' + CRLF);
+                        OutStr.WriteText(PADSTR('', 6) + '<TotalMontantRS>' + DELCHR(FORMAT(ROUND(DeclarRS1."Montant RS devise" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantRS>' + CRLF); //Cmt HD
+                        OutStr.WriteText(PADSTR('', 6) + '<TotalMontantTTC>' + DELCHR(FORMAT(ROUND(DeclarRS1."Total Currency Amount" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantTTC>' + CRLF); //Cmt HD
+                        OutStr.WriteText(PADSTR('', 6) + '<TotalMontantNetServi>' + DELCHR(FORMAT(ROUND(DeclarRS1."Net Amount in Currency" * 1000, 1), 0, '<Integer>'), '=', ',.') + '</TotalMontantNetServi>' + CRLF); //Cmt HD
+                        // OutStr.WriteText(PADSTR('', 6) + '<TotalMontantRS>' + AmountToText(DeclarRS1."Montant RS devise") + '</TotalMontantRS>' + CRLF);
+                        // OutStr.WriteText(PADSTR('', 6) + '<TotalMontantTTC>' + AmountToText(DeclarRS1."Total Currency Amount") + '</TotalMontantTTC>' + CRLF);
+                        // OutStr.WriteText(PADSTR('', 6) + '<TotalMontantNetServi>' + AmountToText(DeclarRS1."Net Amount in Currency") + '</TotalMontantNetServi>' + CRLF);
                         OutStr.WriteText(PADSTR('', 5) + '</TotalMontantDevise>' + CRLF);
                         OutStr.WriteText(PADSTR('', 4) + '</TotalDevise>' + CRLF);
                     END;
                     OutStr.WriteText(PADSTR('', 3) + '</TotalPayement>' + CRLF);
                     OutStr.WriteText(PADSTR('', 2) + '</Certificat>' + CRLF);
-                UNTIL DeclarationRS1.NEXT = 0;
+                UNTIL DeclarRS1.NEXT = 0;
             END;
             OutStr.WriteText(PADSTR('', 1) + '</AjouterCertificats>' + CRLF);
             OutStr.WriteText('</DeclarationsRS>' + CRLF);
 
-            NomFichier := COPYSTR(CompanyInformation."VAT Registration No.", 1, 8) + '-' + DeclarationRS."Deposit Year" + '-' + DeclarationRS."Payment Month" + '-' + FORMAT(AcDep) + '.xml';
+            NomFichier := COPYSTR(CompanyInformation."VAT Registration No.", 1, 8) + '-' + DeclarRS."Deposit Year" + '-' + DeclarRS."Payment Month" + '-' + FORMAT(AcDep) + '.xml';
             tmpBlob.CreateInStream(InStr, TextEncoding::Windows);
             DownloadFromStream(InStr, '', '', '', NomFichier);
             MESSAGE('Export terminée avec succès');
@@ -1247,9 +1237,10 @@ page 54100 "WDC Withholding Tax Decl"
         EndDate: Date;
         FieldStyle: Text;
         DocNo: Code[20];
+        DocNoFilter: Code[20];
         CompGenNo: Code[20];
         InclureVAT: Boolean;
-        GeneralLedgerSetup: Record "General Ledger Setup";
+        GenLedgSetup: Record "General Ledger Setup";
         GLEntry: Record "G/L Entry";
         SeqNo: Integer;
         GLAccount: Record "G/L Account";
@@ -1273,5 +1264,6 @@ page 54100 "WDC Withholding Tax Decl"
         Counter: Integer;
         NoSeries: Codeunit "No. Series";
         IsEditable: Boolean;
+        TEJManagement: Codeunit "TEJ Management";
 
 }

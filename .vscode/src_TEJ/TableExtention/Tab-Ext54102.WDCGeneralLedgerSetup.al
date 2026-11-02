@@ -45,6 +45,22 @@ tableextension 54102 WDCGeneralLedgerSetup extends "General Ledger Setup"
             CaptionML = ENU = 'Column DEC RS Editable', FRA = 'Colonne DEC RS modifiable';
             DataClassification = ToBeClassified;
         }
-
+        field(54107; "Vendor Payment Accounts No."; Code[20])
+        {
+            CaptionML = FRA = 'N° comptes payments fournisseurs', ENU = 'Vendor Payment Accounts No.';
+            DataClassification = ToBeClassified;
+        }
+        field(54108; "Foreign exch. earn. acc. No."; Code[20])
+        {
+            CaptionML = FRA = 'N° comptes gains de change', ENU = 'Foreign exch. earn. acc. No.';
+            DataClassification = ToBeClassified;
+            tableRelation = "G/L Account";
+        }
+        field(54109; "Loss accounts No."; Code[20])
+        {
+            CaptionML = FRA = 'N° comptes pertes', ENU = 'Loss accounts No.';
+            DataClassification = ToBeClassified;
+            tableRelation = "G/L Account";
+        }
     }
 }

@@ -11,6 +11,19 @@ pageextension 54102 WDCGeneralLedgerSetup extends "General Ledger Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("Vendor Payment Accounts No."; Rec."Vendor Payment Accounts No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Foreign exch. earn. acc. No."; Rec."Foreign exch. earn. acc. No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Loss accounts No."; Rec."Loss accounts No.")
+                {
+                    ApplicationArea = All;
+                }
+
                 field("Purch. Stamp Account No."; Rec."Purch. Stamp Account No.")
                 {
                     ApplicationArea = All;

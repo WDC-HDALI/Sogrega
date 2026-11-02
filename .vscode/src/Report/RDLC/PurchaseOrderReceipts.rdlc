@@ -1400,8 +1400,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>6.39796cm</Top>
-              <Left>3.38989cm</Left>
+              <Top>6.88cm</Top>
+              <Left>3.42519cm</Left>
               <Height>11pt</Height>
               <Width>9.32978cm</Width>
               <ZIndex>26</ZIndex>
@@ -1430,7 +1430,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>6.39796cm</Top>
+              <Top>6.88cm</Top>
+              <Left>0.0353cm</Left>
               <Height>11pt</Height>
               <Width>3.32474cm</Width>
               <ZIndex>27</ZIndex>
@@ -1438,6 +1439,64 @@
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="PurchRcptHdrNo3">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!PostingDate.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <Format>d MMMM yyyy</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>6.42cm</Top>
+              <Left>3.42519cm</Left>
+              <Height>11pt</Height>
+              <Width>9.32978cm</Width>
+              <ZIndex>28</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="PurchRcptHdrNoCapt3">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!PostingDateCaption.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>6.42cm</Top>
+              <Left>0.0353cm</Left>
+              <Height>11pt</Height>
+              <Width>3.32474cm</Width>
+              <ZIndex>29</ZIndex>
+              <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
@@ -1663,6 +1722,12 @@ End Function
         </Field>
         <Field Name="VendorAddressLBL">
           <DataField>VendorAddressLBL</DataField>
+        </Field>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="PostingDateCaption">
+          <DataField>PostingDateCaption</DataField>
         </Field>
         <Field Name="ItemNo">
           <DataField>ItemNo</DataField>

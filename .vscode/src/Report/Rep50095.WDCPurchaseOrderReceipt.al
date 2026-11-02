@@ -1,3 +1,6 @@
+//*************Documentation***************
+//WDC01  WDC.SH  30/09/26  Add Posting Date to Purchase Order Receipt Report
+
 namespace sogrega.sogrega;
 
 using Microsoft.Purchases.Document;
@@ -144,6 +147,14 @@ report 50095 "WDC Purchase Order Receipt"
             {
 
             }
+            //<<WDC01
+            column(PostingDate; getPurchRcptPostingDate())
+            {
+            }
+            //>>WDC01
+            column(PostingDateCaption; PostingDateCaption)
+            {
+            }
             dataitem("Purch. Rcpt. Line"; "Purch. Rcpt. Line")
             {
                 DataItemLink = "Order No." = field("No.");
@@ -267,9 +278,21 @@ report 50095 "WDC Purchase Order Receipt"
         vendorNameLBL: TextConst ENU = 'Pay to Vendor Name', FRA = 'Nom fournisseur à payer';
         TitleLBL: TextConst ENU = 'Purchase : Receipts', FRA = 'Achats : Réceptions';
         VendorAddressLBL: TextConst ENU = 'Address', FRA = 'Adresse';
+        PostingDateCaption: TextConst FRA = 'Date comptabilisation', ENU = 'Posting Date';
 
-
-
+    //<<WDC01
+    local procedure GetPurchRcptPostingDate(): Date
+    var
+        PurchRcptHeader: record "Purch. Rcpt. Header";
+    begin
+        purchRcptHeader.Reset();
+        purchRcptHeader.SetRange("Order No.", PurchaseHeader."No.");
+        if purchRcptHeader.FindFirst() then
+            exit(purchRcptHeader."Posting Date")
+        else
+            exit(0D);
+    end;
+    //>>WDC01
 
 }
 
